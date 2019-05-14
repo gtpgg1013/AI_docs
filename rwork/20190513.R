@@ -69,4 +69,4 @@ score<-factor(1,c(1,2))
 score
 is.ordered(score)
 
-#c : combine 시켜주는 함수 : list / vector로로
+#c : combine 시켜주는 함수 : list / vector로

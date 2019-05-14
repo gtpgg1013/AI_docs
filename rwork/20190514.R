@@ -253,7 +253,120 @@ class3<-exam %>% filter(class==3)
 class3
 mean(class3$english)
 
+#실습
+#displ값이 3이하를 추출->mpg3
+#displ값이 5이상을 추출->mpg5
+#mpg3 hwy 평균
+#mpg5 hwy 평균
 
+mpg3<-mpg %>% filter(displ<=3)
+mpg5<-mpg %>% filter(displ>=5)
+hwy3<-mean(mpg3$hwy)
+hwy5<-mean(mpg5$hwy)
+hwy3
+hwy5
 
+#mpg 생산자 분포 궁금
+qplot(mpg$manufacturer)
+table(mpg$manufacturer)
+str(mpg)
+mpg
 
+#volkswagen과 audi 중 cty가 평균적으로 어디가 높은지
+vmpg<-mpg %>% filter(manufacturer=="volkswagen")
+ampg<-mpg %>% filter(manufacturer=="audi")
+vcty_avg<-mean(vmpg$cty)
+acty_avg<-mean(ampg$cty)
+vcty_avg
+acty_avg
 
+#현대, 쉐보레, 닛산 => 데이터 추출
+#cty의 전체 평균 출력
+table(mpg$manufacturer)
+hcnmpg<-mpg %>% filter(manufacturer %in% c("hyundai","chevrolet","nissan"))
+hcnmpg$cty
+avg1<-mean(hcnmpg$cty)
+avg1
+
+#컬럼 추출 : select
+exam %>% select(science)
+exam %>% select(science,math,class)
+exam %>% select(-science,-math,-id)
+
+#%>% : dplyr패키지 설치 & 로드 상태에서만 사용 가능
+
+#3반 추출 -> math 추출
+#보통 이런식으로 가독성 좋게 써줌
+#head함수로 원하는 수만큼 볼 수도 있다
+exam %>%
+  filter(class==3) %>%
+  select(math,class) %>% 
+  head(2)
+
+#math를 기준으로 오름차순 정렬렬
+exam %>% arrange(math)
+
+#내림차순
+exam %>% arrange(desc(math))
+
+exam %>% arrange(math, science)
+exam %>% arrange(class,math)
+
+#연습문제 
+#mpg
+#1. mpg 데이터는 11개 변수로 구성되어 있습니다.
+#이 중 일부만 추출해서 분석에 활용하려고 합니다.
+#mpg 데이터에서 class(자동차 종류), cty(도시 연비) 변수를 추출해
+#새로운 데이터를 만드세요. 새로 만든 데이터의 일부를 출력해서 
+#두 변수로만 구성되어 있는지 확인하세요.
+
+nmpg<-mpg %>% select(class,cty) 
+nmpg %>% head
+
+#2
+suv_nmpg<-nmpg %>% filter(class=="suv")
+str(suv_nmpg$cty)
+mean(suv_nmpg$cty)
+compact_nmpg<-nmpg %>% filter(class=="compact")
+mean(compact_nmpg$cty)
+
+#3
+audi_car<-mpg %>% filter(manufacturer=="audi") %>% arrange(desc(hwy)) %>% head(5)
+audi_car
+
+#4 : midwest
+midwest
+str(midwest)
+n_midwest<-as.data.frame(midwest)
+n_midwest
+
+#5
+library(dplyr)
+n_midwest<-rename(n_midwest,"total"="poptotal")
+n_midwest<-rename(n_midwest,"asian"="popasian")
+
+n_midwest
+
+#6
+n_midwest$AsianPerTotal<-(n_midwest$asian/n_midwest$total)*100
+hist(n_midwest$AsianPerTotal)
+n_midwest$AsianPerTotal
+
+#7
+mean_APT<-mean(n_midwest$AsianPerTotal)
+mean_APT
+n_midwest$asianCheck<-ifelse(n_midwest$AsianPerTotal>mean_APT,"large","small")
+n_midwest
+
+#8
+table(n_midwest$asianCheck)
+qplot(n_midwest$asianCheck)
+
+qplot(data = n_midwest,x = popblack,y = popother,geom = "boxplot")
+
+hist(n_midwest$percollege)
+qplot(data = n_midwest,x = state,y = area,geom = "boxplot")
+
+n_midwest %>% arrange(desc(popwhite)) %>% select(popwhite)
+
+midwest %>% head

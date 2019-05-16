@@ -17,3 +17,5 @@ test$Cabin
 table(test$Embarked)
 
 qplot(data=train,x=Age,y=PassengerId,color=Survived)
+str(test)
+boxplot(test$Fare)$stats

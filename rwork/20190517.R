@@ -350,7 +350,22 @@ ggplot(data=df3,aes(x=age,y=meanIncome))+
 qplot(welfare$age)
 
 #연령대별 1~20 / 21~40 ... 연령대별 평균 임금 확인
-welfare$group<-ifelse(age>=20)
+welfare$group<-ifelse(welfare$age<=20&welfare$age>=0,"child",
+                      ifelse(welfare$age<=40,"youth",
+                             ifelse(welfare$age<=60,"littleold",
+                                    ifelse(welfare$age<=80,"quiteold","superold"))))
+welfare$group
+df4<-welfare %>% 
+  group_by(group) %>% 
+  summarize(meanIncome=mean(income,na.rm = T))
 
+welfare$income<-ifelse(is.na(income),0,welfare$income)
 
+welfare$income
+table(welfare$group)
 
+df5<-welfare %>% 
+  filter(group=="child")
+
+df5$income
+ggplot(data=df4,aes(x=group,y=meanIncome))+geom_col()

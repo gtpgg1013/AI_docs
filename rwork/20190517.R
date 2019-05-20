@@ -56,6 +56,7 @@ install.packages("KoNLP")
 library(KoNLP)
 library(dplyr)
 library(rJava)
+library(stringr)
 
 useNIADic()
 
@@ -72,6 +73,7 @@ res
 extractNoun("멀티캠퍼스 13층에서 수업을 즐겁게 듣는 중 입니다. 점심메뉴는 노랑통닭입니다.")
 nouns<-extractNoun(txt)
 str(nouns)
+nouns
 
 #table함수를 제대로 쓰려면 list 하나당 결과값이 있어야 하는데 그게 아님
 #그래서 unlist로 벡터화해야 함
@@ -79,6 +81,7 @@ unlist(nouns)
 wordcount<-table(unlist(nouns))
 class(wordcount)
 wordcount
+str(wordcount)
 
 df<-as.data.frame(wordcount,stringsAsFactors = F) #word가 factor형이라서 오류났었음
 df %>% arrange(desc(Var1))
@@ -167,6 +170,8 @@ paste("a","b",sep="",collapse = ";")
 mywords<-list()
 
 myletters[[1]]
+
+class(myletters[[1]])
 
 for(i in 1:5){
   mywords[[i]]<-paste(myletters[[i]], collapse = "")

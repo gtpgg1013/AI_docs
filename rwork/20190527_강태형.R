@@ -45,8 +45,14 @@ str(ngram.tdm)
 sort(ngram.tdm$dimnames$Terms,decreasing = TRUE)
 ngram.tdm$dimnames$Docs
 
+str(ngram.tdm)
 
+apply(ngram.tdm,1,sum)
 
+ngram.tdm[,]
 
-
+bitrigramlist<-apply(ngram.tdm[,],1,sum)
+bitrigramlist
+str(bitrigramlist)
+head(sort(bitrigramlist,decreasing = TRUE))
 

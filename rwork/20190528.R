@@ -261,6 +261,8 @@ mytxt
 
 #mytxt
 
+
+
 for(i in 1:24){
   mytxt[i]<-as.character(mypaper[[i]][1])
 }

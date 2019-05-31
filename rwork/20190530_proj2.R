@@ -130,6 +130,10 @@ myiphone.result<-my.df.text.word2 %>%
   count(word,iphone.id,sentiment) %>% 
   spread(sentiment,n,fill=0)
 
+my.df.text.word2 %>% 
+  inner_join(get_sentiments("bing")) %>% 
+  count(word,iphone.id,sentiment)
+
 myiphone.result %>% arrange(desc(negative))
 myiphone.result %>% arrange(desc(positive))
 
@@ -226,7 +230,33 @@ for(i in 1:8){
 df.galaxy.nrc<-data.frame(df.galaxy,row.names=c("1_galaxys6","2_galaxys7","3_galaxys8","4_galaxys8p","5_galaxys9","6_galaxys9p","7_galaxys10","8_galaxys10p"))
 df.galaxy.nrc
 
-inner_join(as.data.frame(listg[1]),get_sentiments("nrc"))
+df.galaxy.per.nrc<-data.frame()
+
+for(i in 1:8){
+  df.galaxy.per.nrc<-rbind(df.galaxy.per.nrc,listg2[[i]] %>% 
+                             spread(sentiment,n,fill=0) %>% 
+                             summarise(totAng=sum(anger),totAnt=sum(anticipation),
+                                       totDis=sum(disgust),totFear=sum(fear),totJoy=sum(joy),
+                                       totNeg=sum(negative),totPos=sum(positive),totSad=sum(sadness),
+                                       totSur=sum(surprise),totTrust=sum(trust)) %>% 
+                             mutate(total=totAng+totAnt+totDis+totFear+totJoy+totNeg+totPos+totSad+totSur+totTrust) %>% 
+                             summarise(Anger=totAng/total*100,Anticipation=totAnt/total*100,
+                                       Disgust=totDis/total*100,Fear=totFear/total*100,Joy=totJoy/total*100,
+                                       Negative=totNeg/total*100,Positive=totPos/total*100,Sadness=totSad/total*100,
+                                       Surprise=totSur/total*100,Trust=totTrust/total*100))
+}
+
+library(dplyr)
+
+df.galaxy.per.nrc<-data.frame(df.galaxy.per.nrc,row.names=c("1_galaxys6","2_galaxys7","3_galaxys8","4_galaxys8p","5_galaxys9","6_galaxys9p","7_galaxys10","8_galaxys10p"))
+df.galaxy.per.nrc$galaxy.id<-c("1_galaxys6","2_galaxys7","3_galaxys8","4_galaxys8p","5_galaxys9","6_galaxys9p","7_galaxys10","8_galaxys10p")
+df.galaxy.per.nrc
+
+spread(df.galaxy.per.nrc,galaxy.id,Anger)
+
+library(ggplot2)
+
+ggplot(data=df.galaxy.per.nrc) + geom_line()
 
 #iphone
 listi<-list()
@@ -256,3 +286,47 @@ for(i in 1:8){
 }
 df.iphone.nrc<-data.frame(df.iphone,row.names=c("iphone5","iphone6","iphone6s","iphone7","iphone7p","iphone8","iphone8p","iphonex"))
 df.iphone.nrc
+
+listi2[[1]] %>% 
+  spread(sentiment,n,fill=0) %>% 
+  summarise(totAng=sum(anger),totAnt=sum(anticipation),
+            totDis=sum(disgust),totFear=sum(fear),totJoy=sum(joy),
+            totNeg=sum(negative),totPos=sum(positive),totSad=sum(sadness),
+            totSur=sum(surprise),totTrust=sum(trust)) %>% 
+  mutate(total=totAng+totAnt+totDis+totFear+totJoy+totNeg+totPos+totSad+totSur+totTrust) %>% 
+  summarise(Anger=totAng/total*100,Anticipation=totAnt/total*100,
+            Disgust=totDis/total*100,Fear=totFear/total*100,Joy=totJoy/total*100,
+            Negative=totNeg/total*100,Positive=totPos/total*100,Sadness=totSad/total*100,
+            Surprise=totSur/total*100,Trust=totTrust/total*100)
+
+df.iphone.per.nrc<-data.frame()
+for(i in 1:8){
+  df.iphone.per.nrc<-rbind(df.iphone.per.nrc,listi2[[i]] %>% 
+                              spread(sentiment,n,fill=0) %>% 
+                              summarise(totAng=sum(anger),totAnt=sum(anticipation),
+                                        totDis=sum(disgust),totFear=sum(fear),totJoy=sum(joy),
+                                        totNeg=sum(negative),totPos=sum(positive),totSad=sum(sadness),
+                                        totSur=sum(surprise),totTrust=sum(trust)) %>% 
+                              mutate(total=totAng+totAnt+totDis+totFear+totJoy+totNeg+totPos+totSad+totSur+totTrust) %>% 
+                              summarise(Anger=totAng/total*100,Anticipation=totAnt/total*100,
+                                        Disgust=totDis/total*100,Fear=totFear/total*100,Joy=totJoy/total*100,
+                                        Negative=totNeg/total*100,Positive=totPos/total*100,Sadness=totSad/total*100,
+                                        Surprise=totSur/total*100,Trust=totTrust/total*100))
+}
+
+df.iphone.per.nrc<-data.frame(df.iphone.mean.nrc,row.names=c("iphone5","iphone6","iphone6s","iphone7","iphone7p","iphone8","iphone8p","iphonex"))
+df.iphone.per.nrc %>%
+  spread(Anger,Anticipation,Disgust,Fear,Joy,Negative,Positive,Sadness,Surprise,Trust)
+
+spread(Anger,Anticipation,Disgust,Fear,Joy,Negative,Positive,Sadness,Surprise,Trust)
+
+df.iphone.per.nrc
+
+
+library(tidytext)
+library(tidyr)
+
+get_sentiments("nrc")
+str(get_sentiments("nrc"))
+table(get_sentiments("nrc")$sentiment)
+

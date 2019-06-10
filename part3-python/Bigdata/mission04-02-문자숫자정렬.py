@@ -66,31 +66,73 @@ for word in list:
             tempword += word[i]
     numlist.append(int(tempword))
 
+numlist = [random.randint(1,100) for _ in range(0,10)]
+# numlist = [59, 79, 36, 11, 85, 86, 66, 22, 69, 50]
+numlist = [52, 42, 45, 25, 98, 15, 31, 12, 5, 26]
+
 print("정렬 전: ",numlist)
 
 # quick sorting
 # size 1이면 하면 안됨
 def quicksort(arr,start,end):
-    if len(arr) == 1:
-        return
-    pivot = arr[0]
+    pivot = arr[start]
     i = start
     j = end
-    while i < j:
-        while arr[i] < pivot:
+
+    # print(pivot)
+    # print(arr[i])
+    print(i)
+
+    while i<j:
+        while arr[i] <= pivot:
             i += 1
-        while arr[j] > pivot:
+            print(i)
+            # print(arr[i])
+        while i<j and arr[j] > pivot:
             j -= 1
-        tempNum = arr[i]
+
+        print(i," ",j)
+
+        tempNum1 = arr[i]
         arr[i] = arr[j]
-        arr[j] = tempNum
-        i += 1
-    tempNum = arr[i-1]
-    arr[i-1] = arr[0]
-    arr[0] = tempNum
-    quicksort(arr,0,i-1)
-    quicksort(arr,i-1,len(arr))
+        arr[j] = tempNum1
+        # i += 1
+        j -= 1
 
-quicksort(numlist,0,9)
+        print(arr)
+    
+    print("--rotation1 end--")
+    if i == len(arr)-1 or end-start == 1:
+        tempNum2 = arr[i]
+        arr[i] = arr[start]
+        arr[start] = tempNum2
+        print(arr)
+        print("--rotation2 end--")
+        if i-1-start > 0:
+            quicksort(arr,start,i-1)
+        if end-i-1 > 0:
+            quicksort(arr,i+1,end)
+    else:
+        tempNum2 = arr[i-1]
+        arr[i-1] = arr[start]
+        arr[start] = tempNum2
+        print(arr)
+        print("--rotation2 end--")
+        if i-2-start > 0:
+            quicksort(arr,start,i-2)
+        if end-i > 0:
+            quicksort(arr,i,end)
 
-print("퀵 정렬 후: ",list)
+    # print(arr)
+    # print("--rotation2 end--")
+
+    # if i-2-start > 1:
+    #     quicksort(arr,start,i-2)
+    # if end-i > 1:
+    #     quicksort(arr,i,end)
+    
+    return arr
+
+numlist = quicksort(numlist,0,9)
+
+print("퀵 정렬 후: ",numlist)

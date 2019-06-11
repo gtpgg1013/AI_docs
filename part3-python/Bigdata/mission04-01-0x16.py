@@ -17,7 +17,7 @@ for i in range(0,10):
 
 print("선택정렬 후:",list)
 
-# bubble selection
+# bubble sorting
 list = []
 for i in range(0,10):
     temp = hex(random.randrange(0,100000))
@@ -33,3 +33,30 @@ for i in range(0,10):
             list[k] = tempNum
 
 print("버블정렬 후 :",list)
+
+# quick sorting
+
+list = []
+for i in range(0,10):
+    temp = hex(random.randrange(0,100000))
+    list.append(temp)
+
+print("정렬 전:",list)
+
+def partition(arr, l, r):
+    pivot = arr[r]
+    i = l - 1
+    for j in range(l,r):
+        if arr[j] <= arr[r]:
+            arr[j], arr[r] = arr[r], arr[j]
+    arr[i+1], arr[r] = arr[r], arr[i+1]
+    return i + 1
+
+def quicksort(arr, l, r):
+    if l < r:
+        p = partition(arr, l, r)
+        quicksort(arr, l, p-1)
+        quicksort(arr, p+1, r)
+
+quicksort(list,0,9)
+print("퀵 정렬 후:",list)

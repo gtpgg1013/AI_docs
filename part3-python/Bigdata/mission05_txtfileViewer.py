@@ -9,6 +9,7 @@ window.geometry("400x400")
 window.resizable(True, True)
 nowFileName = ""
 text = Text(window)
+selectStr = ""
 
 #함수 선언부
 def openFile():
@@ -60,6 +61,15 @@ def copyFile():
     f.close()
     messagebox.showinfo("안내", "복사가 성공적으로 완료되었습니다.")
 
+def copySentence():
+    global selectStr
+    selectStr = text.selection_get()
+
+def pasteSentence():
+    global selectStr
+    nowIndex = text.index(INSERT)
+    text.insert(nowIndex,selectStr)
+
 
 #메인 코드부
 mainMenu = Menu(window)
@@ -74,7 +84,10 @@ fileMenu.add_command(label="저장",command=saveFile)
 editMenu = Menu(mainMenu)
 mainMenu.add_cascade(label="편집",menu=editMenu)
 editMenu.add_command(label="바꾸기",command=changeFile)
-editMenu.add_command(label="복사",command=copyFile)
-editMenu.add_command(label="붙여넣기",command=lambda : messagebox.showinfo("안내","아직 미구현입니다."))
+editMenu.add_command(label="파일복사",command=copyFile)
+editMenu.add_separator()
+editMenu.add_command(label="복사",command=copySentence)
+editMenu.add_command(label="붙여넣기",command=pasteSentence)
+# editMenu.add_command(label="붙여넣기",command=lambda : messagebox.showinfo("안내","아직 미구현입니다."))
 
 window.mainloop()

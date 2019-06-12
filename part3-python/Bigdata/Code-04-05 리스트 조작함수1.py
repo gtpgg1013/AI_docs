@@ -11,7 +11,7 @@ index = 0
 findList = []
 while True :
     try :
-        index = myList.index(NUMBER, index)
+        index = myList.index(NUMBER, index) # list.index(num, index) : num이 index 위치에 있으면 index 위치 반환
         findList.append(index)
         index += 1
     except :

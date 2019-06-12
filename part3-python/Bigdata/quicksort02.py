@@ -1,4 +1,7 @@
-list = [52, 42, 45, 25, 98, 15, 31, 12, 5, 26]
+import random
+
+# list = [52, 42, 45, 25, 98, 15, 31, 12, 5, 26]
+list = [random.randint(0,100) for _ in range(0,10)]
 print("0: ",list)
 
 #pivot을 첫번째 element로 만들기
@@ -24,5 +27,5 @@ def quicksort(arr,l,r):
 quicksort(list,0,9)
 print(list)
 
-for i in range(9,0,-1):
-    print(i, " ")
+# for i in range(9,0,-1):
+#     print(i, " ")

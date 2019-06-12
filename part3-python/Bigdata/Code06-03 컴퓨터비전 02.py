@@ -394,7 +394,8 @@ def zoomImage(): # 빈 부분은 어떻게 할지 결정해야 할 것임
         for k in range(inW):
             newi = int(i * value)
             newk = int(k * value)
-            outImage[newi][newk] = inImage[i][k]
+            for i in range(value):
+                outImage[newi+i][newk] = inImage[i][k]
 
     displayImage()
 

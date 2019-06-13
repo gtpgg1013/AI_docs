@@ -44,11 +44,21 @@ def loadImage(fname):
 def openImage():
     global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
     filename = askopenfilename(parent=window, filetypes=(("RAW파일", "*.raw"), ("모든 파일", "*.*")))
+    if filename == '' or filename == None:
+        return
     loadImage(filename)
     equalImage()
 
+import struct
 def saveImage():
-    pass
+    global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
+    saveFp = asksaveasfile(parent=window, mode="rb",defaultextension='*.raw',filetypes=(("RAW파일", "*.raw"), ("모든 파일", "*.*")))
+    if saveFp == '' or saveFp == None:
+        return
+    for i in range(outH):
+        for k in range(outW):
+            saveFp.write(struct.pack('B',outImage[i][k]))
+    saveFp.close()
 
 def displayImage():
     global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
@@ -62,11 +72,26 @@ def displayImage():
     canvas.create_image((outH//2, outW//2), image=paper, state='normal')
 
     # 출력 영상을 화면에 한점씩 찍기
+    # # 요게 느려서 화면이 늦게 뜸
+    # for i in range(outH):
+    #     for k in range(outW):
+    #         r = g = b = outImage[i][k]
+    #         paper.put("#%02x%02x%02x" % (r,g,b), (k,i)) # 16진수 문자열 포맷팅, i,k로 위치 지정해주기
+    ## 성능 개선
+    # string 통째로 넣어서 받으면 더 빠르다
+    rgbStr = '' # 전체 픽셀의 문자열을 저장
     for i in range(outH):
+        tmpStr = ''
         for k in range(outW):
             r = g = b = outImage[i][k]
-            paper.put("#%02x%02x%02x" % (r,g,b), (k,i)) # 16진수 문자열 포맷팅, i,k로 위치 지정해주기
+            tmpStr += ' #%02x%02x%02x' % (r,g,b) # 문자열 구분하려면 한칸 떼줘야 함
+        rgbStr += '{' + tmpStr + '} ' # 문자열 구분하려면 한칸 떼줘야 함
+    paper.put(rgbStr) # 성능 개선을 위해
 
+
+    # 캔버스에 바인드 걸자
+    canvas.bind('<Button-1>', mouseClick)
+    canvas.bind('<ButtonRelease-1>', mouseDrop)
     canvas.pack(expand=1, anchor=CENTER)
 
 ########################################################
@@ -307,6 +332,7 @@ def updownImage():
 
     displayImage()
 
+# 화면이동 알고리즘
 def moveImage(param):
     global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
     ## 중요코드 : 출력영상 크기 결정 ##
@@ -341,6 +367,44 @@ def moveImage(param):
 
     displayImage()
 
+# 마우스 클릭 / 드랍으로
+def moveClickImage():
+    global panYN
+    panYN = True
+    canvas.configure(cursor='mouse')
+
+    displayImage()
+
+def mouseClick(event):
+    global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
+    global sx,sy,ex,ey,panYN
+    if panYN == False:
+        return
+    sx = event.x; sy = event.y
+
+def mouseDrop(event):
+    global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
+    global sx,sy,ex,ey,panYN
+    if panYN == False:
+        return
+    ex = event.x; ey = event.y
+    ## 중요코드 : 출력영상 크기 결정 ##
+    outH = inH; outW = inW
+    # 메모리 할당 (틀만들기)
+    outImage = []
+    outImage = malloc(outH, outW)
+    # 진짜 컴퓨터 비전 알고리즘
+    # x, y 이동량 구하기
+    mx = sx - ex ; my = sy - ey
+    for i in range(inH):
+        for k in range(inW):
+            if 0 <= i-my < outH and 0 <= k-mx < outW:
+                outImage[i-my][k-mx] = inImage[i][k]
+    panYN = False
+
+    displayImage()
+
+# 회전변환 알고리즘
 def rotateImage():
     global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
     ## 중요코드 : 출력영상 크기 결정 ##
@@ -412,6 +476,10 @@ def zoomImage(): # 빈 부분은 어떻게 할지 결정해야 할 것임
 inImage, outImage = [], [] ; inH, inW, outH, outW = [0] * 4
 window, canvas, paper = None, None, None
 filename = ""
+# 마우스 사용할꺼니 안할꺼니 확인하는 전역변수
+panYN = False
+# 마우스 좌표 저장할 변수
+sx,sy,ex,ey = [0] * 4
 
 ################################
 #######   메인 코드부   ########
@@ -420,6 +488,9 @@ filename = ""
 window = Tk()
 window.geometry("400x400")
 window.resizable(True, True)
+
+# 마우스 이벤트
+
 
 mainMenu = Menu(window)
 window.config(menu=mainMenu)
@@ -457,6 +528,7 @@ moveMenu.add_command(label="아래로",command=lambda :moveImage(1))
 moveMenu.add_command(label="위로",command=lambda :moveImage(2))
 moveMenu.add_command(label="오른쪽",command=lambda :moveImage(3))
 moveMenu.add_command(label="왼쪽",command=lambda :moveImage(4))
+moveMenu.add_command(label="마우스로 이동",command=moveClickImage)
 comVisionMenu3.add_command(label="회전",command=rotateImage)
 comVisionMenu3.add_command(label="축소",command=shrinkImage)
 comVisionMenu3.add_command(label="확대",command=zoomImage)

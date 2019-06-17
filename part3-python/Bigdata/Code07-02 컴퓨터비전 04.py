@@ -276,10 +276,13 @@ def histoImage():
 
     # 좀만 있다가 해보자
     fig = plt.figure()
-    hist1 = fig.add_subplot(2,1,1)
-    hist2 = fig.add_subplot(2,1,2)
+    hist1 = fig.add_subplot(3,1,1)
+    hist2 = fig.add_subplot(3,1,2)
+    hist3 = fig.add_subplot(3,1,3)
     hist1.plot(incountlist)
     hist2.plot(outcountlist)
+    hist3.plot(incountlist)
+    hist3.plot(outcountlist)
     plt.show()
 
 # 평균 표시 대화상자
@@ -484,6 +487,53 @@ def parabolaImage(param):
 
     displayImage()
 
+# 모핑 함수
+def morphImage():
+    global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
+    ## 중요코드 : 출력영상 크기 결정 ##
+    outH = inH; outW = inW
+    # 추가 영상 선택
+    filename2 = askopenfilename(parent=window,\
+        filetypes=(("RAW 파일", "*.raw"),("모든 파일", "*.*")))
+    if filename2 == '' or filename2 == None:
+        return
+    
+    fsize = os.path.getsize(filename2) # 파일의 크기(바이트)
+    inH2 = inW2 = int(math.sqrt(fsize)) # 핵심코드 : 겹칠 사진 크기구하기
+    # 입력 영상 메모리 확보
+    inImage2 = []
+    inImage2 = malloc(inH2,inW2)
+    # 파일 -> 메모리
+    with open(filename2, 'rb') as rFp:
+        for i in range(inH2):
+            for k in range(inW2):
+                inImage2[i][k] = int(ord(rFp.read(1))) # 1바이트씩 읽기
+    
+    # 메모리 할당
+    outImage = []; outImage = malloc(outH, outW)
+
+    # 진짜 컴퓨터 알고리즘
+    # w1 = askinteger("원영상 가중치", "가중치(%)->", minvalue=0, maxvalue=100)
+    # w2 = 1 - (w1/100); w1 = 1 - w2
+
+    import threading
+    import time
+    def morpFunc():
+        w1 = 1; w2 = 0
+        for _ in range(20):
+            for i in range(inH):
+                for k in range(inW):
+                    newValue = int(inImage[i][k]*w1 + inImage2[i][k]*w2)
+                    if newValue > 255:
+                        newValue = 255
+                    elif newValue < 0:
+                        newValue = 0
+                    outImage[i][k] = newValue
+            displayImage()
+            w1 -= 0.05; w2 += 0.05
+            time.sleep(0.5)
+    threading.Thread(target=morpFunc).start()
+
 # 동일영상 알고리즘
 def updownImage():
     global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
@@ -590,8 +640,49 @@ def rotateImage():
             ys = i ; xs = k
             xd = int((xs-centerw)*math.cos(value) - (ys-centerh)*math.sin(value)) + centerw
             yd = int((xs-centerw)*math.sin(value) + (ys-centerh)*math.cos(value)) + centerh
+            # print(k,"/", i,"포워딩: ", xd," / ", yd)
             if yd >= 0 and yd < outH and xd >= 0 and xd < outW:
                 outImage[yd][xd] = inImage[i][k]
+
+    displayImage()
+
+# 영상 회전 알고리즘 - 중심, 역방향
+def rotateImage2() :
+    global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
+    ## 중요! 코드. 출력영상 크기 결정 ##
+    outH = inH;  outW = inW;
+    ###### 메모리 할당 ################
+    outImage = [];    outImage = malloc(outH, outW)
+    ####### 진짜 컴퓨터 비전 알고리즘 #####
+    value = math.radians(askinteger("안내", "회전할 각도를 입력해 주세요"))
+    centerh = inH//2
+    centerw = inW//2
+    centerw = inW//2
+    for i in range(outH):
+        for k in range(outW):
+            ys = i ; xs = k
+            xd = int((xs-centerw)*math.cos(value) - (ys-centerh)*math.sin(value)) + centerw
+            yd = int((xs-centerw)*math.sin(value) + (ys-centerh)*math.cos(value)) + centerh
+            # print(k,"/", i, "백워딩: ",xd," / ", yd)
+            if yd >= 0 and yd < outH and xd >= 0 and xd < outW:
+                outImage[ys][xs] = inImage[yd][xd]
+            else :
+                outImage[ys][xs] = 255
+    
+    # start를 out에 넣어주는게 역방향인건가...?
+    # 역방향으로 해주면 "어찌되었건" 화면에 0이 아닌 다른 색깔의 픽셀이 들어감
+    # 중복된 곳에서 들어가는 곳이 있긴 하지만(데이터 손실) : 어찌되었건 눈으로 보기엔 손실이 없어보임
+    # radian = angle * math.pi / 180
+    # cx = inW//2; cy = inH//2
+    # for i in range(outH) :
+    #     for k in range(outW) :
+    #         xs = i ; ys = k;
+    #         xd = int(math.cos(radian) * (xs-cx) - math.sin(radian) * (ys-cy)) + cx
+    #         yd = int(math.sin(radian) * (xs-cx) + math.cos(radian) * (ys-cy)) + cy
+    #         if 0<= xd < outH and 0 <= yd < outW :
+    #             outImage[xs][ys] = inImage[xd][yd]
+    #         else :
+    #             outImage[xs][ys] = 255
 
     displayImage()
 
@@ -619,7 +710,9 @@ def rotateZoomImage1():
             xd = int((xs-centerw)*math.cos(rotvalue) - (ys-centerh)*math.sin(rotvalue)) + centerw
             yd = int((xs-centerw)*math.sin(rotvalue) + (ys-centerh)*math.cos(rotvalue)) + centerh
             if yd >= 0 and yd < inH and xd >= 0 and xd < inW:
-                tmpInImage[yd][xd] = inImage[i][k]
+                tmpInImage[ys][xs] = inImage[yd][ys]
+            else :
+                tmpInImage[ys][xs] = 255
 
     # 확대
     for i in range(outH):
@@ -651,7 +744,9 @@ def rotateZoomImage2():
             xd = int((xs-centerw)*math.cos(rotvalue) - (ys-centerh)*math.sin(rotvalue)) + centerw
             yd = int((xs-centerw)*math.sin(rotvalue) + (ys-centerh)*math.cos(rotvalue)) + centerh
             if yd >= 0 and yd < inH and xd >= 0 and xd < inW:
-                tmpInImage[yd][xd] = inImage[i][k]
+                tmpInImage[ys][xs] = inImage[yd][xd]
+            else:
+                tmpInImage[ys][xs] = 255
 
     # 확대
     rH, rW, iH, iW = [0] * 4  # 실수 위치 및 정수 위치
@@ -783,10 +878,10 @@ def embossBlurGausSharpingImage(param):
                     S += mask[m][n]*tmpInImage[i+m-MSIZE//2][k+n-MSIZE//2]
             tmpOutImage[i-MSIZE//2][k-MSIZE//2] = S
 
-    # 127 더하기 : 좀더 밝게해주면 잘 보임
-    for i in range(outH):
-        for k in range(outW):
-            tmpOutImage[i][k] += 127
+    # # 127 더하기 : 좀더 밝게해주면 잘 보임
+    # for i in range(outH):
+    #     for k in range(outW):
+    #         tmpOutImage[i][k] += 127
 
     # 임시 출력 --> 원 출력
     for i in range(outH):
@@ -1026,15 +1121,14 @@ sx,sy,ex,ey = [0] * 4
 ################################
 
 window = Tk()
-window.geometry("400x400")
-window.resizable(True, True)
+window.geometry("500x500")
+# window.resizable(True, True)
+window.title("컴퓨터 비전(딥러닝 기법) ver 0.04")
 
 # 마우스 이벤트
 
-
 mainMenu = Menu(window)
 window.config(menu=mainMenu)
-window.title("컴퓨터 비전(딥러닝 기법) ver 0.03")
 
 fileMenu = Menu(mainMenu)
 mainMenu.add_cascade(label="파일",menu=fileMenu)
@@ -1056,6 +1150,7 @@ comVisionMenu1.add_command(label="End-In 탐색",command=endInImage)
 comVisionMenu1.add_command(label="히스토그램 평활화",command=histFlatImage)
 comVisionMenu1.add_command(label="파라볼라 변환(캡)",command=lambda : parabolaImage(1))
 comVisionMenu1.add_command(label="파라볼라 변환(컵)",command=lambda : parabolaImage(2))
+comVisionMenu1.add_command(label="모핑", command=morphImage)
 
 comVisionMenu2 = Menu(mainMenu)
 mainMenu.add_cascade(label="화소(통계)",menu=comVisionMenu2)
@@ -1076,6 +1171,7 @@ moveMenu.add_command(label="오른쪽",command=lambda :moveImage(3))
 moveMenu.add_command(label="왼쪽",command=lambda :moveImage(4))
 moveMenu.add_command(label="마우스로 이동",command=moveClickImage)
 comVisionMenu3.add_command(label="회전",command=rotateImage)
+comVisionMenu3.add_command(label="회전_역방향",command=rotateImage2)
 comVisionMenu3.add_command(label="회전후 확대",command=rotateZoomImage1)
 comVisionMenu3.add_command(label="회전후 확대(양선형 보간)",command=rotateZoomImage2)
 comVisionMenu3.add_command(label="축소",command=shrinkImage)

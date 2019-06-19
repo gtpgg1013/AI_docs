@@ -230,7 +230,7 @@ def  upDownImage() :
 def moveImage() :
     global panYN
     panYN = True
-    canvas.configure(cursor='mouse')
+    # canvas.configure(cursor='mouse')
 
 def mouseClick(event) :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
@@ -266,6 +266,7 @@ def  zoomOutImage() :
     outH = inH//scale;  outW = inW//scale;
     ###### 메모리 할당 ################
     outImage = [];    outImage = malloc(outH, outW)
+    outImage.astype(np.int16)
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     for i in range(outH) :
         for k in range(outW) :
@@ -281,14 +282,14 @@ def  zoomOutImage2() :
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH//scale;  outW = inW//scale;
     ###### 메모리 할당 ################
-    outImage = [];    outImage = malloc(outH, outW)
+    outImage = malloc(outH, outW, dataType=np.int16) # 이렇게 쓸거 아니면
+    # outImage = outImage.astype(np.int16) # 으로 써야 함
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     for i in range(inH) :
         for k in range(inW) :
             outImage[i//scale][k//scale] += inImage[i][k]
-    for i in range(outH):
-        for k in range(outW):
-            outImage[i][k] //= (scale*scale)
+    outImage = outImage // (scale * scale)
+    outImage.astype(np.int8)
 
     displayImage()
 

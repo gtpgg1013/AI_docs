@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Code10-05 컴퓨터비전 11 Numpy 01.py" beforeDir="false" afterPath="$PROJECT_DIR$/Code10-05 컴퓨터비전 11 Numpy 01.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,25 +12,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.44233808">
+    <splitter split-orientation="horizontal" split-proportion="0.36808845">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Code10-05 컴퓨터비전 11 Numpy 01.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="91">
-                  <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Code09-02 DB 업로드 자동화.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2014">
+                <state relative-caret-position="555">
                   <caret line="112" selection-start-line="112" selection-end-line="127" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#21#0" expanded="true" />
@@ -50,15 +39,11 @@
               </provider>
             </entry>
           </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Code09-00 컴퓨터비전 05.py">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Code10-00 컴퓨터비전 numpy.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="167">
-                  <caret line="1425" column="19" lean-forward="true" selection-start-line="1425" selection-start-column="19" selection-end-line="1425" selection-end-column="19" />
+                <state relative-caret-position="-422">
+                  <caret line="345" column="16" lean-forward="true" selection-start-line="345" selection-start-column="16" selection-end-line="345" selection-end-column="16" />
                   <folding>
                     <element signature="e#0#21#0" expanded="true" />
                   </folding>
@@ -66,14 +51,75 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Code10-02 컴퓨터비전 09 CSV 입출력.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Code10-01 CSV04-GUI.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="946">
-                  <caret line="768" column="18" lean-forward="true" selection-start-line="768" selection-start-column="18" selection-end-line="768" selection-end-column="18" />
+                <state relative-caret-position="194">
+                  <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
                   <folding>
-                    <element signature="e#0#21#0" expanded="true" />
+                    <element signature="e#10#31#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Code10-03 CSV&amp;Excel-GUI.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="128">
+                  <caret line="65" column="31" lean-forward="true" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
+                  <folding>
+                    <element signature="e#10#31#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Code10-04 컴퓨터비전 10 Excel 입출력.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="176">
+                  <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Code10-00v2 컴퓨터비전 numpy_v2.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="186">
+                  <caret line="732" column="24" lean-forward="true" selection-start-line="732" selection-start-column="24" selection-end-line="732" selection-end-column="24" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/11quiz1.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="437">
+                  <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Code11-01 리뷰 DB연동.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="38">
+                  <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="41" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Code11-02 리뷰 DB조회.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="209">
+                  <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
                 </state>
               </provider>
             </entry>
@@ -91,36 +137,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>전역변</find>
-      <find>메인</find>
-      <find>sta</find>
-      <find>canvas.pack</find>
-      <find>VIEW</find>
-      <find>filename</find>
-      <find>엠보</find>
-      <find>loa</find>
-      <find>loadim</find>
-      <find>clist</find>
-      <find>iterat</find>
-      <find>itera</find>
-      <find>nditer</find>
-      <find>status</find>
-      <find>add</find>
-      <find>rowlist</find>
-      <find>106</find>
-      <find>loadi</find>
-      <find>fullPath</find>
-      <find>loadima</find>
-      <find>VIEW_X</find>
-      <find>writerow</find>
-      <find>initVal</find>
-      <find>malloc</find>
-      <find>display</find>
-      <find>find</find>
-      <find>loadImag</find>
-      <find>0.05</find>
-      <find>write</find>
       <find>load</find>
+      <find>pack</find>
+      <find>status</find>
+      <find>configure</find>
+      <find>mouseclick</find>
+      <find>confi</find>
+      <find>config</find>
+      <find>configur</find>
+      <find>moveImage</find>
+      <find>moveCli</find>
+      <find>mouse</find>
+      <find>canvas</find>
+      <find>512</find>
+      <find>displayImage</find>
+      <find>canva</find>
+      <find>embossBlurGausSharpingImage</find>
+      <find>DB</find>
+      <find>gau</find>
+      <find>startt</find>
+      <find>np.</find>
+      <find>축소</find>
+      <find>malloc</find>
+      <find>ast</find>
+      <find>zoomout</find>
+      <find>np.ndi</find>
+      <find>np</find>
+      <find>np.nditer</find>
+      <find>disp</find>
+      <find>astype</find>
+      <find>histo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -129,11 +175,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Code-04-06 리스트 조작함수2.py" />
-        <option value="$PROJECT_DIR$/Code-04-07 2차원 리스트1.py" />
-        <option value="$PROJECT_DIR$/Code-04-08 딕셔너리 활용.py" />
-        <option value="$PROJECT_DIR$/Code-04-09 지역 전역변수.py" />
-        <option value="$PROJECT_DIR$/Code03-09 MySQL 데이터 입력.py" />
         <option value="$PROJECT_DIR$/Code-04-08 함수1.py" />
         <option value="$PROJECT_DIR$/Code-04-10 내부함스 등.py" />
         <option value="$PROJECT_DIR$/Code-04-11 GUI 01.py" />
@@ -169,7 +210,6 @@
         <option value="$PROJECT_DIR$/Code09-06.py" />
         <option value="$PROJECT_DIR$/Code09-01 화면크기 및 서브윈도.py" />
         <option value="$PROJECT_DIR$/Code10-04 컴퓨터비전 10 Excel 입출력.py" />
-        <option value="$PROJECT_DIR$/Code10-05 컴퓨터비전 11 Numpy 01.py" />
         <option value="$PROJECT_DIR$/Code09-02 DB 업로드 자동화.py" />
         <option value="$PROJECT_DIR$/Code09-00-00 DB.py" />
         <option value="$PROJECT_DIR$/Code09-03.py" />
@@ -180,6 +220,12 @@
         <option value="$PROJECT_DIR$/Code10-02 컴퓨터비전 09 CSV 입출력.py" />
         <option value="$PROJECT_DIR$/Code10-03 CSV&amp;Excel-GUI.py" />
         <option value="$PROJECT_DIR$/Code09-00 컴퓨터비전 05.py" />
+        <option value="$PROJECT_DIR$/Code11-01 리뷰 DB연동.py" />
+        <option value="$PROJECT_DIR$/Code11-02 리뷰 DB조회.py" />
+        <option value="$PROJECT_DIR$/11quiz1.py" />
+        <option value="$PROJECT_DIR$/Code10-05 컴퓨터비전 11 Numpy 01.py" />
+        <option value="$PROJECT_DIR$/Code10-00 컴퓨터비전 numpy.py" />
+        <option value="$PROJECT_DIR$/Code10-00v2 컴퓨터비전 numpy_v2.py" />
       </list>
     </option>
   </component>
@@ -194,7 +240,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="833" />
     <option name="width" value="854" />
     <option name="height" value="1017" />
   </component>
@@ -206,6 +252,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,7 +264,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -242,8 +288,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Code09-00 컴퓨터비전 05">
-    <configuration name="Code09-00 컴퓨터비전 05" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Code10-00v2 컴퓨터비전 numpy_v2">
+    <configuration name="11quiz1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -255,7 +301,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code09-00 컴퓨터비전 05.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/11quiz1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -264,7 +310,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Code09-00-02 csv2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Code10-00 컴퓨터비전 numpy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -276,7 +322,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code09-00-02 csv2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code10-00 컴퓨터비전 numpy.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -285,7 +331,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Code10-01 CSV04-GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Code10-00v2 컴퓨터비전 numpy_v2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -297,7 +343,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code10-01 CSV04-GUI.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code10-00v2 컴퓨터비전 numpy_v2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -306,7 +352,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Code10-02 컴퓨터비전 09 CSV 입출력" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Code10-05 컴퓨터비전 11 Numpy 01" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -318,7 +364,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code10-02 컴퓨터비전 09 CSV 입출력.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code10-05 컴퓨터비전 11 Numpy 01.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -327,7 +373,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Code10-03 CSV&amp;Excel-GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Code11-02 리뷰 DB조회" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -339,7 +385,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code10-03 CSV&amp;Excel-GUI.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Code11-02 리뷰 DB조회.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -350,11 +396,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Code09-00 컴퓨터비전 05" />
-        <item itemvalue="Python.Code10-03 CSV&amp;Excel-GUI" />
-        <item itemvalue="Python.Code10-02 컴퓨터비전 09 CSV 입출력" />
-        <item itemvalue="Python.Code10-01 CSV04-GUI" />
-        <item itemvalue="Python.Code09-00-02 csv2" />
+        <item itemvalue="Python.Code10-00v2 컴퓨터비전 numpy_v2" />
+        <item itemvalue="Python.Code10-00 컴퓨터비전 numpy" />
+        <item itemvalue="Python.Code10-05 컴퓨터비전 11 Numpy 01" />
+        <item itemvalue="Python.11quiz1" />
+        <item itemvalue="Python.Code11-02 리뷰 DB조회" />
       </list>
     </recent_temporary>
   </component>
@@ -382,6 +428,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.109770805" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -414,44 +461,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Code03-09 MySQL 데이터 입력.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="50" selection-start-line="8" selection-start-column="50" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code05-01 Sort.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mission04-02-문자숫자정렬.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="100" lean-forward="true" selection-start-line="100" selection-end-line="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="321" selection-start-line="321" selection-end-line="321" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code05-02 GUI 02.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="3" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Code05-05 파일목록.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -744,59 +753,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Code10-01 CSV04-GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
-          <folding>
-            <element signature="e#10#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Code09-06.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
           <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
           <folding>
             <element signature="e#10#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code10-03 CSV&amp;Excel-GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="64" column="31" lean-forward="true" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
-          <folding>
-            <element signature="e#10#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code10-04 컴퓨터비전 10 Excel 입출력.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code10-05 컴퓨터비전 11 Numpy 01.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code09-02 DB 업로드 자동화.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2014">
-          <caret line="112" selection-start-line="112" selection-end-line="127" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -813,21 +775,106 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Code09-00 컴퓨터비전 05.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="1425" column="19" lean-forward="true" selection-start-line="1425" selection-start-column="19" selection-end-line="1425" selection-end-column="19" />
+        <state relative-caret-position="395">
+          <caret line="1437" lean-forward="true" selection-end-line="1577" selection-end-column="17" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Code11-01 리뷰 DB연동.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/11quiz1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code10-01 CSV04-GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+          <folding>
+            <element signature="e#10#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code10-03 CSV&amp;Excel-GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="65" column="31" lean-forward="true" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
+          <folding>
+            <element signature="e#10#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code10-04 컴퓨터비전 10 Excel 입출력.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Code10-02 컴퓨터비전 09 CSV 입출력.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="768" column="18" lean-forward="true" selection-start-line="768" selection-start-column="18" selection-end-line="768" selection-end-column="18" />
+        <state relative-caret-position="186">
+          <caret line="190" column="11" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="11" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code11-02 리뷰 DB조회.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code10-05 컴퓨터비전 11 Numpy 01.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="121" column="11" lean-forward="true" selection-start-line="121" selection-start-column="11" selection-end-line="121" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code09-02 DB 업로드 자동화.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="112" selection-start-line="112" selection-end-line="127" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code10-00 컴퓨터비전 numpy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-422">
+          <caret line="345" column="16" lean-forward="true" selection-start-line="345" selection-start-column="16" selection-end-line="345" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Code10-00v2 컴퓨터비전 numpy_v2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="732" column="24" lean-forward="true" selection-start-line="732" selection-start-column="24" selection-end-line="732" selection-end-column="24" />
         </state>
       </provider>
     </entry>

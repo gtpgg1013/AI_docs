@@ -259,20 +259,32 @@ def shrinkStatImage():
     outW = inW // value
     # 메모리 할당 (틀만들기)
     # np 배열로 작아진 배열 먼저 만들고
-    outImage = malloc(outH, outW, dataType=np.int16)
     # 진짜 컴퓨터 비전 알고리즘
-    for i in range(inW):
-        for k in range(inH):
-            try:
-                outImage[i//value][k//value] += inImage[i][k]
-            except:
-                pass
 
-    # iter = np.nditer(outImage, flags=['multi_index'], op_flags=['readwrite'])
-    # while not iter.finished:
-    #     idx = iter.multi_index
+    # outImage = malloc(outH, outW, dataType=np.int16)
+    # for i in range(outH):
+    #     for k in range(outW):
+    #         startX = i;
+    #         startY = k
+    #         endX = i * value;
+    #         endY = k * value
+    #
+    #         # try:
+    #         outImage[i][k] = int(inImage[startY:endY][startX:endX].mean())
+    #         print(outImage[i][k])
+    #         # except:
+    #         #     pass
+    # print(inImage)
 
-    outImage //= (value * value)
+    # outImage = malloc(outH, outW, dataType=np.int16)
+    # for i in range(inW):
+    #     for k in range(inH):
+    #         try:
+    #             outImage[i//value][k//value] += inImage[i][k]
+    #         except:
+    #             pass
+
+    # outImage //= (value * value)
 
     # 더 쉽게 할 수 있는 방법도 있다? : inH / inW 만큼 포문돌려서 전부 더해주고 마지막에 나눠줌
     # for i in range(inH):
@@ -526,6 +538,7 @@ def histFlatImage():
 
 
 # 파라볼라 알고리즘
+#
 def parabolaImage(param):
     global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
     global startTime
@@ -538,21 +551,19 @@ def parabolaImage(param):
     outImage = malloc(outH, outW)
     # 진짜 컴퓨터 비전 알고리즘
     # LookUpTable 기법 활용
-    LUT = [0 for _ in range(256)]
+
+    LUT = np.array([i for i in range(256)]) # 색깔 LUT 만들기 : LUT[]에 인덱스로 걍 때려넣으면 되네....?
     if param == 1:
-        for input in range(256):
-            LUT[input] = int(255 - 255 * math.pow(input / 128 - 1, 2))  # 복잡한 계산 256*256 하기 힘드므로 답지를 미리 가지고 값만 넣어주기!
-        for i in range(inH):
-            for k in range(inW):
-                v = LUT[inImage[i][k]]
-                outImage[i][k] = int(v)
+        LUT = 255 - 255 * np.power((LUT / 128) - 1, 2)
+        outImage = LUT[inImage]
     else:
-        for input in range(256):
-            LUT[input] = int(255 * math.pow(input / 128 - 1, 2))  # 복잡한 계산 256*256 하기 힘드므로 답지를 미리 가지고 값만 넣어주기!
-        for i in range(inH):
-            for k in range(inW):
-                v = LUT[inImage[i][k]]
-                outImage[i][k] = int(v)
+        LUT = 255 * np.power((LUT / 128) - 1, 2)
+        outImage = LUT[inImage]
+    print(LUT)
+    outImage = np.where(outImage > 255, 255,
+                        np.where(outImage < 0, 0, outImage))
+    outImage = outImage.astype(dtype=np.uint8)
+    print(outImage)
 
     displayImage()
 
@@ -624,9 +635,8 @@ def updownImage():
     outImage = []
     outImage = malloc(outH, outW)
     # 진짜 컴퓨터 비전 알고리즘
-    for i in range(inH):
-        for k in range(inW):
-            outImage[inH - i - 1][k] = inImage[i][k]
+    outImage = inImage[::-1,:] # 콜론 법칙 : 시작(:) 끝(:) 스텝(-1)
+    # outImage = np.filp(inImage,axis=0)
 
     displayImage()
 
@@ -703,12 +713,11 @@ def mouseDrop(event):
     outImage = malloc(outH, outW)
     # 진짜 컴퓨터 비전 알고리즘
     # x, y 이동량 구하기
-    mx = sx - ex;
-    my = sy - ey
-    for i in range(inH):
-        for k in range(inW):
-            if 0 <= i - my < outH and 0 <= k - mx < outW:
-                outImage[i - my][k - mx] = inImage[i][k]
+    mx = sx - ex; my = sy - ey
+    if mx < 0 and my < 0:
+        outImage[-mx:inH, -my:inW] = inImage[0:inH+mx,0:inW+my]
+    elif mx >= 0 and my >= 0:
+        pass
     panYN = False
 
     displayImage()
@@ -894,14 +903,7 @@ def shrinkImage():
     outImage = malloc(outH, outW)
     # 진짜 컴퓨터 비전 알고리즘
 
-    for i in range(outH):
-        for k in range(outW):
-            # forwarding 방식
-            # newi = int(i/value)
-            # newk = int(k/value)
-            # outImage[newi][newk] = inImage[i][k]
-            # backwarding 방식
-            outImage[i][k] = inImage[i * value][k * value]
+    outImage = inImage[::value,::value] # 시작 / 끝 / 스텝 : 잘 활용하면 슬라이싱 하기 진짜 편하다!
 
     displayImage()
 
@@ -916,22 +918,13 @@ def zoomImage():  # 빈 부분은 어떻게 할지 결정해야 할 것임
     outH = inH * value
     outW = inW * value
     # 메모리 할당 (틀만들기)
-    outImage = []
-    outImage = malloc(outH, outW)
-    # 진짜 컴퓨터 비전 알고리즘
 
-    # 포워딩으로하면 일케 어렵게 해야해...
-    tl1 = [_ for _ in range(value)]
-    tl2 = [_ for _ in range(value)]
-
-    for i in range(inH):
-        for k in range(inW):
-            newi = int(i * value)
-            newk = int(k * value)
-            # for i in range(value):
-            for m in tl1:
-                for n in tl2:
-                    outImage[newi - m][newk - n] = inImage[i][k]
+    outImage = np.kron(inImage, np.ones((value,value),dtype=np.uint8)) # 크론: 행렬 각 내부 요소들을 곱해줌 (확장)
+    # ex : 1x3 , 1x3을 kron해주면 1x9가 나옴
+    print(outImage)
+    outImage = outImage.astype(np.uint8)
+    outImage = np.where(outImage>255,255,
+                        np.where(outImage<0,0,outImage))
 
     # 더 쉽게할 수 있다... # 백워딩!
     # for i in range(outH):

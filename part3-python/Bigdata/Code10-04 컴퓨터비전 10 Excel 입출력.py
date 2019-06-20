@@ -490,6 +490,7 @@ def  equalizeImage() :
         sumHisto[i] = sValue
     ## 정규화 누적 히스토그램
     for i in range(len(sumHisto)):
+        # print(len(sumHisto))
         normalHisto[i] = int(sumHisto[i] / (inW*inH) * 255)
     ## 영상처리
     for i in range(inH) :

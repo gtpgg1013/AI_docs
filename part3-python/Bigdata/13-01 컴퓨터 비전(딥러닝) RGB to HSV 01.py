@@ -25,6 +25,7 @@ def malloc(h, w, initValue=0) :
 # 파일을 메모리로 로딩하는 함수
 def loadImageColor(fname) :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
+    global photo
     inImage = []
     photo = Image.open(fname)
     # f = f.convert('RGB')
@@ -63,12 +64,20 @@ def openImageColor():
 
 def displayImageColor():
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
+    global VIEW_X, VIEW_Y
     if canvas != None:  # 예전에 실행한 적이 있다.
         canvas.destroy()
     # 이건 걍 귀찮아서 안지운거
-    VIEW_X = outW;
-    VIEW_Y = outH;
-    step = 1
+
+    ## 고정된 화면 크기
+    if outH <= VIEW_Y or outW <= VIEW_X :
+        VIEW_X = outW
+        VIEW_Y = outH
+        step = 1
+    else :
+        VIEW_X = 512
+        VIEW_Y = 512
+        step = outW / VIEW_X
 
     window.geometry(str(int(VIEW_X * 1.2)) + 'x' + str(int(VIEW_Y * 1.2)))  # 벽 # VIEX_X , Y는 왜 바꾼거신가
     canvas = Canvas(window, height=VIEW_Y, width=VIEW_X)
@@ -565,9 +574,9 @@ def mouseDrop(event) :
         outImage.append(malloc(outH, outW))
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     mx = sx - ex; my = sy - ey
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
+    for RGB in range(3):
+        for i in range(inH) :
+            for k in range(inW) :
                 if  0 <= i-my < outW and 0 <= k-mx < outH :
                     outImage[RGB][i-my][k-mx] = inImage[RGB][i][k]
     panYN = False
@@ -659,7 +668,7 @@ def rotateImageColor2() :
     displayImageColor()
 
 ## 엠보싱 처리
-def  embossImageColor() :
+def  embossImageRGB() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
@@ -704,6 +713,151 @@ def  embossImageColor() :
     for i in range(outH):
         for k in range(outW):
             for RGB in range(3):
+                value = tmpOutImage[RGB][i][k]
+                if value > 255 :
+                    value = 255
+                elif value < 0 :
+                    value = 0
+                outImage[RGB][i][k] = int(value)
+
+    displayImageColor()
+
+## 엠보싱 처리 (Pillow)
+def  embossImagePillow() :
+    global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
+    global photo
+    outH = inH ; outW = inW
+    outImage = []
+    for _ in range(3):
+        outImage.append(malloc(outH, outW))
+    photo2 = photo.copy()
+    photo2 = photo2.filter(ImageFilter.EMBOSS)
+
+    ## 원 입력 --> 임시 입력
+    photoRGB = photo.convert('RGB')
+    for i in range(outH):
+        for k in range(outW):
+            r,g,b = photo2.getpixel((k,i))
+            outImage[R][i][k] = r
+            outImage[G][i][k] = g
+            outImage[B][i][k] = b
+
+    displayImageColor()
+
+import colorsys
+## 엠보싱 처리 (HSV)
+def  embossImageHSV() :
+    global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
+    ## 입력용 RGB -> 입력용 HSV 모델로 변환
+    ###### 메모리 할당 ################
+    inImageHSV = [];
+    for _ in range(3):
+        inImageHSV.append(malloc(outH, outW))
+    # RGB -> HSV
+    for i in range(inH):
+        for k in range(inW):
+            r,g,b = inImage[R][i][k], inImage[G][i][k], inImage[B][i][k]
+            h,s,v = colorsys.rgb_to_hsv(r/255,g/255,b/255) # 얘는 input을 0-1로 받아줘서 일케 파라미터 넘겨줌
+            inImageHSV[0][i][k], inImageHSV[1][i][k], inImageHSV[2][i][k] = h,s,v
+
+    ## 중요! 코드. 출력영상 크기 결정 ##
+    outH = inH;  outW = inW;
+    ###### 메모리 할당 ################
+    outImage = []
+    for _ in range(3):
+        outImage.append(malloc(outH, outW))
+    ####### 진짜 컴퓨터 비전 알고리즘 #####
+    MSIZE = 3
+    mask = [ [-1, 0, 0],
+             [ 0, 0, 0],
+             [ 0, 0, 1] ]
+    ## 임시 입력영상 메모리 확보
+    # 우리는 V만 바꿔줄거기 때문에 3번할 필요 없음
+    tmpInImageV = []
+    tmpInImageV = malloc(inH+MSIZE-1, inW+MSIZE-1)
+    tmpOutImageV = []
+    tmpOutImageV = malloc(outH, outW)
+
+    ## 원 입력 --> 임시 입력
+    for i in range(inH) :
+        for k in range(inW) :
+            tmpInImageV[i+MSIZE//2][k+MSIZE//2] = inImageHSV[2][i][k]
+    ## 회선연산
+    for i in range(MSIZE//2, inH + MSIZE//2) :
+        for k in range(MSIZE//2, inW + MSIZE//2) :
+            # 각 점을 처리.
+            S = 0.0
+            for m in range(0, MSIZE) :
+                for n in range(0, MSIZE) :
+                    S += mask[m][n]*tmpInImageV[i+m-MSIZE//2][k+n-MSIZE//2]
+            tmpOutImageV[i-MSIZE//2][k-MSIZE//2] = S * 255 # 얘는 V정보에 다시 255곱해줘야 함
+    ## 127 더하기 (선택)
+    for i in range(outH) :
+        for k in range(outW) :
+            tmpOutImageV[i][k] += 127
+            if tmpOutImageV[i][k] > 255:
+                tmpOutImageV[i][k] = 255
+            elif tmpOutImageV[i][k] < 0:
+                tmpOutImageV[i][k] = 0
+
+    # HSV --> RGB
+    ## 임시 출력 --> 원 출력
+    for i in range(outH):
+        for k in range(outW):
+            h,s,v = inImageHSV[0][i][k], inImageHSV[1][i][k], tmpOutImageV[i][k]
+            r,g,b = colorsys.hsv_to_rgb(h,s,v)
+            outImage[R][i][k], outImage[G][i][k], outImage[B][i][k] = int(r),int(g),int(b)
+
+    displayImageColor()
+
+## 엠보싱 처리
+def  blurImageRGB() :
+    global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
+    ## 중요! 코드. 출력영상 크기 결정 ##
+    outH = inH;  outW = inW;
+    ###### 메모리 할당 ################
+    outImage = []
+    for _ in range(3):
+        outImage.append(malloc(outH, outW))
+    ####### 진짜 컴퓨터 비전 알고리즘 #####
+    MSIZE = 3
+    # 마스크 점 안찍어주면 안댐 : 다른언어 변환시에 0됨
+    mask = [ [1/9, 1/9, 1/9],
+             [ 1/9, 1/9, 1/9],
+             [ 1/9, 1/9, 1/9] ]
+    ## 임시 입력영상 메모리 확보
+    tmpInImage = []
+    for _ in range(3):
+        tmpInImage.append(malloc(inH+MSIZE-1, inW+MSIZE-1,127))
+    tmpOutImage = []
+    for _ in range(3):
+        tmpOutImage.append(malloc(outH, outW))
+
+    ## 원 입력 --> 임시 입력
+    # for문 돌릴 때 RGB 포문을 맨 마지막에 넣었더니 답이 이상하네? 왜?
+    for RGB in range(3):
+        for i in range(inH) :
+            for k in range(inW) :
+                tmpInImage[RGB][i+MSIZE//2][k+MSIZE//2] = inImage[RGB][i][k]
+    ## 회선연산
+    for RGB in range(3):
+        for i in range(MSIZE//2, inH + MSIZE//2) :
+            for k in range(MSIZE//2, inW + MSIZE//2) :
+                # 각 점을 처리.
+                S = 0.0
+                for m in range(0, MSIZE) :
+                    for n in range(0, MSIZE) :
+                        S += mask[m][n]*tmpInImage[RGB][i+m-MSIZE//2][k+n-MSIZE//2]
+                tmpOutImage[RGB][i-MSIZE//2][k-MSIZE//2] = S
+    # ## 127 더하기 (선택)
+    # for i in range(outH) :
+    #     for k in range(outW) :
+    #         for RGB in range(3):
+    #             tmpOutImage[RGB][i][k] += 127
+    ## 임시 출력 --> 원 출력
+    for RGB in range(3):
+        for i in range(outH):
+            for k in range(outW):
                 value = tmpOutImage[RGB][i][k]
                 if value > 255 :
                     value = 255
@@ -779,7 +933,11 @@ comVisionMenu3.add_command(label="회전2(중심,역방향)", command=rotateImag
 
 comVisionMenu4 = Menu(mainMenu)
 mainMenu.add_cascade(label="화소영역 처리", menu=comVisionMenu4)
-comVisionMenu4.add_command(label="엠보싱", command=embossImageColor)
+comVisionMenu4.add_command(label="엠보싱(RGB)", command=embossImageRGB)
+comVisionMenu4.add_command(label="엠보싱(Pillow)", command=embossImagePillow)
+comVisionMenu4.add_command(label="엠보싱(HSV)", command=embossImageHSV)
+comVisionMenu4.add_separator()
+comVisionMenu4.add_command(label="블러링(RGB)", command=blurImageRGB)
 
 # comVisionMenu5 = Menu(mainMenu)
 # mainMenu.add_cascade(label="기타 입출력", menu=comVisionMenu5)

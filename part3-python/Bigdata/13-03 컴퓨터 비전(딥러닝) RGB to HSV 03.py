@@ -12,8 +12,8 @@ import time
 ####################
 #### 함수 선언부 ####
 ####################
-def malloc(h, w, initValue=0, dataType=np.uint8, layers = 1) :
-    retMemory = np.zeros((layers,h,w),dtype=dataType)
+def malloc(h, w, initValue=0,layers = 1, dataType=np.uint8) :
+    retMemory = np.zeros((h,w,layers),dtype=dataType)
     retMemory += initValue
     return retMemory
 
@@ -36,7 +36,6 @@ def openImageColor():
 
     loadImageColor(filename)
     equalImageColor()
-
     displayImageColor()
 
     # equalImage()
@@ -46,6 +45,9 @@ def displayImageColor() :
     if canvas != None : # 예전에 실행한 적이 있다.
         canvas.destroy()
     global VIEW_X, VIEW_Y
+    # print(outImage)
+    # print(outImage.shape)
+
     # VIEW_X, VIEW_Y = 512, 512
     ## 고정된 화면 크기
     # 가로/세로 비율 계산
@@ -109,7 +111,7 @@ def saveImageColor():
     for i in range(outH):
         tmpList = []
         for k in range(outW):
-            tup = tuple([outImage[R][i][k],outImage[G][i][k],outImage[B][i][k]]) # rgblist를 튜플로 묶어서 넘겨줘야 저장할 수 있음
+            tup = tuple([outImage[i,k,R],outImage[i,k,G],outImage[i,k,B]]) # rgblist를 튜플로 묶어서 넘겨줘야 저장할 수 있음
             tmpList.append(tup)
         outArray.append(tmpList)
 
@@ -131,36 +133,25 @@ def  equalImageColor() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
-    ###### 메모리 할당 ################
     # outImage = ImageEnhance._Enhance(inImage)
-    print(inImage)
-    print(inImage.shape)
-    print(outImage)
-
-    ### 진짜 컴퓨터 비전 영상처리 알고리즘 ###
+    # print(inImage)
+    # print(inImage.shape)
+    # print(outImage)
     outImage = inImage.copy()
 
     displayImageColor()
 
 # 밝기조절
+# astype을 안바꿔주면 색깔이 이상하게 나옴! : uint8 : 0~255
 def addImageColor():
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
+    outH = inH; outW = inW
     value = askinteger("밝게/어둡게", "값-->", minvalue=-255, maxvalue=255)
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH,outW))
-
-    ### 진짜 컴퓨터 비전 영상처리 알고리즘 ###
-    for RGB in range(3):
-        for i in range(inH):
-            for k in range(inW):
-                if inImage[RGB][i][k] + value > 255:
-                    outImage[RGB][i][k] = 255
-                elif outImage[RGB][i][k] + value < 0:
-                    outImage[RGB][i][k] = 0
-                else:
-                    outImage[RGB][i][k] = inImage[RGB][i][k] + value
-
+    outImage = inImage.astype(np.uint16)
+    outImage = outImage + value
+    outImage = np.where(outImage>255, 255,\
+        np.where(outImage<0, 0, outImage))
+    outImage = outImage.astype(np.uint8)
 
     displayImageColor()
 
@@ -168,15 +159,7 @@ def addImageColor():
 # 반전영상 알고리즘
 def revImageColor():
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
-
-    ### 진짜 컴퓨터 비전 영상처리 알고리즘 ###
-    for RGB in range(3):
-        for i in range(inH):
-            for k in range(inW):
-                outImage[RGB][i][k] = 255 - inImage[RGB][i][k]
+    outImage = 255 - inImage
 
     displayImageColor()
 
@@ -186,15 +169,16 @@ def  grayscaleImageColor() :
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
-    print(inImage)
-    outImage = [];
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
-    ####### 진짜 컴퓨터 비전 알고리즘 #####
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                outImage[RGB][i][k] = int(inImage[0][i][k] * 0.2126 + inImage[1][i][k] * 0.7152 * inImage[2][i][k] * 0.)
+    outImage = inImage.copy()
+    # print(inImage.shape)
+    # print(outImage.shape)
+    # print(outImage[:,:,R].shape)
+    # print(inImage[:,:,R].shape)
+    # print((inImage[:,:,R]*0.233+inImage[:,:,G]*0.23).shape)
+    # print(type((inImage[:,:,R] * 0.2126 + inImage[:,:,G] * 0.7152 + inImage[:,:,B] * 0.0722))) # 이런식으로 슬라이싱하여 쓸 수 있다 : 오타는 항상 조심!
+    outImage[:,:,R] = np.array((inImage[:,:,R] * 0.2126 + inImage[:,:,G] * 0.7152 + inImage[:,:,B] * 0.0722))
+    outImage[:,:,G] = outImage[:,:,R].copy()
+    outImage[:,:,B] = outImage[:,:,R].copy()
 
     displayImageColor()
 
@@ -204,26 +188,12 @@ def  bwImageColor() :
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
-    print(inImage)
-    outImage = [];
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
-    grayscaleImage = [];
-    for _ in range(3):
-        grayscaleImage.append(malloc(outH, outW))
-    ####### 진짜 컴퓨터 비전 알고리즘 #####
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                grayscaleImage[RGB][i][k] = inImage[0][i][k] * 0.2126 + inImage[1][i][k] * 0.7152 * inImage[2][i][k] * 0.0722
+    grayScaleImage = inImage.copy()
+    grayScaleImage[:,:,R] = np.array((inImage[:,:,R] * 0.2126 + inImage[:,:,G] * 0.7152 + inImage[:,:,B] * 0.0722))
+    grayScaleImage[:,:,G] = grayScaleImage[:,:,R].copy()
+    grayScaleImage[:,:,B] = grayScaleImage[:,:,R].copy()
 
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                if grayscaleImage[RGB][i][k] > 127 :
-                    outImage[RGB][i][k] = 255
-                else :
-                    outImage[RGB][i][k] = 0
+    outImage = np.where(grayScaleImage>127,255,0)
 
     displayImageColor()
 
@@ -232,31 +202,14 @@ def  eightImageColor() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
-    ###### 메모리 할당 ################
-    print(inImage)
-    outImage = [];
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
-    ####### 진짜 컴퓨터 비전 알고리즘 #####
 
     ## 영상의 평균 구하기.
-    sumRGB = [ 0 for _ in range(3) ]
-    avgRGB = [ 0 for _ in range(3) ]
+    meanRGB = [inImage[:,:,R].mean(), inImage[:,:,G].mean(), inImage[:,:,B].mean()]
 
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                sumRGB[RGB] += inImage[RGB][i][k]
-    for RGB in range(3):
-        avgRGB[RGB] = sumRGB[RGB] // (inW * inH)
-
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                if inImage[RGB][i][k] > avgRGB[RGB] :
-                    outImage[RGB][i][k] = 255
-                else :
-                    outImage[RGB][i][k] = 0
+    outImage = inImage.copy()
+    outImage[:,:,R] = np.where(inImage[:,:,R]>meanRGB[R],255,0)
+    outImage[:,:,G] = np.where(inImage[:,:,G]>meanRGB[G],255,0)
+    outImage[:,:,B] = np.where(inImage[:,:,B]>meanRGB[B],255,0)
 
     displayImageColor()
 
@@ -265,21 +218,17 @@ def  zoomOutImageColor2() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     scale = askinteger("축소", "값-->", minvalue=2, maxvalue=16)
     ## 중요! 코드. 출력영상 크기 결정 ##
-    outH = inH//scale;  outW = inW//scale;
+    outH = inH//scale;  outW = inW//scale
     ###### 메모리 할당 ################
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
+    outImage = malloc(outH,outW,layers=3) # 3차원 numpy배열 생성
     ####### 진짜 컴퓨터 비전 알고리즘 #####
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                if i//scale < outH and k//scale < outW: # 만약 정사각형이 아니면 초과되는 친구들 날려줘야 함
-                    outImage[RGB][i//scale][k//scale] += inImage[RGB][i][k]
+    
     for i in range(outH):
         for k in range(outW):
-            for RGB in range(3):
-                outImage[RGB][i][k] //= (scale*scale)
+            fromY = i*scale; toY = fromY+scale; fromX = k*scale; toX = fromX+scale
+            outImage[i,k,R] = inImage[fromY:toY,fromX:toX,R].mean()
+            outImage[i,k,G] = inImage[fromY:toY,fromX:toX,G].mean()
+            outImage[i,k,B] = inImage[fromY:toY,fromX:toX,B].mean()
 
     displayImageColor()
 
@@ -289,31 +238,35 @@ def  zoomInImageColor2() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     scale = askinteger("확대", "값-->", minvalue=2, maxvalue=8)
     ## 중요! 코드. 출력영상 크기 결정 ##
-    outH = inH*scale;  outW = inW*scale;
+    outH = inH*scale;  outW = inW*scale
     ###### 메모리 할당 ################
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
+    outImage = malloc(outH,outW,layers=3)
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     rH, rW, iH, iW = [0] * 4 # 실수위치 및 정수위치
     x, y = 0, 0 # 실수와 정수의 차이값
     C1,C2,C3,C4 = [0] * 4 # 결정할 위치(N)의 상하좌우 픽셀
-    for i in range(outH) :
-        for k in range(outW) :
-            for RGB in range(3):
+
+    # 이거 넘파이로 바꿀 방법 있는가?
+    for RGB in range(3):
+        for i in range(outH) :
+            for k in range(outW) :
                 rH = i / scale ; rW = k / scale
                 iH = int(rH) ;  iW = int(rW)
                 x = rW - iW; y = rH - iH
                 if 0 <= iH < inH-1 and 0 <= iW < inW-1 :
-                    C1 = inImage[RGB][iH][iW]
-                    C2 = inImage[RGB][iH][iW+1]
-                    C3 = inImage[RGB][iH+1][iW+1]
-                    C4 = inImage[RGB][iH+1][iW]
+                    C1 = inImage[iH,iW,RGB]
+                    C2 = inImage[iH,iW+1,RGB]
+                    C3 = inImage[iH+1,iW+1,RGB]
+                    C4 = inImage[iH+1,iW,RGB]
                     newValue = C1*(1-y)*(1-x) + C2*(1-y)* x+ C3*y*x + C4*y*(1-x)
-                    outImage[RGB][i][k] = int(newValue)
+                    try:
+                        outImage[i,k,RGB] = int(newValue)
+                    except:
+                        pass
 
     displayImageColor()
 
+# histogram 보여주고나면 왜 UI가 바뀜?
 import matplotlib.pyplot as plt
 # 현재 흑백사진은 안됨 => 안되는 이유 파악해서 할 것
 def histoImageColor():
@@ -326,12 +279,13 @@ def histoImageColor():
     for i in range(inH):
         for k in range(inW):
             for RGB in range(3):
-                incountlist[RGB][inImage[RGB][i][k]] += 1
+                incountlist[RGB][inImage[i,k,RGB]] += 1
 
+    print(outImage)
     for i in range(outH):
         for k in range(outW):
             for RGB in range(3):
-                outcountlist[RGB][outImage[RGB][i][k]] += 1
+                outcountlist[RGB][outImage[i,k,RGB]] += 1
 
     # status.configure(text='이미지 정보' + str(outW) + 'x' + str(outH) + "\t 시간(초)" + "{0:.2f}".format(endTime))
     # 좀만 있다가 해보자
@@ -348,60 +302,32 @@ def histoImageColor():
     fig.legend(loc='upper left')
     plt.show()
 
+    displayImageColor()
+
 
 # 스트레칭 알고리즘
 def  stretchImageColor() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     ## 중요! 코드. 출력영상 크기 결정 ##
-    outH = inH;  outW = inW;
-    ###### 메모리 할당 ################
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
-    ####### 진짜 컴퓨터 비전 알고리즘 #####
-    maxValList = [ 0 for _ in range(3) ]
-    minValList = [ 0 for _ in range(3) ]
+    outH = inH;  outW = inW
+    outImage = inImage.copy()
+    maxValList = [inImage[:,:,R].max(), inImage[:,:,G].max(), inImage[:,:,B].max()]
+    minValList = [inImage[:,:,R].min(), inImage[:,:,G].min(), inImage[:,:,B].min()]
     for RGB in range(3):
-        maxValList[RGB] = minValList[RGB] = inImage[RGB][0][0]
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                if inImage[RGB][i][k] < minValList[RGB] :
-                    minValList[RGB] = inImage[RGB][i][k]
-                elif inImage[RGB][i][k] > maxValList[RGB] :
-                    maxValList[RGB] = inImage[RGB][i][k]
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                outImage[RGB][i][k] = int(((inImage[RGB][i][k] - minValList[RGB]) / (maxValList[RGB] - minValList[RGB])) * 255)
+        outImage[:,:,RGB] = ((inImage[:,:,RGB] - minValList[RGB]) / (maxValList[RGB] - minValList[RGB])) * 255
 
     displayImageColor()
 
 
 # 스트레칭 알고리즘
+# outImage의 형식을 float로 변환하지 않아서 식을 계산하는 과정에서 손실이 많이 발생했었음
 def  endinImageColor() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
-    ## 중요! 코드. 출력영상 크기 결정 ##
-    outH = inH;  outW = inW;
-    ###### 메모리 할당 ################
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
-
-    ####### 진짜 컴퓨터 비전 알고리즘 #####
-    maxValList = [ 0 for _ in range(3) ]
-    minValList = [ 0 for _ in range(3) ]
-
-    for RGB in range(3):
-        maxValList[RGB] = minValList[RGB] = inImage[RGB][0][0]
-
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                if inImage[RGB][i][k] < minValList[RGB] :
-                    minValList[RGB] = inImage[RGB][i][k]
-                elif inImage[RGB][i][k] > maxValList[RGB] :
-                    maxValList[RGB] = inImage[RGB][i][k]
+    outH = inH;  outW = inW
+    outImage = inImage.copy()
+    outImage = outImage.astype(np.float16)
+    maxValList = [inImage[:,:,R].max(), inImage[:,:,G].max(), inImage[:,:,B].max()]
+    minValList = [inImage[:,:,R].min(), inImage[:,:,G].min(), inImage[:,:,B].min()]
 
     minAdd = askinteger("최소", "최소에서추가-->", minvalue=0, maxvalue=255)
     maxAdd = askinteger("최대", "최대에서감소-->", minvalue=0, maxvalue=255)
@@ -410,15 +336,13 @@ def  endinImageColor() :
         minValList[RGB] += minAdd
         maxValList[RGB] -= maxAdd
 
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                value = int(((inImage[RGB][i][k] - minValList[RGB]) / (maxValList[RGB] - minValList[RGB])) * 255)
-                if value < 0:
-                    value = 0
-                elif value > 255:
-                    value = 255
-                outImage[RGB][i][k] = value
+    for RGB in range(3):
+        outImage[:,:,RGB] = ((outImage[:,:,RGB] - minValList[RGB]) / (maxValList[RGB] - minValList[RGB])) * 255 # 여기 계산할때 만약 outImage가 datatype가 uint8이면 손실발생
+    
+    outImage = np.where(outImage>255, 255,\
+        np.where(outImage<0,0,outImage))
+    outImage = outImage.astype(np.uint8)
+    print(outImage.max(),outImage.min())
 
     displayImageColor()
 
@@ -1273,7 +1197,7 @@ def saveExcelColor():
 #### 전역변수 선언부 ####
 ####################
 R, G, B = 0, 1, 2 # 3차원으로 쉽게 다루려고 전역 상수 지정해줌
-inImage, outImage = [], []
+inImage, outImage = None, None # 이제 넘파이로 다룰래
 inH, inW, outH, outW = [0] * 4
 window, canvas, paper = None, None, None
 filename = ""
@@ -1286,7 +1210,7 @@ VIEW_X, VIEW_Y = 512, 512  # 화면에 보일 크기 (출력용)
 ####################
 window = Tk()
 window.geometry("500x500")
-window.title("컴퓨터 비전(color library) ver 0.05")
+window.title("컴퓨터 비전 (kang's) ver 0.1")
 
 status = Label(window, text='이미지 정보:', bd=1, relief=SUNKEN, anchor=W)
 status.pack(side=BOTTOM, fill=X)

@@ -45,40 +45,49 @@ def displayImageColor() :
     if canvas != None : # 예전에 실행한 적이 있다.
         canvas.destroy()
     global VIEW_X, VIEW_Y
-    # print(outImage)
-    # print(outImage.shape)
-
     # VIEW_X, VIEW_Y = 512, 512
     ## 고정된 화면 크기
     # 가로/세로 비율 계산
-    ratio = outH / outW
-    if ratio < 1:
-        VIEW_X = int(512 * ratio)
-    else:
-        VIEW_X = 512
-    if ratio > 1:
-        VIEW_Y = int(512 * ratio)
-    else:
-        VIEW_Y = 512
+
+    if inW <= 512 and inH <= 512 : # 정방형 관계없이 둘다 512보다 작으면 그냥 사용
+        VIEW_X = inH
+        VIEW_Y = inW
+    else : # 한쪽이라도 512보다 크면
+        ratio = inH / inW
+        if ratio < 1:
+            VIEW_X = int(512 * ratio)
+            if inW > 512 :
+                VIEW_Y = 512
+            else :
+                VIEW_Y = inW
+        elif ratio > 1:
+            ratio = 1/ratio
+            if inH > 512 :
+                VIEW_X = 512
+            else :
+                VIEW_X = inH
+            VIEW_Y = int(512 * ratio)
+        else :
+            if inH > 512:
+                VIEW_X = 512
+            else:
+                VIEW_X = inH
+            if inW > 512:
+                VIEW_Y = 512
+            else:
+                VIEW_Y = inW
 
     if outH <= VIEW_X :
-        VIEW_X = outH; stepX = 1
+        stepX = 1
     if outH > VIEW_X :
-        if ratio < 1 :
-            VIEW_X = int(512 * ratio)
-        else :
-            VIEW_X = 512
         stepX = outH / VIEW_X
 
     if outW <= VIEW_Y:
-        VIEW_Y = outW; stepY = 1
+         stepY = 1
     if outW > VIEW_Y:
-        if ratio > 1 :
-            VIEW_Y = int(512 * ratio)
-        else :
-            VIEW_Y = 512
-
         stepY = outW / VIEW_Y
+
+    print(VIEW_X, VIEW_Y, stepX, stepY)
 
     window.geometry(str(int(VIEW_Y*1.2)) + 'x' + str(int(VIEW_X*1.2)))  # 벽
     canvas = Canvas(window, height=VIEW_X, width=VIEW_Y)
@@ -91,10 +100,7 @@ def displayImageColor() :
         tmpStr = ''
         for k in numpy.arange(0,outW, stepY) :
             i = int(i); k = int(k)
-            try:
-                r, g, b = outImage[i,k,R], outImage[i,k,G], outImage[i,k,B]
-            except:
-                pass
+            r , g, b = outImage[i,k,R], outImage[i,k,G], outImage[i,k,B]
             tmpStr += ' #%02x%02x%02x' % (r,g,b)
         rgbStr += '{' + tmpStr + '} '
     paper.put(rgbStr)
@@ -352,55 +358,53 @@ def  equalizeImageColor() :
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
+    outImage = malloc(outH, outW, layers=3)
     ####### 진짜 컴퓨터 비전 알고리즘 #####
-    histo = [[0] * 256 for _ in range(3)]; sumHisto = [[0] * 256 for _ in range(3)]; normalHisto = [[0] * 256 for _ in range(3)]
-    ## 히스토그램
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                histo[RGB][inImage[RGB][i][k]] += 1
+    # 히스토그램
+    histo = np.array([np.bincount(inImage[:,:,RGB].flatten(), minlength=255) for RGB in range(3)])
+    sumHisto = np.array([[0] * 256 for _ in range(3)]); normalHisto = np.array([[0] * 256 for _ in range(3)])
+
     ## 누적히스토그램
-    sValueList = [0,0,0]
-    for i in range(len(histo[0])) : # [0]을 안잡아주면 len이 3 이 되어서 3번밖에 안더함 --> 너무 값이 다 작아져서 전부 0되버리기!
-        for RGB in range(3):
-            sValueList[RGB] += histo[RGB][i]
-            sumHisto[RGB][i] = sValueList[RGB]
+    # np.bincount 255개 사이즈가 나와야하는데 : minlength=255 주면 됨
+    for RGB in range(3):
+        sValue = 0
+        for i in range(len(histo[0])) : # [0]을 안잡아주면 len이 3 이 되어서 3번밖에 안더함 --> 너무 값이 다 작아져서 전부 0되버리기!
+            sValue += histo[RGB,i]
+            sumHisto[RGB,i] = sValue
     ## 정규화 누적 히스토그램
-    for i in range(len(normalHisto[0])): # [0]을 안잡아주면 len이 3 이 되어서 3번밖에 안더함 --> 너무 값이 다 작아져서 전부 0되버리기!
-        print(len(normalHisto))
-        for RGB in range(3):
-            normalHisto[RGB][i] = int(sumHisto[RGB][i] / (inW*inH) * 255)
+    sumHisto.astype(np.float16)
+    normalHisto = (sumHisto / (inW*inH)) * 255
+    normalHisto = normalHisto.astype(np.uint8)
     ## 영상처리
-    for i in range(inH) :
-        for k in range(inW) :
-            for RGB in range(3):
-                outImage[RGB][i][k] = normalHisto[RGB][inImage[RGB][i][k]]
-    # print(outImage)
+    for RGB in range(3):
+        outImage[:,:,RGB] = normalHisto[RGB][inImage[:,:,RGB]]
+    # outImage[:, :, RGB] = normalHisto[RGB][inImage[:, :, RGB]]
     displayImageColor()
 
 # 파라볼라 알고리즘
+# 현재 수정중
 def parabolaImageColor(param):
     global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
     # LookUpTable 기법 활용
+    outH = inH; outW = inW
+    # inImage = inImage.astype(np.float32)
+    # outImage = inImage.copy()
 
-    LUT = [0 for _ in range(256)]
+    LUT = np.array([[ _ for _ in range(256) ] for _ in range(3)])
     if param == 1:
-        for input in range(256):
-            LUT[input] = int(255 - 255 * math.pow(input / 128 - 1, 2))
+        LUT = (255 - 255 * np.power(LUT / 128 - 1, 2))
+        LUT = LUT.astype(np.uint8)
+        print(LUT)
         for RGB in range(3):
-            for i in range(inH):
-                for k in range(inW):
-                    outImage[RGB][i][k] = LUT[inImage[RGB][i][k]]
+            outImage[:,:,RGB] = LUT[RGB,inImage[:,:,RGB]]
+            outImage = outImage.astype(np.uint8)
     else:
-        for input in range(256):
-            LUT[input] = int(255 * math.pow(input / 128 - 1, 2))
+        LUT = (255 * np.power(LUT / 128 - 1, 2))
+        LUT = LUT.astype(np.uint8)
+        print(LUT)
         for RGB in range(3):
-            for i in range(inH):
-                for k in range(inW):
-                    outImage[RGB][i][k] = LUT[inImage[RGB][i][k]]
+            outImage[:,:,RGB] = LUT[RGB,inImage[:,:,RGB]]
+            outImage = outImage.astype(np.uint8)
 
     displayImageColor()
 
@@ -738,26 +742,24 @@ def leftMouseDrop_embossImageHSV(event):
     canvas.unbind('<ButtonRelease-1>')
 
 ## 엠보싱 처리 (HSV)
+from matplotlib.colors import rgb_to_hsv
 def  __embossImageHSV() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     ## 입력용 RGB -> 입력용 HSV 모델로 변환
     ###### 메모리 할당 ################
-    inImageHSV = [];
-    for _ in range(3):
-        inImageHSV.append(malloc(outH, outW))
+    inImageHSV = malloc(inH,inW,layers=3)
     # RGB -> HSV
-    for i in range(inH):
-        for k in range(inW):
-            r,g,b = inImage[R][i][k], inImage[G][i][k], inImage[B][i][k]
-            h,s,v = colorsys.rgb_to_hsv(r/255,g/255,b/255) # 얘는 input을 0-1로 받아줘서 일케 파라미터 넘겨줌
-            inImageHSV[0][i][k], inImageHSV[1][i][k], inImageHSV[2][i][k] = h,s,v
+    inImageHSV = rgb_to_hsv(inImage) # matplotlib에 있당
+    # for i in range(inH):
+    #     for k in range(inW):
+    #         r,g,b = inImage[i,k,R], inImage[i,k,G],inImage[i,k,B]
+    #         h,s,v = colorsys.rgb_to_hsv(r/255,g/255,b/255) # 얘는 input을 0-1로 받아줘서 일케 파라미터 넘겨줌
+    #         inImageHSV[i,k,R], inImageHSV[i,k,G], inImageHSV[i,k,B] = h,s,v
 
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
+    outImage = malloc(outH,outW,layers=3)
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     MSIZE = 3
     mask = [ [-1, 0, 0],
@@ -765,43 +767,48 @@ def  __embossImageHSV() :
              [ 0, 0, 1] ]
     ## 임시 입력영상 메모리 확보
     # 우리는 V만 바꿔줄거기 때문에 3번할 필요 없음
-    tmpInImageV = []
     tmpInImageV = malloc(inH+MSIZE-1, inW+MSIZE-1)
-    tmpOutImageV = []
     tmpOutImageV = malloc(outH, outW)
 
     ## 원 입력 --> 임시 입력
-    for i in range(inH) :
-        for k in range(inW) :
-            tmpInImageV[i+MSIZE//2][k+MSIZE//2] = inImageHSV[2][i][k]
+    tmpInImageV = inImageHSV[:,:,2] # V
+    # for i in range(inH) :
+    #     for k in range(inW) :
+    #         tmpInImageV[i+MSIZE//2][k+MSIZE//2] = inImageHSV[2][i][k]
     ## 회선연산
+
     for i in range(MSIZE//2, inH + MSIZE//2) :
         for k in range(MSIZE//2, inW + MSIZE//2) :
             # 각 점을 처리.
             S = 0.0
             for m in range(0, MSIZE) :
                 for n in range(0, MSIZE) :
-                    S += mask[m][n]*tmpInImageV[i+m-MSIZE//2][k+n-MSIZE//2]
+                    try:
+                        S += mask[m][n]*tmpInImageV[i+m-MSIZE//2][k+n-MSIZE//2]
+                    except:
+                        pass
             tmpOutImageV[i-MSIZE//2][k-MSIZE//2] = S * 255 # 얘는 V정보에 다시 255곱해줘야 함
     ## 127 더하기 (선택)
-    for i in range(outH) :
-        for k in range(outW) :
-            tmpOutImageV[i][k] += 127
-            if tmpOutImageV[i][k] > 255:
-                tmpOutImageV[i][k] = 255
-            elif tmpOutImageV[i][k] < 0:
-                tmpOutImageV[i][k] = 0
+    tmpOutImageV = np.where(tmpOutImageV+127 > 255, 255,
+                            np.where(tmpOutImageV+127<0, 0, tmpOutImageV+127))
+    # for i in range(outH) :
+    #     for k in range(outW) :
+    #         tmpOutImageV[i][k] += 127
+    #         if tmpOutImageV[i][k] > 255:
+    #             tmpOutImageV[i][k] = 255
+    #         elif tmpOutImageV[i][k] < 0:
+    #             tmpOutImageV[i][k] = 0
 
     # HSV --> RGB
     ## 임시 출력 --> 원 출력
     for i in range(outH):
         for k in range(outW):
             if sx <= k <= ex and sy <= i <= ey: #범위에 포함되면
-                h,s,v = inImageHSV[0][i][k], inImageHSV[1][i][k], tmpOutImageV[i][k]
+                h,s,v = inImageHSV[i,k,0], inImageHSV[i,k,1], tmpOutImageV[i][k]
                 r,g,b = colorsys.hsv_to_rgb(h,s,v)
-                outImage[R][i][k], outImage[G][i][k], outImage[B][i][k] = int(r),int(g),int(b)
+                outImage[i,k,R], outImage[i,k,G], outImage[i,k,B] = int(r),int(g),int(b)
             else:
-                outImage[R][i][k], outImage[G][i][k], outImage[B][i][k] = inImage[R][i][k], inImage[G][i][k], inImage[B][i][k]
+                outImage[i,k,R], outImage[i,k,G], outImage[i,k,B] = inImage[i,k,R], inImage[i,k,G], inImage[i,k,B]
 
     displayImageColor()
 

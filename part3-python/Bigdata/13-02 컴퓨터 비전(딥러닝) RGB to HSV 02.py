@@ -152,9 +152,9 @@ def  equalImageColor() :
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
     # outImage = ImageEnhance._Enhance(inImage)
-    print(inImage)
-    print(inImage.shape)
-    print(outImage)
+    # print(inImage)
+    # print(inImage.shape)
+    # print(outImage)
 
     ### 진짜 컴퓨터 비전 영상처리 알고리즘 ###
     outImage = inImage.copy()
@@ -1243,17 +1243,19 @@ def loadExcelColor(fname):
 
 
     # 입력영상 메모리 확보
-    inImage = []
-    for _ in range(3):
-        inImage.append(malloc(inH, inW))
+    inImage = malloc(inH,inW,layers=3)
 
     # 파일 -> 메모리
     for i in range(inH):
         for k in range(inW):
             rVal, gVal, bVal = sheets[0].cell_value(i,k).split(",")
-            inImage[R][i][k] = int(rVal)
-            inImage[G][i][k] = int(gVal)
-            inImage[B][i][k] = int(bVal)
+            print(rVal)
+            try:
+                inImage[i,k,R] = int(rVal)
+                inImage[i,k,G] = int(gVal)
+                inImage[i,k,B] = int(bVal)
+            except:
+                pass
 
     outImage = inImage[:]
 

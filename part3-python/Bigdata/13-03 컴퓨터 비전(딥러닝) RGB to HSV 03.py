@@ -860,12 +860,12 @@ def  blurImageRGB() :
     for RGB in range(3):
         for i in range(outH):
             for k in range(outW):
-                value = tmpOutImage[RGB][i][k]
+                value = tmpOutImage[i,k,RGB]
                 if value > 255 :
                     value = 255
                 elif value < 0 :
                     value = 0
-                outImage[RGB][i][k] = int(value)
+                outImage[i,k,RGB] = int(value)
 
     displayImageColor()
 
@@ -879,17 +879,15 @@ def  addSvaluePillow() :
     photo2.enhance(value)
 
     outH = inH ; outW = inW
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
+    outImage = malloc(inH,inW,layers=3)
 
     ## 원 입력 --> 임시 입력
     for i in range(outH):
         for k in range(outW):
             r,g,b = photo2.getpixel((k,i))
-            outImage[R][i][k] = r
-            outImage[G][i][k] = g
-            outImage[B][i][k] = b
+            outImage[i,k,R]= r
+            outImage[i,k,G] = g
+            outImage[i,k,B] = b
 
     displayImageColor()
 
@@ -898,37 +896,36 @@ def  addSvalueHSV() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     ## 입력용 RGB -> 입력용 HSV 모델로 변환
     ###### 메모리 할당 ################
-    inImageHSV = [];
-    for _ in range(3):
-        inImageHSV.append(malloc(outH, outW))
+    inImageHSV = malloc(inH,inW,layers=3,dataType=np.float32)
     value = askfloat('','-255-255')
     value /= 255
 
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
+    outImage = malloc(outH,outW,layers=3)
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     # RGB -> HSV
     for i in range(inH):
         for k in range(inW):
-            r,g,b = inImage[R][i][k], inImage[G][i][k], inImage[B][i][k]
+            r,g,b = inImage[i,k,R], inImage[i,k,G], inImage[i,k,B]
             h,s,v = colorsys.rgb_to_hsv(r/255,g/255,b/255) # 얘는 input을 0-1로 받아줘서 일케 파라미터 넘겨줌
-            inImageHSV[0][i][k], inImageHSV[1][i][k], inImageHSV[2][i][k] = h,s,v
+            inImageHSV[i,k,0], inImageHSV[i,k,1], inImageHSV[i,k,2] = h,s,v
 
     # HSV --> RGB
     ## 임시 출력 --> 원 출력
     for i in range(outH):
         for k in range(outW):
-            newS = inImageHSV[1][i][k] + value
+            newS = inImageHSV[i,k,1]+ value
             if newS < 0:
                 newS = 0
             elif newS > 1.0:
                 newS = 1.0
-            h,s,v = inImageHSV[0][i][k], newS, inImageHSV[2][i][k]*255
+            h,s,v = inImageHSV[i,k,0], newS, inImageHSV[i,k,2]*255
             r,g,b = colorsys.hsv_to_rgb(h,s,v)
-            outImage[R][i][k], outImage[G][i][k], outImage[B][i][k] = int(r),int(g),int(b)
+            outImage[i,k,R], outImage[i,k,G], outImage[i,k,B] = int(r),int(g),int(b)
+
+    outImage = outImage.astype(np.uint8)
 
     displayImageColor()
 
@@ -1155,17 +1152,15 @@ def loadExcelColor(fname):
 
 
     # 입력영상 메모리 확보
-    inImage = []
-    for _ in range(3):
-        inImage.append(malloc(inH, inW))
+    inImage = malloc(inH,inW,layers=3)
 
     # 파일 -> 메모리
     for i in range(inH):
         for k in range(inW):
             rVal, gVal, bVal = sheets[0].cell_value(i,k).split(",")
-            inImage[R][i][k] = int(rVal)
-            inImage[G][i][k] = int(gVal)
-            inImage[B][i][k] = int(bVal)
+            inImage[i,k,R] = int(rVal)
+            inImage[i,k,G] = int(gVal)
+            inImage[i,k,B] = int(bVal)
 
     outImage = inImage[:]
 
@@ -1193,7 +1188,7 @@ def saveExcelColor():
 
     for i in range(outH):
         for k in range(outW):
-            ws.write(i,k,str(outImage[R][i][k])+","+str(outImage[G][i][k])+","+str(outImage[B][i][k]))
+            ws.write(i,k,str(outImage[i,k,R])+","+str(outImage[i,k,G])+","+str(outImage[i,k,G]))
 
     wb.save(xlsname)
     print('Excel. Save OK')

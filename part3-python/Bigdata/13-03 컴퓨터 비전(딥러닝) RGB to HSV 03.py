@@ -49,33 +49,33 @@ def displayImageColor() :
     ## 고정된 화면 크기
     # 가로/세로 비율 계산
 
-    if inW <= 512 and inH <= 512 : # 정방형 관계없이 둘다 512보다 작으면 그냥 사용
-        VIEW_X = inH
-        VIEW_Y = inW
+    if outW <= 512 and outH <= 512 : # 정방형 관계없이 둘다 512보다 작으면 그냥 사용
+        VIEW_X = outH
+        VIEW_Y = outW
     else : # 한쪽이라도 512보다 크면
-        ratio = inH / inW
+        ratio = outH / outW
         if ratio < 1:
             VIEW_X = int(512 * ratio)
-            if inW > 512 :
+            if outW > 512 :
                 VIEW_Y = 512
             else :
-                VIEW_Y = inW
+                VIEW_Y = outW
         elif ratio > 1:
             ratio = 1/ratio
-            if inH > 512 :
+            if outH > 512 :
                 VIEW_X = 512
             else :
-                VIEW_X = inH
+                VIEW_X = outH
             VIEW_Y = int(512 * ratio)
         else :
-            if inH > 512:
+            if outH > 512:
                 VIEW_X = 512
             else:
-                VIEW_X = inH
-            if inW > 512:
+                VIEW_X = outH
+            if outW > 512:
                 VIEW_Y = 512
             else:
-                VIEW_Y = inW
+                VIEW_Y = outW
 
     if outH <= VIEW_X :
         stepX = 1
@@ -278,8 +278,8 @@ import matplotlib.pyplot as plt
 def histoImageColor():
     global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
 
-    incountlist = [ [_ for _ in range(256) ] for _ in range(3)  ]
-    outcountlist = [ [_ for _ in range(256) ] for _ in range(3) ]
+    incountlist = [ [ _ for _ in range(256) ] for _ in range(3)  ]
+    outcountlist = [ [ _ for _ in range(256) ] for _ in range(3) ]
 
 
     for i in range(inH):
@@ -361,14 +361,15 @@ def  equalizeImageColor() :
     outImage = malloc(outH, outW, layers=3)
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     # 히스토그램
-    histo = np.array([np.bincount(inImage[:,:,RGB].flatten(), minlength=255) for RGB in range(3)])
+    histo = np.array([np.bincount(inImage[:,:,RGB].flatten(), minlength=256) for RGB in range(3)]) # 256을 min으로 잡아줘야 함
     sumHisto = np.array([[0] * 256 for _ in range(3)]); normalHisto = np.array([[0] * 256 for _ in range(3)])
 
     ## 누적히스토그램
-    # np.bincount 255개 사이즈가 나와야하는데 : minlength=255 주면 됨
+    # np.bincount 256개 사이즈가 나와야하는데 : minlength=256 주면 됨 : 0~255
     for RGB in range(3):
         sValue = 0
         for i in range(len(histo[0])) : # [0]을 안잡아주면 len이 3 이 되어서 3번밖에 안더함 --> 너무 값이 다 작아져서 전부 0되버리기!
+            print(len(histo[0]))
             sValue += histo[RGB,i]
             sumHisto[RGB,i] = sValue
     ## 정규화 누적 히스토그램
@@ -382,7 +383,6 @@ def  equalizeImageColor() :
     displayImageColor()
 
 # 파라볼라 알고리즘
-# 현재 수정중
 def parabolaImageColor(param):
     global window, canvas, paper, filename, outImage, inImage, inH, outH, inW, outW
     # LookUpTable 기법 활용
@@ -478,6 +478,9 @@ def  upDownImageColor() :
         for i in range(inH):
             for k in range(inW):
                 outImage[RGB][i][k] = inImage[RGB][inH-i-1][k]
+
+    # filp 써서 내일 하자
+    # outImage = flip(inImage,)
 
     displayImageColor()
 
@@ -732,7 +735,6 @@ def leftMouseDrop_embossImageHSV(event):
         sx, ex = ex, sx
     if sy > ey :
         sy, ey = ey, sy
-    __embossImageHSV()
     #############################
     __embossImageHSV()
     #############################
@@ -812,15 +814,13 @@ def  __embossImageHSV() :
 
     displayImageColor()
 
-## 엠보싱 처리
+## 블러링 처리
 def  blurImageRGB() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
-    outImage = []
-    for _ in range(3):
-        outImage.append(malloc(outH, outW))
+    outImage = malloc(outH, outW, layers=3)
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     MSIZE = 3
     # 마스크 점 안찍어주면 안댐 : 다른언어 변환시에 0됨
@@ -828,44 +828,35 @@ def  blurImageRGB() :
              [ 1/9, 1/9, 1/9],
              [ 1/9, 1/9, 1/9] ]
     ## 임시 입력영상 메모리 확보
-    tmpInImage = []
-    for _ in range(3):
-        tmpInImage.append(malloc(inH+MSIZE-1, inW+MSIZE-1,127))
-    tmpOutImage = []
-    for _ in range(3):
-        tmpOutImage.append(malloc(outH, outW))
+    tmpInImage = malloc(inH+MSIZE-1, inW+MSIZE-1,initValue=127,layers=3,dataType=np.float64)
+    tmpOutImage = malloc(outH,outW,layers=3,dataType=np.float64)
 
     ## 원 입력 --> 임시 입력
-    # for문 돌릴 때 RGB 포문을 맨 마지막에 넣었더니 답이 이상하네? 왜?
+    npad = ((MSIZE-2,MSIZE-2),(MSIZE-2,MSIZE-2))
     for RGB in range(3):
-        for i in range(inH) :
-            for k in range(inW) :
-                tmpInImage[RGB][i+MSIZE//2][k+MSIZE//2] = inImage[RGB][i][k]
+        tmpInImage[:,:,RGB] = np.pad(inImage[:,:,RGB], npad, 'constant', constant_values=(127))
+    # for RGB in range(3):
+    #     for i in range(inH) :
+    #         for k in range(inW) :
+    #             tmpInImage[RGB][i+MSIZE//2][k+MSIZE//2] = inImage[RGB][i][k]
     ## 회선연산
     for RGB in range(3):
         for i in range(MSIZE//2, inH + MSIZE//2) :
             for k in range(MSIZE//2, inW + MSIZE//2) :
-                # 각 점을 처리.
-                S = 0.0
-                for m in range(0, MSIZE) :
-                    for n in range(0, MSIZE) :
-                        S += mask[m][n]*tmpInImage[RGB][i+m-MSIZE//2][k+n-MSIZE//2]
-                tmpOutImage[RGB][i-MSIZE//2][k-MSIZE//2] = S
-    # ## 127 더하기 (선택)
-    # for i in range(outH) :
-    #     for k in range(outW) :
-    #         for RGB in range(3):
-    #             tmpOutImage[RGB][i][k] += 127
+                fromY, toY = i, i+MSIZE; fromX, toX = k, k+MSIZE
+                try:
+                    tmpOutImage[i-MSIZE//2,k-MSIZE//2,RGB] = (tmpInImage[fromY:toY,fromX:toX,RGB] * mask).sum()
+                except:
+                    pass
+                # S += mask[m][n]*tmpInImage[RGB][i+m-MSIZE//2][k+n-MSIZE//2]
+                # tmpOutImage[RGB][i-MSIZE//2][k-MSIZE//2] = S
+    ## 127 더하기 (선택)
+    tmpOutImage = tmpOutImage + 127
     ## 임시 출력 --> 원 출력
-    for RGB in range(3):
-        for i in range(outH):
-            for k in range(outW):
-                value = tmpOutImage[i,k,RGB]
-                if value > 255 :
-                    value = 255
-                elif value < 0 :
-                    value = 0
-                outImage[i,k,RGB] = int(value)
+    tmpOutImage = np.where(tmpOutImage>255, 255,\
+        np.where(tmpOutImage<0, 0, tmpOutImage))
+    outImage = tmpOutImage.astype(np.uint8)
+    print(outImage.shape)
 
     displayImageColor()
 
@@ -876,7 +867,7 @@ def  addSvaluePillow() :
     value = askfloat("","0~1~10")
     photo2 = photo.copy()
     photo2 = ImageEnhance.Color(photo2)
-    photo2.enhance(value)
+    photo2 = photo2.enhance(value) # 꼭 이렇게 써줘야 됨
 
     outH = inH ; outW = inW
     outImage = malloc(inH,inW,layers=3)
@@ -940,7 +931,7 @@ def saveTempImageColor() :
     for i in range(outH):
         tmpList = []
         for k in range(outW):
-            tup = tuple([outImage[R][i][k], outImage[G][i][k], outImage[B][i][k]])  # rgblist를 튜플로 묶어서 넘겨줘야 저장할 수 있음
+            tup = tuple([outImage[i][k][R], outImage[i][k][G], outImage[i][k][B]])  # rgblist를 튜플로 묶어서 넘겨줘야 저장할 수 있음
             tmpList.append(tup)
         outArray.append(tmpList)
 
@@ -965,17 +956,17 @@ def findStat(fname) :
     for i in range(outH) :
         for k in range(outW) :
             for RGB in range(3):
-                sumList[RGB] += outImage[RGB][i][k]
+                sumList[RGB] += outImage[i][k][RGB]
     for RGB in range(3):
         avgList[RGB] = sumList[RGB] // (inW * inH)
 
     for i in range(outH):
         for k in range(outW):
             for RGB in range(3):
-                if inImage[RGB][i][k] < minValList[RGB]:
-                    minValList[RGB] = inImage[RGB][i][k]
-                elif inImage[RGB][i][k] > maxValList[RGB]:
-                    maxValList[RGB] = inImage[RGB][i][k]
+                if inImage[i][k][RGB] < minValList[RGB]:
+                    minValList[RGB] = inImage[i][k][RGB]
+                elif inImage[i][k][RGB] > maxValList[RGB]:
+                    maxValList[RGB] = inImage[i][k][RGB]
     return avgList, maxValList, minValList
 
 import pymysql
@@ -1101,16 +1092,14 @@ def loadCSVColor(fname) :
     inH, inW = maxCol+1, maxRow+1
     print(inH," ",inW)
     ## 입력영상 메모리 확보 ##
-    inImage=[]
-    for _ in range(3):
-        inImage.append(malloc(inH, inW))
+    inImage=malloc(inH,inW,layers=3)
     # 파일 --> 메모리
     with open(fname, 'r') as rFp:
         for row_list in rFp:
             row, col, Rvalue, Gvalue, Bvalue = list(map(int, row_list.strip().split(',')))  # row_list 각각에 int함수 적용해주고 그 전체에 list함수적용
-            inImage[R][row][col] = Rvalue
-            inImage[G][row][col] = Gvalue
-            inImage[B][row][col] = Bvalue
+            inImage[row][col][R] = Rvalue
+            inImage[row][col][G] = Gvalue
+            inImage[row][col][B] = Bvalue
 
 # 파일을 선택해서 메모리로 로딩하는 함수
 def openCSVColor() :
@@ -1134,7 +1123,7 @@ def saveCSVColor() :
         csvWriter = csv.writer(wFp)
         for i in range(outH):
             for k in range(outW):
-                row_list = [i,k,outImage[R][i][k],outImage[G][i][k],outImage[B][i][k]]
+                row_list = [i,k,outImage[i][k][R],outImage[i][k][G],outImage[i][k][B]]
                 csvWriter.writerow(row_list) # 인자를 list로 받음
     print('CSV. Save OK')
 
@@ -1174,6 +1163,7 @@ def openExcelColor():
     equalImageColor()
 
 import xlwt
+# xlwt로 저장하면 256 * 256R까지밖에 저장안됨
 def saveExcelColor():
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     saveFp = asksaveasfile(parent=window, mode='wb',

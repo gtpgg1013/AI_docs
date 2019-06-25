@@ -11,6 +11,7 @@ from sklearn import svm, metrics, neural_network, neighbors, gaussian_process,\
     tree, ensemble, naive_bayes, discriminant_analysis
 import pandas as pd
 import math
+import cv2
 
 def malloc(h, w, initValue=0,layers = 1, dataType=np.uint8) :
     retMemory = np.zeros((h,w,layers),dtype=dataType)

@@ -497,14 +497,16 @@ def mouseDrop(event) :
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
-    outImage = malloc(outH, outW, layers=3)
+    outImage = []
+    for _ in range(3):
+        outImage.append(malloc(outH, outW))
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     mx = sx - ex; my = sy - ey
     for RGB in range(3):
         for i in range(inH) :
             for k in range(inW) :
                 if  0 <= i-my < outW and 0 <= k-mx < outH :
-                    outImage[i-my][k-mx][RGB] = inImage[i][k][RGB]
+                    outImage[RGB][i-my][k-mx] = inImage[RGB][i][k]
     panYN = False
     displayImageColor()
 
@@ -547,7 +549,9 @@ def rotateImageColor() :
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
-    outImage = malloc(outH, outW, layers=3)
+    outImage = []
+    for _ in range(3):
+        outImage.append(malloc(outH, outW))
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     radian = angle * math.pi / 180
     for i in range(inH) :
@@ -557,7 +561,7 @@ def rotateImageColor() :
                 xd = int(math.cos(radian) * xs - math.sin(radian) * ys)
                 yd = int(math.sin(radian) * xs + math.cos(radian) * ys)
                 if 0<= xd < inH and 0 <= yd < inW :
-                    outImage[xd][yd][RGB] = inImage[i][k][RGB]
+                    outImage[RGB][xd][yd] = inImage[RGB][i][k]
 
     displayImageColor()
 
@@ -568,7 +572,9 @@ def rotateImageColor2() :
     ## 중요! 코드. 출력영상 크기 결정 ##
     outH = inH;  outW = inW;
     ###### 메모리 할당 ################
-    outImage = malloc(outH, outW, layers=3)
+    outImage = []
+    for _ in range(3):
+        outImage.append(malloc(outH, outW))
     ####### 진짜 컴퓨터 비전 알고리즘 #####
     radian = angle * math.pi / 180
     cx = inW//2; cy = inH//2
@@ -579,9 +585,9 @@ def rotateImageColor2() :
                 xd = int(math.cos(radian) * (xs-cx) - math.sin(radian) * (ys-cy)) + cx
                 yd = int(math.sin(radian) * (xs-cx) + math.cos(radian) * (ys-cy)) + cy
                 if 0<= xd < outH and 0 <= yd < outW :
-                    outImage[xs][ys][RGB] = inImage[xd][yd][RGB]
+                    outImage[RGB][xs][ys] = inImage[RGB][xd][yd]
                 else :
-                    outImage[xs][ys][RGB] = 255
+                    outImage[RGB][xs][ys] = 255
 
     displayImageColor()
 
@@ -645,7 +651,9 @@ def  embossImagePillow() :
     global window, canvas, paper, filename, inImage, outImage, inH, inW, outH, outW
     global photo
     outH = inH ; outW = inW
-    outImage = malloc(outH, outW, layers=3)
+    outImage = []
+    for _ in range(3):
+        outImage.append(malloc(outH, outW))
     photo2 = photo.copy()
     photo2 = photo2.filter(ImageFilter.EMBOSS)
 
@@ -654,9 +662,9 @@ def  embossImagePillow() :
     for i in range(outH):
         for k in range(outW):
             r,g,b = photo2.getpixel((k,i))
-            outImage[i][k][R] = r
-            outImage[i][k][G] = g
-            outImage[i][k][B] = b
+            outImage[R][i][k] = r
+            outImage[G][i][k] = g
+            outImage[B][i][k] = b
 
     displayImageColor()
 

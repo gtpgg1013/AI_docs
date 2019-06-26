@@ -107,7 +107,7 @@ numthreads = Label(window, text="Number of Threads :"+str(p.num_threads()))
 memoryInfo = Label(window, text="Memory Information: "+str(p.memory_info()))
 memoryFullInfo = Label(window, text="Full Memory Info: "+str(p.memory_full_info()))
 memoryPercent = Label(window, text="Memory Percent: "+ str(p.memory_percent()))
-memoryMaps = Label(window, text="Memory Maps: "+str(p.memory_maps()))
+memoryMaps = Label(window, text="Memory Maps: "+str(p.memory_maps())) # 요건 나중에 map으로 만들어서 시각화하기
 connnections = Label(window, text="Connections: "+str(p.connections()))
 
 

@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/13-03 컴퓨터 비전(딥러닝) RGB to HSV 03.py" beforeDir="false" afterPath="$PROJECT_DIR$/13-03 컴퓨터 비전(딥러닝) RGB to HSV 03.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/15-01 머신러닝 Mnist GUI 툴(개선1).py" beforeDir="false" afterPath="$PROJECT_DIR$/15-01 머신러닝 Mnist GUI 툴(개선1).py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/15-02 컴퓨터 비전(딥러닝) OpenCV 01.py" beforeDir="false" afterPath="$PROJECT_DIR$/15-02 컴퓨터 비전(딥러닝) OpenCV 01.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComStat_v001.py" beforeDir="false" afterPath="$PROJECT_DIR$/ComStat_v001.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,41 +15,79 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ComStat_v001.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="48" column="67" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/15-02 컴퓨터 비전(딥러닝) OpenCV 01.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="1339" column="12" lean-forward="true" selection-start-line="1339" selection-start-column="12" selection-end-line="1339" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/15-04 컴퓨터 비전(딥러닝) OpenCV - 얼굴인식 .py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="128" column="58" selection-start-line="128" selection-start-column="58" selection-end-line="128" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/RealEmbeddingEx.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="228">
+                  <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#0#21#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/ComStatv008.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="180">
+                  <caret line="161" column="66" lean-forward="true" selection-start-line="161" selection-start-column="66" selection-end-line="161" selection-end-column="66" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/temp.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="285">
+                  <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/ComStat_v007.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="596">
+                  <caret line="61" column="25" lean-forward="true" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#0#21#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/ComStat_v005.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="248">
+                  <caret line="89" column="48" lean-forward="true" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
+                  <folding>
+                    <element signature="e#0#21#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/embeddingEx2.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="286">
+                  <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -62,27 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>findsta</find>
-      <find>savetem</find>
-      <find>sql</find>
-      <find>pil</find>
-      <find>filedi</find>
-      <find>create</find>
-      <find>button</find>
-      <find>def dis</find>
-      <find>def ma</find>
-      <find>zoomout</find>
-      <find>def loadim</find>
-      <find>askopen</find>
-      <find>equalIm</find>
-      <find>asko</find>
-      <find>def di</find>
-      <find>def pr</find>
-      <find>excel</find>
-      <find>des</find>
-      <find>photo</find>
-      <find>상하반</find>
-      <find>Canva</find>
       <find>cursor</find>
       <find>평활화</find>
       <find>loadex</find>
@@ -92,10 +107,33 @@
       <find>ret</find>
       <find>cvPho</find>
       <find>= Label(window,</find>
+      <find>askop</find>
+      <find>cvData</find>
+      <find>평활</find>
+      <find>Canva</find>
+      <find>dest</find>
+      <find>canv</find>
+      <find>window</find>
+      <find>matplot</find>
+      <find>회전</find>
+      <find>rotat</find>
+      <find>openCV</find>
+      <find>data_gen</find>
+      <find>paper</find>
+      <find>nav</find>
+      <find>FigureCanvasTkAgg</find>
+      <find>canva</find>
+      <find>FIgure</find>
+      <find>show_frame</find>
+      <find>tk.</find>
+      <find>resize</find>
+      <find>canvas</find>
     </findStrings>
     <replaceStrings>
       <replace>global photo, cvPhoto</replace>
       <replace>.configure(</replace>
+      <replace>canvas</replace>
+      <replace />
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -104,18 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mergesort02.py" />
-        <option value="$PROJECT_DIR$/Code06-03 컴퓨터비전 02.py" />
-        <option value="$PROJECT_DIR$/Code07-01 컴퓨터비전 03.py" />
-        <option value="$PROJECT_DIR$/Code07-02 컴퓨터비전 04.py" />
-        <option value="$PROJECT_DIR$/Code09-04.py" />
-        <option value="$PROJECT_DIR$/Code09-05.py" />
-        <option value="$PROJECT_DIR$/Code09-06.py" />
-        <option value="$PROJECT_DIR$/Code09-01 화면크기 및 서브윈도.py" />
-        <option value="$PROJECT_DIR$/Code09-02 DB 업로드 자동화.py" />
-        <option value="$PROJECT_DIR$/Code09-00-00 DB.py" />
-        <option value="$PROJECT_DIR$/Code09-03.py" />
-        <option value="$PROJECT_DIR$/emp.csv" />
         <option value="$PROJECT_DIR$/Code09-00-01 csv읽기.py" />
         <option value="$PROJECT_DIR$/Code09-00-02 csv2.py" />
         <option value="$PROJECT_DIR$/Code10-01 CSV04-GUI.py" />
@@ -154,7 +180,19 @@
         <option value="$PROJECT_DIR$/15-02 컴퓨터 비전(딥러닝) OpenCV 01.py" />
         <option value="$PROJECT_DIR$/15-03 하르 얼굴인식.py" />
         <option value="$PROJECT_DIR$/15-04 컴퓨터 비전(딥러닝) OpenCV - 얼굴인식 .py" />
+        <option value="$PROJECT_DIR$/Dajikstra_Basic.py" />
+        <option value="$PROJECT_DIR$/Dj_01.py" />
+        <option value="$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py" />
         <option value="$PROJECT_DIR$/ComStat_v001.py" />
+        <option value="$PROJECT_DIR$/matplotlibDemo_decay.py" />
+        <option value="$PROJECT_DIR$/ComStat_v005.py" />
+        <option value="$PROJECT_DIR$/embeddingEx.py" />
+        <option value="$PROJECT_DIR$/RealEmbeddingEx.py" />
+        <option value="$PROJECT_DIR$/animationInTkinter.py" />
+        <option value="$PROJECT_DIR$/ComStat_v007.py" />
+        <option value="$PROJECT_DIR$/temp.py" />
+        <option value="$PROJECT_DIR$/embeddingEx2.py" />
+        <option value="$PROJECT_DIR$/ComStatv008.py" />
       </list>
     </option>
   </component>
@@ -169,8 +207,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="854" />
     <option name="height" value="1017" />
   </component>
@@ -218,8 +255,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ComStat_v001">
-    <configuration name="13-03 컴퓨터 비전(딥러닝) RGB to HSV 03" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.ComStatv008">
+    <configuration name="ComStat_v005" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -231,7 +268,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/13-03 컴퓨터 비전(딥러닝) RGB to HSV 03.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ComStat_v005.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -240,7 +277,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="15-02 컴퓨터 비전(딥러닝) OpenCV 01" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ComStat_v007" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -252,7 +289,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/15-02 컴퓨터 비전(딥러닝) OpenCV 01.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ComStat_v007.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -261,7 +298,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="15-03 하르 얼굴인식" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ComStatv008" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -273,7 +310,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/15-03 하르 얼굴인식.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ComStatv008.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -282,7 +319,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="15-04 컴퓨터 비전(딥러닝) OpenCV - 얼굴인식 " type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="embeddingEx2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -294,7 +331,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/15-04 컴퓨터 비전(딥러닝) OpenCV - 얼굴인식 .py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/embeddingEx2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -303,7 +340,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ComStat_v001" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -315,7 +352,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ComStat_v001.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/temp.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -326,11 +363,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ComStat_v001" />
-        <item itemvalue="Python.15-04 컴퓨터 비전(딥러닝) OpenCV - 얼굴인식 " />
-        <item itemvalue="Python.15-03 하르 얼굴인식" />
-        <item itemvalue="Python.15-02 컴퓨터 비전(딥러닝) OpenCV 01" />
-        <item itemvalue="Python.13-03 컴퓨터 비전(딥러닝) RGB to HSV 03" />
+        <item itemvalue="Python.ComStatv008" />
+        <item itemvalue="Python.ComStat_v005" />
+        <item itemvalue="Python.embeddingEx2" />
+        <item itemvalue="Python.ComStat_v007" />
+        <item itemvalue="Python.temp" />
       </list>
     </recent_temporary>
   </component>
@@ -360,20 +397,20 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18395658" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10434258" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295964" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3026906" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29932734" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39461884" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295964" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3295964" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3295583" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50060314" side_tool="true" weight="0.22982062" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49939686" visible="true" weight="0.46973094" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.12443946" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49939686" weight="0.24439462" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.5560538" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -391,171 +428,10 @@
           <url>file://$PROJECT_DIR$/13-02 컴퓨터 비전(딥러닝) RGB to HSV 02.py</url>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/15-04 컴퓨터 비전(딥러닝) OpenCV - 얼굴인식 .py</url>
-          <line>31</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Code09-06.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding>
-            <element signature="e#10#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code09-00 컴퓨터비전 05.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="1437" lean-forward="true" selection-end-line="1577" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code10-02 컴퓨터비전 09 CSV 입출력.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="190" column="11" selection-start-line="190" selection-start-column="9" selection-end-line="190" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code10-03 CSV&amp;Excel-GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1159">
-          <caret line="65" column="31" lean-forward="true" selection-start-line="65" selection-start-column="31" selection-end-line="65" selection-end-column="31" />
-          <folding>
-            <element signature="e#10#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code11-01 리뷰 DB연동.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" selection-start-line="2" selection-end-line="4" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code11-02 리뷰 DB조회.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/numpy/core/_methods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/numpy/core/numeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="222" selection-start-line="222" selection-end-line="222" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code10-00 컴퓨터비전 numpy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2998">
-          <caret line="569" column="33" lean-forward="true" selection-start-line="569" selection-start-column="33" selection-end-line="569" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code09-05.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="33" column="9" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code09-02 DB 업로드 자동화.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="112" selection-start-line="112" selection-end-line="127" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code10-01 CSV04-GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="35" column="48" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
-          <folding>
-            <element signature="e#10#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mergesort00.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/11quiz1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code06-02 컴퓨터비전 01.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="117" column="48" lean-forward="true" selection-start-line="117" selection-start-column="48" selection-end-line="117" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Code06-03 컴퓨터비전 02.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="304" column="28" lean-forward="true" selection-start-line="304" selection-start-column="28" selection-end-line="304" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/강태형 수행평가.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/-1839912465/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="1096" column="8" selection-start-line="1096" selection-start-column="8" selection-end-line="1096" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/13-xx00 선생님꺼.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
@@ -684,29 +560,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/14-06 머신러닝 scikit-learn 06(Mnist) 모델저장.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
           <caret line="48" column="10" lean-forward="true" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/12-00 컴퓨터 비전 직접 구현 load함수 사용.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2565">
-          <caret line="143" column="38" selection-start-line="143" selection-start-column="38" selection-end-line="143" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -759,16 +618,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/13-03 컴퓨터 비전(딥러닝) RGB to HSV 03.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/15-01 머신러닝 Mnist GUI 툴(개선1).py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -786,23 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/15-04 컴퓨터 비전(딥러닝) OpenCV - 얼굴인식 .py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="128" column="58" selection-start-line="128" selection-start-column="58" selection-end-line="128" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/15-02 컴퓨터 비전(딥러닝) OpenCV 01.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="1339" column="12" lean-forward="true" selection-start-line="1339" selection-start-column="12" selection-end-line="1339" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/psutil/_pswindows.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -810,13 +642,200 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ComStat_v001.py">
+    <entry file="file://$PROJECT_DIR$/Dj_01.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="48" column="67" selection-start-line="48" selection-start-column="67" selection-end-line="48" selection-end-column="67" />
+        <state relative-caret-position="323">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dajikstra_Basic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-261">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/15-02 컴퓨터 비전(딥러닝) OpenCV 01.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="1339" column="12" selection-start-line="1339" selection-start-column="12" selection-end-line="1339" selection-end-column="12" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/object-detection-deep-learning/object-detection-deep-learning/deep_learning_object_detection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="17" column="62" lean-forward="true" selection-end-line="74" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dajikstra.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/wmi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/AvgCpuTemp/avg_cpu_temp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/13-03 컴퓨터 비전(딥러닝) RGB to HSV 03.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="313" lean-forward="true" selection-start-line="313" selection-end-line="313" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/15-04 컴퓨터 비전(딥러닝) OpenCV - 얼굴인식 .py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="1569" column="71" lean-forward="true" selection-start-line="1569" selection-start-column="71" selection-end-line="1569" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="2225" selection-start-line="2225" selection-end-line="2225" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="1713" column="19" lean-forward="true" selection-start-line="1713" selection-start-column="19" selection-end-line="1713" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matplotlibDemo_decay.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="11" lean-forward="true" selection-start-line="6" selection-start-column="11" selection-end-line="7" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/matplotlib/animation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="1430" selection-start-line="1430" selection-end-line="1430" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/12-00 컴퓨터 비전 직접 구현 load함수 사용.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-162">
+          <caret line="49" column="32" selection-start-line="49" selection-start-column="27" selection-end-line="49" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComStat_v001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="47" column="43" lean-forward="true" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/animationInTkinter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
+          <folding>
+            <element signature="e#18#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/embeddingEx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-128">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComStat_v007.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="596">
+          <caret line="61" column="25" lean-forward="true" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RealEmbeddingEx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/embeddingEx2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/matplotlib/artist.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="952" selection-start-line="952" selection-end-line="952" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComStat_v005.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="89" column="48" lean-forward="true" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComStatv008.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="161" column="66" lean-forward="true" selection-start-line="161" selection-start-column="66" selection-end-line="161" selection-end-column="66" />
         </state>
       </provider>
     </entry>

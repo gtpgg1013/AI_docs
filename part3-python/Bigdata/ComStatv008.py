@@ -13,6 +13,7 @@ import psutil
 import threading
 
 import time
+import math
 
 LARGE_FONT = ("Verdana", 12)
 
@@ -23,7 +24,7 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
         Tk.__init__(self, *args, **kwargs) # 상속받았으므로 tk.Tk(부모꺼)도 해줌
 
         Tk.iconbitmap(self) # 걍 아이콘
-        Tk.title(self, "Sea of BTC client") # 이름 만들어주기
+        Tk.title(self, "Comstat v0.08") # 이름 만들어주기
         Tk.wm_geometry(self,"1280x640")
         Tk.wm_resizable(self, width=False, height=False)
 
@@ -34,9 +35,9 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
 
         self.frames = {} # frames라는 딕셔너리 필드 선언
 
-        for F in (StartPage, PageOne, PageTwo):
+        for F in (StartPage, PageOne, PageTwo, PageThree):
             frame = F(container, self)
-            print(frame)
+            # print(frame)
 
             self.frames[F] = frame # 딕셔너리에 저장
 
@@ -60,9 +61,13 @@ class StartPage(Frame): # 첫번째 페이지
                             command=lambda: controller.show_frame(PageOne))
         button.pack()
 
-        button2 = Button(self, text="Dynamic Indications",
+        button2 = Button(self, text="CPU Times",
                              command=lambda: controller.show_frame(PageTwo))
         button2.pack()
+
+        button3 = Button(self, text="CPU Stats",
+                             command=lambda: controller.show_frame(PageThree))
+        button3.pack()        
 
 
 class PageOne(Frame):
@@ -85,7 +90,7 @@ class PageTwo(Frame):
 
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
-        label = Label(self, text="Dynamic Indications", font=LARGE_FONT)
+        label = Label(self, text="CPU times", font=LARGE_FONT)
         label.pack(pady=10, padx=10)
 
         button1 = Button(self, text="HomePage",
@@ -93,16 +98,16 @@ class PageTwo(Frame):
         button1.pack()
 
         canvasforPic = Canvas(self)
-        canvasforPic
-        cpu = Label(canvasforPic, text="CPU: " + str(psutil.cpu_percent()))
-        cpuTime = Label(canvasforPic, text="CPUTime: " + str(psutil.cpu_times()))
-        cpuStats = Label(canvasforPic, text="CPUStats " + str(psutil.cpu_stats()))
-        cpu2 = Label(canvasforPic, text="CPU_specific: " + str(psutil.cpu_times_percent()))
+        cpuTime1 = Label(canvasforPic, text="CPUTime-user: " + str(psutil.cpu_times().user))
+        cpuTime2 = Label(canvasforPic, text="CPUTime-system: " + str(psutil.cpu_times().system))
+        cpuTime3 = Label(canvasforPic, text="CPUTime-idle: " + str(psutil.cpu_times().idle))
+        cpuTime4 = Label(canvasforPic, text="CPUTime-interrupt: " + str(psutil.cpu_times().interrupt))
 
-        cpu.pack()
-        cpuTime.pack()
-        cpuStats.pack()
-        cpu2.pack()
+
+        cpuTime1.pack()
+        cpuTime2.pack()
+        cpuTime3.pack()
+        cpuTime4.pack()
 
         canvasforPic.pack(side=RIGHT)
 
@@ -110,11 +115,15 @@ class PageTwo(Frame):
         nowtime = 0
 
         def refreshHWIndicators():  # 1초마다 바뀌는 내용 수정
+            # global cpuUser, cpuSys, cpuI, cpuC
+            # global x, plotCpuUser, plotCpuSys, plotCpuI, plotCpuC, t # 요놈들 쓸거임
+            
             try:
                 timer = threading.Timer(1, refreshHWIndicators)
-                cpu.configure(text="CPU: " + str(psutil.cpu_percent()))
-                cpu2.configure(text="CPU_specific " + str(psutil.cpu_times_percent()))
-                cpuTime.configure(text="CPUTime: " + str(psutil.cpu_times()))
+                cpuTime1 = Label(canvasforPic, text="CPUTime-user: " + str(psutil.cpu_times().user))
+                cpuTime2.configure(text="CPUTime-system: " + str(psutil.cpu_times().system))
+                cpuTime3.configure(text="CPUTime-idle: " + str(psutil.cpu_times().idle))
+                cpuTime4.configure(text="CPUTime-interrupt: " + str(psutil.cpu_times().interrupt))
 
                 nowtime = time.time()
 
@@ -133,19 +142,15 @@ class PageTwo(Frame):
         f = Figure(figsize=(5, 5), dpi=100)
 
         # x = np.arange(0, nowtime ,0.01)
-        x = np.arange(0, 2 * np.pi, 0.01)
-
-
-        def animate(i):
-            line.set_ydata(np.sin(x + i / 10.0))  # update the data
-            return line,
+        # x = np.arange(0, 2 * np.pi, 0.01)
 
         canvas = FigureCanvasTkAgg(f, self)
         canvas.get_tk_widget()
+        
 
         ax = f.add_subplot(111)
         ax.set_title("CPU time")
-        ax.set_ylim(-2,2)
+        ax.set_ylim(0,20000)
         ax.set_xlim(0,5.0)
         ax.grid(True)
         ax.set_ylabel("CPU time")
@@ -170,16 +175,43 @@ class PageTwo(Frame):
         xmin = 0.0
         xmax = 5.0
         x = 0.0
-
+        
         def updateData(self):
-            x = 1
+            nonlocal cpuUser, cpuSys, cpuI, cpuC
+            nonlocal x, plotCpuUser, plotCpuSys, plotCpuI, plotCpuC, t # 요놈들 쓸거임
+            # print(x)
 
-        line, = ax.plot(x, np.sin(x))
+            cpuTimeInd = psutil.cpu_times()
+            cpuTimeList = [[cpuTimeInd.user], [cpuTimeInd.system], [cpuTimeInd.idle], [cpuTimeInd.interrupt]]
+            tmpCpuU = cpuTimeList[0][0]
+            tmpCpuSys = cpuTimeList[1][0]
+            tmpCpuI = cpuTimeList[2][0]
+            tmpCpuC = cpuTimeList[3][0]
+            # print(tmpCpuC)
+            cpuUser = np.append(cpuUser,tmpCpuU)
+            cpuSys = np.append(cpuSys,tmpCpuSys)
+            cpuI = np.append(cpuI,tmpCpuI)
+            cpuC = np.append(cpuC,tmpCpuC)
+            t = np.append(t,x)
+
+            x += 0.05
+
+            plotCpuUser.set_data(t, cpuUser)
+            plotCpuSys.set_data(t, cpuSys)
+            plotCpuI.set_data(t, cpuI)
+            plotCpuC.set_data(t, cpuC)
+
+            if x >= xmax - 1.00:
+                plotCpuUser.axes.set_xlim(x - xmax +1.0, x+1.0)
+
+            return plotCpuUser
+
+        # line, = ax.plot(x, np.sin(x))
 
         # ax = f.add_subplot(111)
         # line, = ax.plot(x, np.sin(x))
 
-        ani = animation.FuncAnimation(f, animate, np.arange(1, 200), interval=25, blit=False)
+        ani = animation.FuncAnimation(f, updateData, interval=25, blit=False, frames=200, repeat=True)
 
         canvas.draw()
         canvas.get_tk_widget().pack(side=LEFT, fill=BOTH, expand=True)
@@ -188,6 +220,141 @@ class PageTwo(Frame):
         # toolbar.update()
         canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=True)
 
+class PageThree(Frame):
+
+    def __init__(self, parent, controller):
+        Frame.__init__(self, parent)
+        label = Label(self, text="CPU Stats", font=LARGE_FONT)
+        label.pack(pady=10, padx=10)
+
+        button1 = Button(self, text="HomePage",
+                             command=lambda: controller.show_frame(StartPage))
+        button1.pack()
+
+        canvasforPic = Canvas(self)
+        cpustats1 = Label(canvasforPic, text="Ctx_switches: " + str(psutil.cpu_stats().ctx_switches))
+        cpustats2 = Label(canvasforPic, text="interrupts: " + str(psutil.cpu_stats().interrupts))
+        cpustats3 = Label(canvasforPic, text="syscalls: " + str(psutil.cpu_stats().syscalls))
+
+
+        cpustats1.pack()
+        cpustats2.pack()
+        cpustats3.pack()
+
+        canvasforPic.pack(side=RIGHT)
+
+        # 밑에서 쓸 현재시각
+        nowtime = 0
+
+        def refreshHWIndicators():  # 1초마다 바뀌는 내용 수정
+            # global cpuUser, cpuSys, cpuI, cpuC
+            # global x, plotCpuUser, plotCpuSys, plotCpuI, plotCpuC, t # 요놈들 쓸거임
+            
+            try:
+                timer = threading.Timer(1, refreshHWIndicators)
+                cpustats1.configure(text="Ctx_switches: " + str(psutil.cpu_stats().ctx_switches))
+                print(str(psutil.cpu_stats().ctx_switches))
+                cpustats2.configure(text="interrupts: " + str(psutil.cpu_stats().interrupts))
+                cpustats3.configure(text="syscalls: " + str(psutil.cpu_stats().syscalls))
+
+                nowtime = time.time()
+
+                timer.start()
+            except:
+                pass
+
+        refreshHWIndicators()
+
+        ################################################################
+        ################## 여기부터 그래프부분 #########################
+        ################################################################
+
+        # 처음 하면 되는것 : cpu time 4개를 동적으로 한꺼번에 띄워보자
+
+        f = Figure(figsize=(5, 5), dpi=100)
+
+        # x = np.arange(0, nowtime ,0.01)
+        # x = np.arange(0, 2 * np.pi, 0.01)
+
+        canvas = FigureCanvasTkAgg(f, self)
+        canvas.get_tk_widget()
+        
+
+        ax = f.add_subplot(111)
+        ax.set_title("CPU Stat")
+        ax.set_ylim(0,500000000)
+        ax.set_xlim(0,5.0)
+        ax.grid(True)
+        ax.set_ylabel("CPU Stat")
+        ax.set_xlabel("Time")
+
+        # Data Placeholders
+        cpuC = np.zeros(0)
+        cpuI = np.zeros(0)
+        cpuS = np.zeros(0)
+        t = np.zeros(0)
+
+        # set plots
+        plotCpuCtx, = ax.plot(t, cpuC, 'b-', label="Ctx switches")
+        plotCpuint, = ax.plot(t, cpuI, 'g-', label="interrupts")
+        plotCpuSys, = ax.plot(t, cpuS, 'r-', label="syscalls")
+
+        ax.legend([plotCpuCtx, plotCpuSys, plotCpuint],\
+                  [plotCpuCtx.get_label(), plotCpuSys.get_label(), plotCpuint.get_label()])
+
+        xmin = 0.0
+        xmax = 5.0
+        x = 0.0
+        
+        def updateData(self):
+            nonlocal cpuC, cpuS, cpuI
+            nonlocal x, plotCpuCtx, plotCpuSys, plotCpuint, t # 요놈들 쓸거임
+            # print(x)
+
+            cpuTimeInd = psutil.cpu_stats()
+            cpuTimeList = [[cpuTimeInd.ctx_switches], [cpuTimeInd.interrupts], [cpuTimeInd.syscalls]]
+            tmpCpuC = cpuTimeList[0][0]
+            tmpCpuI = cpuTimeList[1][0]
+            tmpCpuS = cpuTimeList[2][0]
+            # print(tmpCpuC)
+            cpuC = np.append(cpuC,tmpCpuC)
+            cpuI = np.append(cpuI,tmpCpuI)
+            cpuS = np.append(cpuS,tmpCpuS)
+            t = np.append(t,x)
+
+            x += 0.05
+
+            plotCpuCtx.set_data(t, cpuC)
+            plotCpuint.set_data(t, cpuI)
+            plotCpuSys.set_data(t, cpuS)
+
+            if x >= xmax - 1.00:
+                plotCpuCtx.axes.set_xlim(x - xmax +1.0, x+1.0)
+
+            return plotCpuCtx
+
+        # line, = ax.plot(x, np.sin(x))
+
+        # ax = f.add_subplot(111)
+        # line, = ax.plot(x, np.sin(x))
+
+        ani = animation.FuncAnimation(f, updateData, interval=25, blit=False, frames=200, repeat=True)
+
+        canvas.draw()
+        canvas.get_tk_widget().pack(side=LEFT, fill=BOTH, expand=True)
+
+        # toolbar = NavigationToolbar2Tk(canvas, self)
+        # toolbar.update()
+        canvas._tkcanvas.pack(side=TOP, fill=BOTH, expand=True)
+
+
+
+# 전역 변수
+# x, plotCpuUser, plotCpuSys, plotCpuI, plotCpuC, t = 0, None, None, None, None, None
+# cpuUser, cpuSys, cpuI, cpuC = None, None, None, None
+
+
+#  메인 코드
 
 app = SeaofBTCapp()
 app.mainloop()

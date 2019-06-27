@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComStat_v001.py" beforeDir="false" afterPath="$PROJECT_DIR$/ComStat_v001.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComStatv008.py" beforeDir="false" afterPath="$PROJECT_DIR$/ComStatv008.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,79 +15,71 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/RealEmbeddingEx.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="228">
-                  <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/ComStatv008.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="161" column="66" lean-forward="true" selection-start-line="161" selection-start-column="66" selection-end-line="161" selection-end-column="66" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/temp.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ComStat_v007.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="596">
-                  <caret line="61" column="25" lean-forward="true" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/ComStat_v005.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="248">
-                  <caret line="89" column="48" lean-forward="true" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
-                  <folding>
-                    <element signature="e#0#21#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/embeddingEx2.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
-                  <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RealEmbeddingEx.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ComStat_v0.1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="82" column="37" lean-forward="true" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/edeedfsx.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mailing.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ComStat_v001.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1425">
+              <caret line="87" column="29" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ComStatv008.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="589">
+              <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -98,18 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cursor</find>
-      <find>평활화</find>
-      <find>loadex</find>
-      <find>HSV</find>
-      <find>colorsys</find>
-      <find>global photo</find>
-      <find>ret</find>
-      <find>cvPho</find>
-      <find>= Label(window,</find>
-      <find>askop</find>
-      <find>cvData</find>
-      <find>평활</find>
       <find>Canva</find>
       <find>dest</find>
       <find>canv</find>
@@ -128,6 +108,18 @@
       <find>tk.</find>
       <find>resize</find>
       <find>canvas</find>
+      <find>ylim</find>
+      <find>sysc</find>
+      <find>RAM</find>
+      <find>vir</find>
+      <find>def dis</find>
+      <find>pack</find>
+      <find>equal</find>
+      <find>threa</find>
+      <find>print</find>
+      <find>time.ti</find>
+      <find>time</find>
+      <find>static</find>
     </findStrings>
     <replaceStrings>
       <replace>global photo, cvPhoto</replace>
@@ -142,9 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Code09-00-01 csv읽기.py" />
-        <option value="$PROJECT_DIR$/Code09-00-02 csv2.py" />
-        <option value="$PROJECT_DIR$/Code10-01 CSV04-GUI.py" />
         <option value="$PROJECT_DIR$/Code10-02 컴퓨터비전 09 CSV 입출력.py" />
         <option value="$PROJECT_DIR$/Code10-03 CSV&amp;Excel-GUI.py" />
         <option value="$PROJECT_DIR$/Code09-00 컴퓨터비전 05.py" />
@@ -182,7 +171,6 @@
         <option value="$PROJECT_DIR$/15-04 컴퓨터 비전(딥러닝) OpenCV - 얼굴인식 .py" />
         <option value="$PROJECT_DIR$/Dajikstra_Basic.py" />
         <option value="$PROJECT_DIR$/Dj_01.py" />
-        <option value="$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py" />
         <option value="$PROJECT_DIR$/ComStat_v001.py" />
         <option value="$PROJECT_DIR$/matplotlibDemo_decay.py" />
         <option value="$PROJECT_DIR$/ComStat_v005.py" />
@@ -193,6 +181,10 @@
         <option value="$PROJECT_DIR$/temp.py" />
         <option value="$PROJECT_DIR$/embeddingEx2.py" />
         <option value="$PROJECT_DIR$/ComStatv008.py" />
+        <option value="$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py" />
+        <option value="$PROJECT_DIR$/edeedfsx.py" />
+        <option value="$PROJECT_DIR$/mailing.py" />
+        <option value="$PROJECT_DIR$/ComStat_v0.1.py" />
       </list>
     </option>
   </component>
@@ -206,7 +198,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="854" />
     <option name="height" value="1017" />
@@ -255,8 +247,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ComStatv008">
-    <configuration name="ComStat_v005" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.mailing">
+    <configuration name="16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -268,7 +260,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ComStat_v005.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -277,7 +269,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ComStat_v007" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ComStat_v001" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -289,7 +281,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ComStat_v007.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ComStat_v001.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -298,7 +290,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ComStatv008" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ComStat_v0.1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -310,7 +302,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ComStatv008.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ComStat_v0.1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -319,7 +311,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="embeddingEx2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="edeedfsx" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -331,7 +323,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/embeddingEx2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/edeedfsx.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -340,7 +332,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="temp" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="mailing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -352,7 +344,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/temp.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mailing.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -363,11 +355,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ComStatv008" />
-        <item itemvalue="Python.ComStat_v005" />
-        <item itemvalue="Python.embeddingEx2" />
-        <item itemvalue="Python.ComStat_v007" />
-        <item itemvalue="Python.temp" />
+        <item itemvalue="Python.mailing" />
+        <item itemvalue="Python.ComStat_v0.1" />
+        <item itemvalue="Python.16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식" />
+        <item itemvalue="Python.edeedfsx" />
+        <item itemvalue="Python.ComStat_v001" />
       </list>
     </recent_temporary>
   </component>
@@ -394,15 +386,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-7" y="0" width="854" height="1017" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10434258" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2120098" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295964" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29932734" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30237827" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39461884" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -410,7 +402,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3295583" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50060314" side_tool="true" weight="0.22982062" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49939686" weight="0.24439462" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.5560538" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3578709" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -432,33 +424,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/13-xx00 선생님꺼.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="539" column="46" selection-start-line="539" selection-start-column="46" selection-end-line="539" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/PIL/Image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="2704" selection-start-line="2704" selection-end-line="2704" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/12-02 컴퓨터비전 칼라 순수라이브러리 Easy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/13선생님꺼 보고 배낄거.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
@@ -710,20 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="2225" selection-start-line="2225" selection-end-line="2225" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="1713" column="19" lean-forward="true" selection-start-line="1713" selection-start-column="19" selection-end-line="1713" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/matplotlibDemo_decay.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
@@ -751,16 +702,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ComStat_v001.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="47" column="43" lean-forward="true" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/animationInTkinter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -781,40 +722,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/temp.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ComStat_v007.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="61" column="25" lean-forward="true" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RealEmbeddingEx.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="28" lean-forward="true" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/embeddingEx2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/matplotlib/artist.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
@@ -824,8 +731,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ComStat_v005.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-361">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/embeddingEx2.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
-          <caret line="89" column="48" lean-forward="true" selection-start-line="89" selection-start-column="48" selection-end-line="89" selection-end-column="48" />
+          <caret line="141" column="34" selection-start-line="141" selection-start-column="34" selection-end-line="141" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComStat_v007.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComStat_v001.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1425">
+          <caret line="87" column="29" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="29" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -834,8 +772,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ComStatv008.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="161" column="66" lean-forward="true" selection-start-line="161" selection-start-column="66" selection-end-line="161" selection-end-column="66" />
+        <state relative-caret-position="589">
+          <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RealEmbeddingEx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="58" column="24" lean-forward="true" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="2142" selection-start-line="2142" selection-end-line="2142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/edeedfsx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="12" lean-forward="true" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mailing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComStat_v0.1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="82" column="37" lean-forward="true" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
         </state>
       </provider>
     </entry>

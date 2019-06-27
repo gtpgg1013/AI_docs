@@ -103,6 +103,13 @@ class PageTwo(Frame):
         cpuTime3 = Label(canvasforPic, text="CPUTime-idle: " + str(psutil.cpu_times().idle))
         cpuTime4 = Label(canvasforPic, text="CPUTime-interrupt: " + str(psutil.cpu_times().interrupt))
 
+        ylim = 0
+        tcpuTimeInd = psutil.cpu_times()
+        tcpuTimeList = [tcpuTimeInd.user, tcpuTimeInd.system, tcpuTimeInd.idle, tcpuTimeInd.interrupt]
+        for tcpu in tcpuTimeList:
+            if ylim < tcpu:
+                ylim = tcpu
+
 
         cpuTime1.pack()
         cpuTime2.pack()
@@ -150,7 +157,7 @@ class PageTwo(Frame):
 
         ax = f.add_subplot(111)
         ax.set_title("CPU time")
-        ax.set_ylim(0,20000)
+        ax.set_ylim(0,ylim *1.2)
         ax.set_xlim(0,5.0)
         ax.grid(True)
         ax.set_ylabel("CPU time")
@@ -177,7 +184,7 @@ class PageTwo(Frame):
         x = 0.0
         
         def updateData(self):
-            nonlocal cpuUser, cpuSys, cpuI, cpuC
+            nonlocal cpuUser, cpuSys, cpuI, cpuC, ylim
             nonlocal x, plotCpuUser, plotCpuSys, plotCpuI, plotCpuC, t # 요놈들 쓸거임
             # print(x)
 
@@ -243,6 +250,13 @@ class PageThree(Frame):
 
         canvasforPic.pack(side=RIGHT)
 
+        ylim = 0
+        tcpuTimeInd = psutil.cpu_stats()
+        tcpuTimeList = [tcpuTimeInd.ctx_switches, tcpuTimeInd.interrupts, tcpuTimeInd.syscalls]
+        for tcpu in tcpuTimeList:
+            if ylim < tcpu:
+                ylim = tcpu
+
         # 밑에서 쓸 현재시각
         nowtime = 0
 
@@ -282,7 +296,7 @@ class PageThree(Frame):
 
         ax = f.add_subplot(111)
         ax.set_title("CPU Stat")
-        ax.set_ylim(0,500000000)
+        ax.set_ylim(0,ylim+1.2)
         ax.set_xlim(0,5.0)
         ax.grid(True)
         ax.set_ylabel("CPU Stat")
@@ -307,7 +321,7 @@ class PageThree(Frame):
         x = 0.0
         
         def updateData(self):
-            nonlocal cpuC, cpuS, cpuI
+            nonlocal cpuC, cpuS, cpuI, ylim
             nonlocal x, plotCpuCtx, plotCpuSys, plotCpuint, t # 요놈들 쓸거임
             # print(x)
 

@@ -71,9 +71,9 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
                 ############ 메일 보내기 ###############
                 s = smtplib.SMTP('smtp.gmail.com',587)
                 s.starttls()
-                s.login('gangkkformailing@gmail.com','')
+                s.login('gangkkformailing@gmail.com','jqgsngsljrhugppz')
                 msg = MIMEText('CPU 수치가 '+str(self.limit)+"을 초과한 지 "+str(self.tottime)+"초 되었습니다."
-                                                                                       "컴퓨터 사용량을 확이핸주세요.")
+                                                                                       "컴퓨터 사용량을 확인해주세요.")
                 
                 msg['Subject'] = "현재시각: "+str(datetime.now()) + "CPU 사용량 임계점 초과 경고 메일"
                 s.sendmail("gangkkformailing@gmail.com","gtpgg1013@gmail.com",msg.as_string())
@@ -162,10 +162,12 @@ class PageOne(Frame):
         hard_writeBytes = Label(self, text="Hard - writebytes : " + str(psutil.disk_io_counters().write_bytes>>20))
         hard_readTime = Label(self, text="Hard - read_time : " + str(psutil.disk_io_counters().read_time))
         hard_writeTime = Label(self, text="Hard - write_time : "+str(psutil.disk_io_counters().write_time))
-
-        netAddr_fam_MAC = Label(self, text="Network Address - family MAC : " + str(psutil.net_if_addrs()['이더넷'][0][1]))
-        netAddr_IP = Label(self, text="Network Address - IP : " + str(psutil.net_if_addrs()['이더넷'][1][1]))
-        netAddr_netmask = Label(self, text="Network Address - netmask : " + str(psutil.net_if_addrs()['이더넷'][1][2]))
+        try:
+            netAddr_fam_MAC = Label(self, text="Network Address - family MAC : " + str(psutil.net_if_addrs()['이더넷'][0][1]))
+            netAddr_IP = Label(self, text="Network Address - IP : " + str(psutil.net_if_addrs()['이더넷'][1][1]))
+            netAddr_netmask = Label(self, text="Network Address - netmask : " + str(psutil.net_if_addrs()['이더넷'][1][2]))
+        except:
+            pass
 
         memory_total = Label(self, text="Memory - total : "+str(psutil.virtual_memory().total))
         memory_available = Label(self, text="Memory - available : "+str(psutil.virtual_memory().available))
@@ -189,10 +191,12 @@ class PageOne(Frame):
         hard_writeBytes.pack()
         hard_writeTime.pack()
         hard_writeTime.pack()
-
-        netAddr_fam_MAC.pack()
-        netAddr_IP.pack()
-        netAddr_netmask.pack()
+        try:
+            netAddr_fam_MAC.pack()
+            netAddr_IP.pack()
+            netAddr_netmask.pack()
+        except:
+            pass
         # netAddr_broadcast.pack()
         # netAddr_ptp.pack()
 

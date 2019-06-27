@@ -1,21 +1,20 @@
 import matplotlib
 
 matplotlib.use("TkAgg")
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from tkinter import *
-import numpy as np
 import matplotlib.animation as animation
 import psutil
 import threading
 import time
-import math
 import datetime
 import platform
 from tkinter import font
 import cv2
 import numpy as np
 from PIL import Image, ImageFilter, ImageEnhance, ImageOps
+import shutil
 
 
 LARGE_FONT = ("Verdana", 12)
@@ -27,26 +26,40 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
         Tk.__init__(self, *args, **kwargs) # 상속받았으므로 tk.Tk(부모꺼)도 해줌
 
         Tk.iconbitmap(self) # 걍 아이콘
-        Tk.title(self, "Comstat v0.1") # 이름 만들어주기
+        Tk.title(self, "Comstat v0.2") # 이름 만들어주기
         Tk.wm_geometry(self,"1180x590")
         Tk.wm_resizable(self, width=False, height=False)
 
-        container = Frame(self) # 컨테이너라는 놈 프레임으로 만들어주고
-        container.pack(side="top", fill="both", expand=True) # 컨테이너 붙이고
-        container.grid_rowconfigure(0, weight=1) # row 설정
-        container.grid_columnconfigure(0, weight=1) # col 설정
+        self.container = Frame(self) # 컨테이너라는 놈 프레임으로 만들어주고
+        self.container.pack(side="top", fill="both", expand=True) # 컨테이너 붙이고
+        self.container.grid_rowconfigure(0, weight=1) # row 설정
+        self.container.grid_columnconfigure(0, weight=1) # col 설정
 
-        self.frames = {} # frames라는 딕셔너리 필드 선언
+        self.frames = [] # frames라는 리스트 필드 선언
 
-        for F in (StartPage, PageOne, PageTwo, PageThree, PageFour):
-            frame = F(container, self)
-            # print(frame)
+        firstFrame = StartPage(self.container, self)
+        firstFrame.grid(row=0, column=0, sticky="nsew")
 
-            self.frames[F] = frame # 딕셔너리에 저장
+        self.frames.append(firstFrame)
+        firstFrame.tkraise()
 
-            frame.grid(row=0, column=0, sticky="nsew")
+    def show_frame(self, cont):  # 페이지 띄우는 메서드
+        self.frames.pop().destroy()
+        frame = cont(self.container, self)
+        frame.pack()
+        frame.tkraise()  # 프레임이 여러개일 때 맨 앞으로 가져오는 메서드
+        self.frames.append(frame)
 
-        self.show_frame(StartPage) # 스타트 페이지 보이기
+
+        # for F in (StartPage, PageOne, PageTwo, PageThree, PageFour):
+        #     frame = F(container, self)
+        #     # print(frame)
+        #
+        #     self.frames[F] = frame # 딕셔너리에 저장
+
+        #     frame.grid(row=0, column=0, sticky="nsew")
+
+        # self.show_frame(StartPage) # 스타트 페이지 보이기
 
         self.cpuflag = False
         self.tottime = 0
@@ -67,7 +80,6 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
                 self.tottime = 0
                 self.cpuflag = False
             if self.tottime > 4:
-<<<<<<< HEAD
                 try:
                     print("over, send a email to the user")
                     ############ 메일 보내기 ###############
@@ -85,29 +97,13 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
                     self.cpuflag == False
                 except:
                     pass
-=======
-                print("over, send a email to the user")
-                ############ 메일 보내기 ###############
-                s = smtplib.SMTP('smtp.gmail.com',587)
-                s.starttls()
-                s.login('gangkkformailing@gmail.com','jqgsngsljrhugppz')
-                msg = MIMEText('CPU 수치가 '+str(self.limit)+"을 초과한 지 "+str(self.tottime)+"초 되었습니다."
-                                                                                       "컴퓨터 사용량을 확인해주세요.")
-                
-                msg['Subject'] = "현재시각: "+str(datetime.now()) + "CPU 사용량 임계점 초과 경고 메일"
-                s.sendmail("gangkkformailing@gmail.com","gtpgg1013@gmail.com",msg.as_string())
-                s.quit()
-
-                ############ 메일 송신 완료 ############
-                self.cpuflag == False
->>>>>>> e8cffbb1a4afdea4ceb3c43d6d088cac116fd859
             timer.start()
 
         cpuSendEmail()
 
-    def show_frame(self, cont): # 페이지 띄우는 메서드
-        frame = self.frames[cont] # 프레임 딕셔너리의 몇번째 프레임
-        frame.tkraise() # 프레임이 여러개일 때 맨 앞으로 가져오는 메서드
+    # def show_frame(self, cont): # 페이지 띄우는 메서드
+    #     frame = self.frames[cont] # 프레임 딕셔너리의 몇번째 프레임
+    #     frame.tkraise() # 프레임이 여러개일 때 맨 앞으로 가져오는 메서드
 
 
 class StartPage(Frame): # 첫번째 페이지 # Frame을 상속받은 비슷한 머시기에다가 self를 쓰면 계속 달아주겠다는 말
@@ -116,7 +112,7 @@ class StartPage(Frame): # 첫번째 페이지 # Frame을 상속받은 비슷한 
         Frame.__init__(self, parent)
 
         bigFont = font.Font(self, family='Courier',size=40,weight='bold')
-        label = Label(self, text="COM_STAT v0.1", font=bigFont, height=1) # 라벨 써주고
+        label = Label(self, text="COM_STAT v0.2", font=bigFont, height=1) # 라벨 써주고
 
         label.pack(pady=50, padx=10)
 
@@ -176,21 +172,25 @@ class PageOne(Frame):
         cpuFreq_mx = Label(self, text="CPUFreq - max : " + str(psutil.cpu_freq().max))
         cpuFreq_min = Label(self, text="CPUFreq - min : " + str(psutil.cpu_freq().min))
 
+        diskLabel = 'c:\\'
+        tot, used, free = shutil.disk_usage(diskLabel)
+        hard_Total = Label(self, text="Hard - total : "+str(tot>>30)+"GB")
+        hard_Used = Label(self, text="Hard - Used : " +str(used>>30)+"GB")
+        hard_free = Label(self, text="Hard - free : "+str(free>>30)+"GB")
+
         hard_readCount = Label(self, text="Hard - readcount : " + str(psutil.disk_io_counters().read_count>>20))
         hard_writeCount = Label(self, text="Hard - writecount : " + str(psutil.disk_io_counters().write_count>>20))
         hard_readBytes = Label(self, text="Hard - readbytes : " + str(psutil.disk_io_counters().read_bytes>>20))
         hard_writeBytes = Label(self, text="Hard - writebytes : " + str(psutil.disk_io_counters().write_bytes>>20))
         hard_readTime = Label(self, text="Hard - read_time : " + str(psutil.disk_io_counters().read_time))
         hard_writeTime = Label(self, text="Hard - write_time : "+str(psutil.disk_io_counters().write_time))
-        try:
-            netAddr_fam_MAC = Label(self, text="Network Address - family MAC : " + str(psutil.net_if_addrs()['이더넷'][0][1]))
-            netAddr_IP = Label(self, text="Network Address - IP : " + str(psutil.net_if_addrs()['이더넷'][1][1]))
-            netAddr_netmask = Label(self, text="Network Address - netmask : " + str(psutil.net_if_addrs()['이더넷'][1][2]))
-        except:
-            pass
 
-        memory_total = Label(self, text="Memory - total : "+str(psutil.virtual_memory().total))
-        memory_available = Label(self, text="Memory - available : "+str(psutil.virtual_memory().available))
+        netAddr_fam_MAC = Label(self, text="Network Address - family MAC : " + str(psutil.net_if_addrs()['이더넷'][0][1]))
+        netAddr_IP = Label(self, text="Network Address - IP : " + str(psutil.net_if_addrs()['이더넷'][1][1]))
+        netAddr_netmask = Label(self, text="Network Address - netmask : " + str(psutil.net_if_addrs()['이더넷'][1][2]))
+
+        memory_total = Label(self, text="Memory - total : "+str(psutil.virtual_memory().total>>30)+"GB")
+        # memory_available = Label(self, text="Memory - available : "+str(psutil.virtual_memory().available>>30)+"GB")
 
 
 
@@ -201,30 +201,32 @@ class PageOne(Frame):
 
         # pack
 
-        cpuFreq_c.pack()
-        cpuFreq_mx.pack()
-        cpuFreq_min.pack()
+        cpuFreq_c.pack(side=BOTTOM,expand=YES,pady=5)
+        cpuFreq_mx.pack(side=BOTTOM,expand=YES,pady=5)
+        cpuFreq_min.pack(side=BOTTOM,expand=YES,pady=5)
 
-        hard_readCount.pack()
-        hard_writeCount.pack()
-        hard_readBytes.pack()
-        hard_writeBytes.pack()
-        hard_writeTime.pack()
-        hard_writeTime.pack()
-        try:
-            netAddr_fam_MAC.pack()
-            netAddr_IP.pack()
-            netAddr_netmask.pack()
-        except:
-            pass
+        hard_Total.pack(side=BOTTOM,expand=YES,pady=5)
+        hard_Used.pack(side=BOTTOM,expand=YES,pady=5)
+        hard_free.pack(side=BOTTOM,expand=YES,pady=5)
+
+        hard_readCount.pack(side=BOTTOM,expand=YES,pady=5)
+        hard_writeCount.pack(side=BOTTOM,expand=YES,pady=5)
+        hard_readBytes.pack(side=BOTTOM,expand=YES,pady=5)
+        hard_writeBytes.pack(side=BOTTOM,expand=YES,pady=5)
+        hard_writeTime.pack(side=BOTTOM,expand=YES,pady=5)
+        hard_writeTime.pack(side=BOTTOM,expand=YES,pady=5)
+
+        netAddr_fam_MAC.pack(side=BOTTOM,expand=YES,pady=5)
+        netAddr_IP.pack(side=BOTTOM,expand=YES,pady=5)
+        netAddr_netmask.pack(side=BOTTOM,expand=YES,pady=5)
         # netAddr_broadcast.pack()
         # netAddr_ptp.pack()
 
-        memory_total.pack()
-        memory_available.pack()
+        memory_total.pack(side=BOTTOM,expand=YES,pady=5)
+        # memory_available.pack(side=BOTTOM,expand=YES,pady=5)
 
-        bootTime.pack()
-        UserName.pack()
+        bootTime.pack(side=BOTTOM,expand=YES,pady=5)
+        UserName.pack(side=BOTTOM,expand=YES,pady=5)
 
 
 
@@ -401,9 +403,9 @@ class PageThree(Frame):
         button3.pack()
 
         canvasforPic = Canvas(self)
-        cpustats1 = Label(canvasforPic, text="Ctx_switches: " + str(psutil.cpu_stats().ctx_switches>>20))
-        cpustats2 = Label(canvasforPic, text="interrupts: " + str(psutil.cpu_stats().interrupts>>20))
-        cpustats3 = Label(canvasforPic, text="syscalls: " + str(psutil.cpu_stats().syscalls>>20))
+        cpustats1 = Label(canvasforPic, text="Ctx_switches: " + str(psutil.cpu_stats().ctx_switches))
+        cpustats2 = Label(canvasforPic, text="interrupts: " + str(psutil.cpu_stats().interrupts))
+        cpustats3 = Label(canvasforPic, text="syscalls: " + str(psutil.cpu_stats().syscalls))
 
 
         cpustats1.pack()
@@ -414,7 +416,7 @@ class PageThree(Frame):
 
         ylim = 0
         tcpuTimeInd = psutil.cpu_stats()
-        tcpuTimeList = [tcpuTimeInd.ctx_switches>>20, tcpuTimeInd.interrupts>>20, tcpuTimeInd.syscalls>>20]
+        tcpuTimeList = [tcpuTimeInd.ctx_switches*0.01, tcpuTimeInd.interrupts*0.01, tcpuTimeInd.syscalls*0.01]
         for tcpu in tcpuTimeList:
             if ylim < tcpu:
                 ylim = tcpu
@@ -428,10 +430,10 @@ class PageThree(Frame):
             
             try:
                 timer = threading.Timer(1, refreshHWIndicators)
-                cpustats1.configure(text="Ctx_switches: " + str(psutil.cpu_stats().ctx_switches>>20))
+                cpustats1.configure(text="Ctx_switches: " + str(psutil.cpu_stats().ctx_switches))
                 # print(str(psutil.cpu_stats().ctx_switches))
-                cpustats2.configure(text="interrupts: " + str(psutil.cpu_stats().interrupts>>20))
-                cpustats3.configure(text="syscalls: " + str(psutil.cpu_stats().syscalls>>20))
+                cpustats2.configure(text="interrupts: " + str(psutil.cpu_stats().interrupts))
+                cpustats3.configure(text="syscalls: " + str(psutil.cpu_stats().syscalls))
 
                 nowtime = time.time()
 
@@ -489,9 +491,9 @@ class PageThree(Frame):
 
             cpuTimeInd = psutil.cpu_stats()
             cpuTimeList = [[cpuTimeInd.ctx_switches], [cpuTimeInd.interrupts], [cpuTimeInd.syscalls]]
-            tmpCpuC = cpuTimeList[0][0]>>20
-            tmpCpuI = cpuTimeList[1][0]>>20
-            tmpCpuS = cpuTimeList[2][0]>>20
+            tmpCpuC = cpuTimeList[0][0]*0.01
+            tmpCpuI = cpuTimeList[1][0]*0.01
+            tmpCpuS = cpuTimeList[2][0]*0.01
             # print(tmpCpuC)
             cpuC = np.append(cpuC,tmpCpuC)
             cpuI = np.append(cpuI,tmpCpuI)
@@ -548,16 +550,15 @@ class PageFour(Frame):
         #########################################################################
         ############# 요기 캔버스에다가 사진을 박을거임 #########################
         #########################################################################
-        inImage, outImage = None, None
-        inH, inW, outH, outW = [0] * 4
-        photo, cvPhoto = None, None
-        paper = None
-        canvasforPic = None
+        self.inImage, self.outImage = None, None
+        self.inH, self.inW, self.outH, self.outW = [0] * 4
+        self.photo, self.cvPhoto = None, None
+        self.paper = None
+        self.canvasforPic = None
+        self.canvasforLabel = Canvas(self, height=200, width=300)
         # canvasforPic = Canvas(self)
 
         def loadImageColor(self,fnameOrCvData):
-            nonlocal paper, inImage, outImage, inH, inW, outH, outW
-            nonlocal photo, cvPhoto, canvasforPic
             #######################################
             ### PIL 객체 --> OpenCV 객체로 복사 ###
             ## 이거 왜 되는지 잘 생각해보자!!
@@ -566,75 +567,91 @@ class PageFour(Frame):
             else:
                 cvData = fnameOrCvData  # 이거 들여쓰기 안해서 실행이 안됬었음
 
-            cvPhoto = cv2.cvtColor(cvData, cv2.COLOR_BGR2RGB)  # 중요한 CV개체 # 이거 numpy array임
+            self.cvPhoto = cv2.cvtColor(cvData, cv2.COLOR_BGR2RGB)  # 중요한 CV개체 # 이거 numpy array임
             # print(cvPhoto)
 
-            photo = Image.fromarray(cvPhoto)
+            self.photo = Image.fromarray(self.cvPhoto)
             # print(type(photo))
-            inW, inH = photo.size  # (photo.width, photo.height)
-            outW, outH = inW, inH
+            self.inW, self.inH = self.photo.size  # (photo.width, photo.height)
+            self.outW, self.outH = self.inW, self.inH
 
             # 캔버스 제작
             # self를 붙여야 이게 됨
-            canvasforPic = Canvas(self, height=inH, width=inW)
+            self.canvasforPic = Canvas(self, height=self.inH, width=self.inW)
 
             #######################################
-            inImage = np.array(photo)
-            outImage = inImage.copy()
+            self.inImage = np.array(self.photo)
+            self.outImage = self.inImage[:]
+
             # print(outImage)
 
-        def displayImageColor():
-            nonlocal paper, inImage, outImage, inH, inW, outH, outW
-            nonlocal cvPhoto, canvasforPic
-            VIEW_X, VIEW_Y = inW, inH
+        def displayImageColor(self):
             # print(VIEW_X)
             ## 고정된 화면 크기
             # 가로/세로 비율 계산
+            # if self.canvasforPic != None:
+            #     self.canvasforPic.destroy()
 
-            paper = PhotoImage(height=outH, width=outW)
+            # self.canvasforPic = Canvas(self, height=self.inH, width=self.inW)
+
+            self.paper = PhotoImage(height=self.inH, width=self.inW)
+            self.canvasforPic.create_image((self.inW//2 , self.inH//2) , image=self.paper, state='normal')
             # paper = PhotoImage('CPU.PNG')
-            canvasforPic.create_image((outH // 2, outW // 2), image=paper, state='normal')
+
+            # print(self.inH, self.inW)
             # print(outH)
             import numpy
             rgbStr = ''  # 전체 픽셀의 문자열을 저장
-            for i in numpy.arange(0, outH):
+            for i in numpy.arange(self.inH):
                 tmpStr = ''
-                for k in numpy.arange(0, outW):
+                for k in numpy.arange(self.inW):
                     i = int(i);
                     k = int(k)
-                    r, g, b = outImage[i, k, R], outImage[i, k, G], outImage[i, k, B]
+                    r, g, b = self.outImage[i, k, R], self.outImage[i, k, G], self.outImage[i, k, B]
                     tmpStr += ' #%02x%02x%02x' % (r, g, b)
                 rgbStr += '{' + tmpStr + '} '
-            # print(rgbStr)
-            paper.put(rgbStr)
+            # print(len(rgbStr))
+            self.paper.put(rgbStr)
             # print(paper)
 
-            inImage = outImage.copy()
-            cvPhoto = outImage.copy()
+            # self.inImage = self.outImage.copy()
+            # self.cvPhoto = self.outImage.copy()
 
-            canvasforPic.pack(expand=1, anchor=CENTER)
+            self.canvasforPic.pack(side=LEFT)
+
+        def changecolorAlongCpuUsage(self):
+            print("sdffsd")
+            self.outImage = self.outImage.astype(np.float64)
+            self.outImage[:,:,R] = np.ones((self.inH,self.inW), dtype=np.float64) * psutil.cpu_percent() * 255
+            print(self.outImage[:,:,R])
+            print('---------------------------')
+            print(self.inImage[:, :, R])
+            self.outImage = self.outImage.astype(np.uint8)
+            # displayImageColor(self)
 
 
+
+
+        # print("asdasdsadasdasdasdsadasdads")
         # canvasforPic = Canvas(self, height=inH, width=inW)
-        loadImageColor(self,"CPU.PNG") # inImage, inH, inW, outH, outW 설정
-        # print(canvasforPic)
-        # print(inImage)
-        print(type(outImage))
-        displayImageColor()
+        loadImageColor(self, "CPU.PNG") # inImage, inH, inW, outH, outW 설정
+        # print(self.canvasforPic)
+        # print(self.inImage)
+        # print(type(self.outImage))
+        displayImageColor(self)
         # canvasforPic.pack(expand=1, anchor=CENTER, side=RIGHT)
 
         #########################################################################################
         ##################### 여기까지 그림박기 끝 ##############################################
         #########################################################################################
         #
-        cpuI = Label(canvasforPic, text="Cpu Usage percent: " + str(psutil.cpu_percent()))
-        ramI = Label(canvasforPic, text="Ram Usage percent: " + str(psutil.virtual_memory().percent))
+        cpuI = Label(self.canvasforLabel, text="Cpu Usage percent: " + str(psutil.cpu_percent()))
+        ramI = Label(self.canvasforLabel, text="Ram Usage percent: " + str(psutil.virtual_memory().percent))
 
         cpuI.pack(side=BOTTOM)
         ramI.pack(side=BOTTOM)
 
-
-        canvasforPic.pack(side=RIGHT)
+        self.canvasforLabel.pack(side=RIGHT)
 
         ylim = 100
         cpuRamList = [psutil.cpu_percent(), psutil.virtual_memory().percent]
@@ -654,9 +671,8 @@ class PageFour(Frame):
                 cpuI.configure(text="CPU Usage: " + str(psutil.cpu_percent()))
                 # print(str(psutil.cpu_stats().ctx_switches))
                 ramI.configure(text="RAM Usage: " + str(psutil.virtual_memory().percent))
-
-                nowtime = time.time()
-
+                changecolorAlongCpuUsage(self)
+                displayImageColor(self)
                 timer.start()
             except:
                 pass
@@ -749,9 +765,6 @@ inImage, outImage = None, None # 이제 넘파이로 다룰래
 inH, inW, outH, outW = [0] * 4
 window, canvas, paper = None, None, None
 filename = ""
-panYN = False
-sx, sy, ex, ey = [0] * 4
-VIEW_X, VIEW_Y = 512, 512  # 화면에 보일 크기 (출력용)
 
 
 #  메인 코드

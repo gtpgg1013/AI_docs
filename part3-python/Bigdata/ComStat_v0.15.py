@@ -1,10 +1,9 @@
 import matplotlib
 
 matplotlib.use("TkAgg")
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 from tkinter import *
-import numpy as np
 import matplotlib.animation as animation
 import psutil
 import threading
@@ -27,7 +26,7 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
         Tk.__init__(self, *args, **kwargs) # 상속받았으므로 tk.Tk(부모꺼)도 해줌
 
         Tk.iconbitmap(self) # 걍 아이콘
-        Tk.title(self, "Comstat v0.1") # 이름 만들어주기
+        Tk.title(self, "Comstat v0.15") # 이름 만들어주기
         Tk.wm_geometry(self,"1180x590")
         Tk.wm_resizable(self, width=False, height=False)
 
@@ -67,7 +66,6 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
                 self.tottime = 0
                 self.cpuflag = False
             if self.tottime > 4:
-<<<<<<< HEAD
                 try:
                     print("over, send a email to the user")
                     ############ 메일 보내기 ###############
@@ -85,22 +83,6 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
                     self.cpuflag == False
                 except:
                     pass
-=======
-                print("over, send a email to the user")
-                ############ 메일 보내기 ###############
-                s = smtplib.SMTP('smtp.gmail.com',587)
-                s.starttls()
-                s.login('gangkkformailing@gmail.com','jqgsngsljrhugppz')
-                msg = MIMEText('CPU 수치가 '+str(self.limit)+"을 초과한 지 "+str(self.tottime)+"초 되었습니다."
-                                                                                       "컴퓨터 사용량을 확인해주세요.")
-                
-                msg['Subject'] = "현재시각: "+str(datetime.now()) + "CPU 사용량 임계점 초과 경고 메일"
-                s.sendmail("gangkkformailing@gmail.com","gtpgg1013@gmail.com",msg.as_string())
-                s.quit()
-
-                ############ 메일 송신 완료 ############
-                self.cpuflag == False
->>>>>>> e8cffbb1a4afdea4ceb3c43d6d088cac116fd859
             timer.start()
 
         cpuSendEmail()
@@ -116,7 +98,7 @@ class StartPage(Frame): # 첫번째 페이지 # Frame을 상속받은 비슷한 
         Frame.__init__(self, parent)
 
         bigFont = font.Font(self, family='Courier',size=40,weight='bold')
-        label = Label(self, text="COM_STAT v0.1", font=bigFont, height=1) # 라벨 써주고
+        label = Label(self, text="COM_STAT v0.15", font=bigFont, height=1) # 라벨 써주고
 
         label.pack(pady=50, padx=10)
 
@@ -182,12 +164,10 @@ class PageOne(Frame):
         hard_writeBytes = Label(self, text="Hard - writebytes : " + str(psutil.disk_io_counters().write_bytes>>20))
         hard_readTime = Label(self, text="Hard - read_time : " + str(psutil.disk_io_counters().read_time))
         hard_writeTime = Label(self, text="Hard - write_time : "+str(psutil.disk_io_counters().write_time))
-        try:
-            netAddr_fam_MAC = Label(self, text="Network Address - family MAC : " + str(psutil.net_if_addrs()['이더넷'][0][1]))
-            netAddr_IP = Label(self, text="Network Address - IP : " + str(psutil.net_if_addrs()['이더넷'][1][1]))
-            netAddr_netmask = Label(self, text="Network Address - netmask : " + str(psutil.net_if_addrs()['이더넷'][1][2]))
-        except:
-            pass
+
+        netAddr_fam_MAC = Label(self, text="Network Address - family MAC : " + str(psutil.net_if_addrs()['이더넷'][0][1]))
+        netAddr_IP = Label(self, text="Network Address - IP : " + str(psutil.net_if_addrs()['이더넷'][1][1]))
+        netAddr_netmask = Label(self, text="Network Address - netmask : " + str(psutil.net_if_addrs()['이더넷'][1][2]))
 
         memory_total = Label(self, text="Memory - total : "+str(psutil.virtual_memory().total))
         memory_available = Label(self, text="Memory - available : "+str(psutil.virtual_memory().available))
@@ -211,12 +191,10 @@ class PageOne(Frame):
         hard_writeBytes.pack()
         hard_writeTime.pack()
         hard_writeTime.pack()
-        try:
-            netAddr_fam_MAC.pack()
-            netAddr_IP.pack()
-            netAddr_netmask.pack()
-        except:
-            pass
+
+        netAddr_fam_MAC.pack()
+        netAddr_IP.pack()
+        netAddr_netmask.pack()
         # netAddr_broadcast.pack()
         # netAddr_ptp.pack()
 

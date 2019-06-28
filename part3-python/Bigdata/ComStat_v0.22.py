@@ -26,7 +26,7 @@ class SeaofBTCapp(Tk): # Tk를 상속받은 놈
         Tk.__init__(self, *args, **kwargs) # 상속받았으므로 tk.Tk(부모꺼)도 해줌
 
         Tk.iconbitmap(self) # 걍 아이콘
-        Tk.title(self, "Comstat v0.2") # 이름 만들어주기
+        Tk.title(self, "Comstat v0.22") # 이름 만들어주기
         Tk.wm_geometry(self,"1180x590")
         Tk.wm_resizable(self, width=False, height=False)
 
@@ -112,7 +112,7 @@ class StartPage(Frame): # 첫번째 페이지 # Frame을 상속받은 비슷한 
         Frame.__init__(self, parent)
 
         bigFont = font.Font(self, family='Courier',size=40,weight='bold')
-        label = Label(self, text="COM_STAT v0.2", font=bigFont, height=1) # 라벨 써주고
+        label = Label(self, text="COM_STAT v0.22", font=bigFont, height=1) # 라벨 써주고
 
         label.pack(pady=50, padx=10)
 
@@ -185,9 +185,12 @@ class PageOne(Frame):
         hard_readTime = Label(self, text="Hard - read_time : " + str(psutil.disk_io_counters().read_time))
         hard_writeTime = Label(self, text="Hard - write_time : "+str(psutil.disk_io_counters().write_time))
 
-        netAddr_fam_MAC = Label(self, text="Network Address - family MAC : " + str(psutil.net_if_addrs()['이더넷'][0][1]))
-        netAddr_IP = Label(self, text="Network Address - IP : " + str(psutil.net_if_addrs()['이더넷'][1][1]))
-        netAddr_netmask = Label(self, text="Network Address - netmask : " + str(psutil.net_if_addrs()['이더넷'][1][2]))
+        try:
+            netAddr_fam_MAC = Label(self, text="Network Address - family MAC : " + str(psutil.net_if_addrs()['이더넷'][0][1]))
+            netAddr_IP = Label(self, text="Network Address - IP : " + str(psutil.net_if_addrs()['이더넷'][1][1]))
+            netAddr_netmask = Label(self, text="Network Address - netmask : " + str(psutil.net_if_addrs()['이더넷'][1][2]))
+        except:
+            pass
 
         memory_total = Label(self, text="Memory - total : "+str(psutil.virtual_memory().total>>30)+"GB")
         # memory_available = Label(self, text="Memory - available : "+str(psutil.virtual_memory().available>>30)+"GB")
@@ -216,9 +219,12 @@ class PageOne(Frame):
         hard_writeTime.pack(side=BOTTOM,expand=YES,pady=5)
         hard_writeTime.pack(side=BOTTOM,expand=YES,pady=5)
 
-        netAddr_fam_MAC.pack(side=BOTTOM,expand=YES,pady=5)
-        netAddr_IP.pack(side=BOTTOM,expand=YES,pady=5)
-        netAddr_netmask.pack(side=BOTTOM,expand=YES,pady=5)
+        try:
+            netAddr_fam_MAC.pack(side=BOTTOM,expand=YES,pady=5)
+            netAddr_IP.pack(side=BOTTOM,expand=YES,pady=5)
+            netAddr_netmask.pack(side=BOTTOM,expand=YES,pady=5)
+        except:
+            pass
         # netAddr_broadcast.pack()
         # netAddr_ptp.pack()
 

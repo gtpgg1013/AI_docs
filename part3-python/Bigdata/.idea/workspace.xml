@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part4-ML/MLpy/numpy_0701.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../part4-ML/MLpy/numpy_0701.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,17 +14,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/heap.py">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/algorithmPy/Dj_01.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/treeEx1.py">
+        <entry file="file://$PROJECT_DIR$/algorithmPy/treeEx1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+            <state relative-caret-position="252">
+              <caret line="15" column="97" lean-forward="true" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
             </state>
           </provider>
         </entry>
@@ -84,9 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Code11-01 리뷰 DB연동.py" />
-        <option value="$PROJECT_DIR$/Code11-02 리뷰 DB조회.py" />
-        <option value="$PROJECT_DIR$/11quiz1.py" />
         <option value="$PROJECT_DIR$/Code10-05 컴퓨터비전 11 Numpy 01.py" />
         <option value="$PROJECT_DIR$/Code10-00 컴퓨터비전 numpy.py" />
         <option value="$PROJECT_DIR$/mergesort00.py" />
@@ -135,6 +136,9 @@
         <option value="$PROJECT_DIR$/ComStat_v0.22.py" />
         <option value="$PROJECT_DIR$/heap.py" />
         <option value="$PROJECT_DIR$/treeEx1.py" />
+        <option value="$PROJECT_DIR$/algorithmPy/binarySearchTreeEx1.py" />
+        <option value="$PROJECT_DIR$/algorithmPy/bsTEx2.py" />
+        <option value="$PROJECT_DIR$/algorithmPy/treeEx1.py" />
       </list>
     </option>
   </component>
@@ -168,6 +172,11 @@
             <path>
               <item name="Bigdata" type="b2602c69:ProjectViewProjectNode" />
               <item name="Bigdata" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bigdata" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bigdata" type="462c0819:PsiDirectoryNode" />
+              <item name="algorithmPy" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -373,38 +382,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/14-01 머신러닝 scikit-learn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/mnist/원본/mnist_tocsv.py" />
-    <entry file="file://$PROJECT_DIR$/quiz14-1 and게이트 훈련.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/14-04 머신러닝 scikit-learn 04(붓꽃) 최종.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/mnist/mnist_tocsv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/14-05 머신러닝 scikit-learn 05(Mnist).py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -762,7 +739,42 @@
     <entry file="file://$PROJECT_DIR$/treeEx1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
-          <caret line="36" column="26" lean-forward="true" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithmPy/bsTEx2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithmPy/binarySearchTreeEx1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithmPy/Dajikstra_Basic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="2" column="23" lean-forward="true" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithmPy/Dj_01.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithmPy/treeEx1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="97" lean-forward="true" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
         </state>
       </provider>
     </entry>

@@ -4,9 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/15-01 머신러닝 Mnist GUI 툴(개선1).py" line="187" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../part4-ML/MLpy/numpy_0701.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../part4-ML/MLpy/numpy_0701.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,21 +12,39 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/algorithmPy/Dj_01.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="76">
-              <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/algorithmPy/treeEx1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="15" column="97" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ComStat_v0.22.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="570">
+              <caret line="195" column="74" selection-start-line="195" selection-start-column="74" selection-end-line="195" selection-end-column="74" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/algorithmPy/treeEx1.py">
+        <entry file="file://$PROJECT_DIR$/ComStat_v0.23_class_beta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="15" column="97" lean-forward="true" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
+            <state relative-caret-position="8341">
+              <caret line="757" lean-forward="true" selection-start-line="757" selection-end-line="757" />
             </state>
           </provider>
         </entry>
@@ -152,7 +168,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="854" />
     <option name="height" value="1017" />
@@ -345,9 +361,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="854" height="1017" extended-state="0" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2120098" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10434258" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -382,16 +398,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/14-05 머신러닝 scikit-learn 05(Mnist).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/unittest/test/testmock/testpatch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -651,9 +657,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dajikstra.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Dajikstra.py" />
     <entry file="file://$PROJECT_DIR$/Code03-09 MySQL 데이터 입력.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -664,13 +668,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Dj_01.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Dj_01.py" />
     <entry file="file://$PROJECT_DIR$/mailing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -705,20 +703,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ComStat_v0.22.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="398" column="47" lean-forward="true" selection-start-line="398" selection-start-column="47" selection-end-line="398" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dajikstra_Basic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Dajikstra_Basic.py" />
     <entry file="file://$PROJECT_DIR$/Code05-05 파일목록.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -733,16 +718,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/heap.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/treeEx1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="36" column="26" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/heap.py" />
+    <entry file="file://$PROJECT_DIR$/treeEx1.py" />
     <entry file="file://$PROJECT_DIR$/algorithmPy/bsTEx2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -767,14 +744,28 @@
     <entry file="file://$PROJECT_DIR$/algorithmPy/Dj_01.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
-          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/algorithmPy/treeEx1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="15" column="97" lean-forward="true" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
+          <caret line="15" column="97" selection-start-line="15" selection-start-column="97" selection-end-line="15" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComStat_v0.22.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="195" column="74" selection-start-line="195" selection-start-column="74" selection-end-line="195" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ComStat_v0.23_class_beta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8341">
+          <caret line="757" lean-forward="true" selection-start-line="757" selection-end-line="757" />
         </state>
       </provider>
     </entry>

@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../part4-ML/MLpy/.ipynb_checkpoints/Day15_0722_lecture-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../part4-ML/MLpy/.ipynb_checkpoints/Day15_0722_lecture-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part4-ML/MLpy/722_teacher.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../part4-ML/MLpy/722_teacher.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../part4-ML/MLpy/Day15_0722_lecture.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../part4-ML/MLpy/Day15_0722_lecture.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../part4-ML/MLpy/submission_bike_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../part4-ML/MLpy/submission_bike_1.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/algorithmPy/bj_2579.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+            <state relative-caret-position="285">
+              <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -65,16 +66,25 @@
         <entry file="file://$PROJECT_DIR$/algorithmPy/bj_2589_re.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="228">
-              <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/algorithmPy/bj_7576.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/algorithmPy/bj_7576.py">
+        <entry file="file://$PROJECT_DIR$/algorithmPy/distance_edit.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="38" column="19" lean-forward="true" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+            <state relative-caret-position="551">
+              <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -134,7 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/12-00 컴퓨터 비전 직접 구현 load함수 사용.py" />
         <option value="$PROJECT_DIR$/12-02 컴퓨터비전 칼라 순수라이브러리 Easy.py" />
         <option value="$PROJECT_DIR$/12-03 컴퓨터 비전(딥러닝) 직접 구현 01.py" />
         <option value="$PROJECT_DIR$/13-xx00 선생님꺼.py" />
@@ -185,6 +194,7 @@
         <option value="$PROJECT_DIR$/algorithmPy/bj_2579.py" />
         <option value="$PROJECT_DIR$/algorithmPy/bj_2589_re.py" />
         <option value="$PROJECT_DIR$/algorithmPy/bj_7576.py" />
+        <option value="$PROJECT_DIR$/algorithmPy/distance_edit.py" />
       </list>
     </option>
   </component>
@@ -198,7 +208,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="833" />
     <option name="width" value="854" />
     <option name="height" value="1017" />
@@ -252,7 +262,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.bj_7576">
+  <component name="RunManager" selected="Python.distance_edit">
     <configuration name="ComStat_v0.22" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -337,7 +347,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="mailing" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="distance_edit" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Bigdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -345,11 +355,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/algorithmPy" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mailing.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/algorithmPy/distance_edit.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -360,11 +370,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.distance_edit" />
         <item itemvalue="Python.bj_7576" />
         <item itemvalue="Python.bj_2589_re" />
         <item itemvalue="Python.bj_2579" />
         <item itemvalue="Python.ComStat_v0.22" />
-        <item itemvalue="Python.mailing" />
       </list>
     </recent_temporary>
   </component>
@@ -391,14 +401,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="833" y="0" width="854" height="1017" extended-state="0" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13357843" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06574186" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295964" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.29558325" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29484305" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39461884" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -428,13 +438,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Code10-04 컴퓨터비전 10 Excel 입출력.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14440">
-          <caret line="765" column="8" selection-start-line="765" selection-start-column="8" selection-end-line="765" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/xlwt/Row.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -766,24 +769,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithmPy/bj_2589_re.py">
+    <entry file="file://$PROJECT_DIR$/algorithmPy/bj_2579.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="29" lean-forward="true" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+        <state relative-caret-position="285">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithmPy/bj_2579.py">
+    <entry file="file://$PROJECT_DIR$/algorithmPy/bj_2589_re.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
-          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/algorithmPy/bj_7576.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="38" column="19" lean-forward="true" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+        <state relative-caret-position="76">
+          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithmPy/distance_edit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
         </state>
       </provider>
     </entry>

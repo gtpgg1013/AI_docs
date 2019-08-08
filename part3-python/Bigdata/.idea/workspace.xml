@@ -4,11 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/15-01 머신러닝 Mnist GUI 툴(개선1).py" line="187" mnemonic="9" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Bigdata.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Bigdata.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/08_07_mnist_GUI_tensorflow.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="261" column="16" lean-forward="true" selection-start-line="261" selection-start-column="16" selection-end-line="261" selection-end-column="16" />
+            <state relative-caret-position="310">
+              <caret line="262" column="17" selection-end-line="408" selection-end-column="17" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -428,7 +424,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295964" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29484305" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29484305" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39461884" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -815,8 +811,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/08_07_mnist_GUI_tensorflow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="261" column="16" lean-forward="true" selection-start-line="261" selection-start-column="16" selection-end-line="261" selection-end-column="16" />
+        <state relative-caret-position="310">
+          <caret line="262" column="17" selection-end-line="408" selection-end-column="17" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

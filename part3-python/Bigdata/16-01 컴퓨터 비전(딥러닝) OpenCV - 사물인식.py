@@ -972,7 +972,7 @@ def findStat(fname) :
                     maxValList[RGB] = inImage[i][k][RGB]
     return avgList, maxValList, minValList
 
-import pymysql
+# import pymysql
 IP_ADDR = '192.168.56.101'; USER_NAME = 'root'; USER_PASS = '1234'
 DB_NAME = 'BigData_DB'; CHAR_SET = 'utf8'
 def saveMysqlColor() :

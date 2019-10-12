@@ -12,6 +12,7 @@
 - mean, sum, count 등 기술통계값 => skipNa=True가 기본
 - merge(df1, df2, on, how, left_on, right_on,suffixes,left_index,right_index) : default is inner join
 - concat([list of dfs], axis) => axis=0 : row별 연산 / axis=1 :  column별 연산 
+- DF, series만들 때 index=pd.date_range('1/1/2000', periods=1000) : 날짜가 index로 들어간 자료생성
 
 ### 토픽
 

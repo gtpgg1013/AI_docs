@@ -1,0 +1,17 @@
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: greenyellow;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.border-box {
+    box-sizing: border-box;
+}
+
+.circle {
+    border-radius: 50%;
+}

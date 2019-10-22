@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="640f0519-ef7c-4363-aead-617bbb66b4a8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py" beforeDir="false" afterPath="$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part4-ML/Interview_preparing/20191021  KT interview Preparing.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../part4-ML/Interview_preparing/20191021  KT interview Preparing.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part4-ML/algo_kt/josep_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../part4-ML/algo_kt/josep_queue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../part4-ML/from_1021_Django/20191021/20191021 - Django Day 1.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../part4-ML/from_1021_Django/20191021/20191021 - Django Day 1.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +20,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ComStat_v0.23_class_beta.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="11267">
               <caret line="593" column="36" selection-start-line="593" selection-start-column="36" selection-end-line="593" selection-end-column="36" />
             </state>
           </provider>
@@ -27,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+            <state relative-caret-position="19">
+              <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -714,13 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ComStat_v0.23_class_beta.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="593" column="36" selection-start-line="593" selection-start-column="36" selection-end-line="593" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/algorithmPy/bj_7576.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -735,10 +730,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ComStat_v0.23_class_beta.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11267">
+          <caret line="593" column="36" selection-start-line="593" selection-start-column="36" selection-end-line="593" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/16-01 컴퓨터 비전(딥러닝) OpenCV - 사물인식.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+        <state relative-caret-position="19">
+          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

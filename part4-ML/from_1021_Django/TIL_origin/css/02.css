@@ -1,0 +1,25 @@
+* {
+    color: rebeccapurple;
+}
+
+h1 {
+    color: blue;
+}
+
+.pink {
+    color: green;
+}
+
+.blue {
+    color: skyblue;
+}
+
+.red {
+    color: red;
+}
+
+/* 맨 마지막에 red가 있어서 red가 적용 or !important / class="pink blue red" */
+
+#yello {
+    color: yellow;
+}

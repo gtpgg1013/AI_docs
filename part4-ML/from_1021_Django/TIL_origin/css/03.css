@@ -1,0 +1,34 @@
+p, h1 {
+    color: blue;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+/* 인접 선택자, 바로 붙어있는 놈에게! */
+.red + .blue + div {
+    background-color: purple;
+}
+
+ol > li {
+    color: darkcyan;
+}
+
+#mulcam > p:nth-child(2) {
+    color: red;
+}
+
+#mulcam > p:nth-of-type(2) {
+    color: green;
+}

@@ -1,0 +1,16 @@
+p {
+    font-size: 20px;
+    color: fuchsia;
+}
+
+/* class 사용 */
+.text {
+    font-size: 30px;
+    color: hotpink;
+}
+
+/* id 사용 */
+#hoho {
+    font-size: 25px;
+    color: indigo;
+}

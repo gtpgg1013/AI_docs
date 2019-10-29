@@ -25,6 +25,20 @@
 
 
 - 인공지능 에이브릴
+  - 얼굴 인식 : 얼굴 detection
+  - 대화 : 의도 파악 기반의 챗봇
+  - WKS : watson knowledge studio : 머신러닝 알고리즘을 통해 자동 데이터 분석 / 추출
+  - 음성 합성서비스 : Watson TTS
+  - 음성 인식 : Watson STT
+
+
+
+- 빅데이터 AccuInsight+
+  - 빅데이터 수집 / 처리 / 분석 / 시각화 서비스 지원
+  - ML modeler
+  - DL modeler
+  - Cloud search
+  - data insight
 
 
 
@@ -186,3 +200,7 @@
 
 
 
+### Kaggle 수업에서 배운 ML 기본개념 정리
+
+- 보팅 / 부스팅 / 스태킹
+- 

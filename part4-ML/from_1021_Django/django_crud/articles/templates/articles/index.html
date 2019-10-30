@@ -2,10 +2,14 @@
 
 {% block content %}
     <h1 class="text-center">Articles</h1>
+    <h2 class="text-center"><a href="{% url 'articles:create' %}">[NEW]</a></h2>
+    <hr>
     {% for article in articles %}
     <p>글 번호 : {{ article.pk }}</p>
     <p>글 제목 : {{ article.title }}</p>
     <p>글 내용 : {{ article.content }}</p>
+    <!-- <a href="{% url 'articles:detail' article.pk %}">[DETAIL]</a> -->
+    <a href="{{ article.get_absolute_url }}"></a>
     <hr>
     {% endfor %}
 {% endblock%}

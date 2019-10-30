@@ -44,3 +44,123 @@ GET과 POST
 
 - GET은 데이터를 가져오는 READ
 - POST는 데이터를 서버에 던지는 CREATE
+
+
+
+
+
+# Day 2
+
+### 각 게시글에 대한 세부 페이지 구성!
+
+
+
+Update는 두가지 스텝으로
+
+- 원래 데이터 가져와서 보여주고
+- 다시 수정에서 DB에 넣어줌
+
+
+
+#### 내가 이해한 기본 로직
+
+- urls.py가 가장 먼저 동작! (들어가자 마자 root page 보여주니까)
+- 그리고 그 url로 들어가면서 views에 정의된 함수로 이동!
+- views에서 정의된 함수가 실행되고 보통 html파일을 렌더링함
+- 반복
+- 그 외에 특정 task를 수행하는 url은 redirect
+
+
+
+추가 : views에서 사용되는 메소드들의 인자값은 url의 꺾새로부터 들어옴!
+
+추가 2 : delete나 update같은 작업은 POST로 작업해야 하므로 form tag : method=POST 활용!
+
+
+
+#### 실습
+
+students라는 새로운 app 만들기
+
+모델 만들고 (DB 스키마)
+
+마이그레이션하고
+
+어드민 만들고
+
+setting에서 app 추가하고
+
+crud의 urls에서 url 추가하고 / students의 url에 추가 (urls.py 만들어)
+
+template도 만들어야지
+
+django.urls의 path는 뭐하는 애지?
+
+
+
+python manage.py makemigrations : 모델의 설계도 만들기!
+
+python manage.py migrate : 실제 migrate!
+
+
+
+request 객체는 사용자가 요청한 정보 일체를 담고있는 객체!
+
+- request
+- request.path
+- request.method
+- request.headers
+- request.GET
+- request.POST
+
+
+
+onclick : 하면 할 수 있슴!
+
+
+
+그리고 url 자체가 바뀌게 되었을 때 만약 전부다 손으로 써놓은 거라면
+
+=> 고치는 건 거의 불가능! : 그래서 각 url마다 pagename을 붙여준다
+
+urls.py 맨 위에 app_name 지정해주고
+
+그리고 app_name:pagename 같은 식으로 접근하면 참 조타!
+
+**form action="{% url 'articles:edit_processing' article.pk %}" method="POST"**
+
+이런식으로 하면 됨!
+
+
+
+RESTful API
+
+- 자원 : resource
+- 행위 : method
+- 표현 : presentation
+
+자체 표현구조 (Self-descriptiveness) : URI 자체로 표현할 수 있어야 함!
+
+
+
+Rest 중심규칙
+
+- URI는 정보의 자원
+
+- 자원에 대한 행위는 HTTP Method로 표현한다! 
+- GET /users/1/read/ : 이같은 예시는 사실 RESTful하지 않다!
+- GET /users/1/ : 이게 RESTful!
+
+
+
+- '행위'에 대한 내용이 중복되지 않게 하는 게 첫번째 point일 듯
+
+
+
+리소소를 표현하는 Collection과 Document!
+
+
+
+Beautify : VS code extension
+
+깔고 전체 선택 후 f1 Beautify 하면 이쁘게 들여쓰기 함

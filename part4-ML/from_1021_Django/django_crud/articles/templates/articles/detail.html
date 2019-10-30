@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center">DETAIL</h1>
+    <h2>{{ article.pk }}번째 글</h2>
+    <hr>
+    <p>제목 : {{ article.title }}</p>
+    <p>내용 : {{ article.content }}</p>
+    <p>작성 시각 : {{ article.created_at|date:"SHORT_DATE_FORMAT" }}</p>
+    <p>수정 시각 : {{ article.updated_at|date:"M,j,Y" }}</p>
+    <!-- <form action="/articles/{{article.pk}}/delete/", method="POST"> -->
+    <!-- 밑에것 처럼 url이름으로 매핑해줄 수 있음 / 인자는 뒤에다 써줌! -->
+    <form action="{% url 'articles:delete' article.pk %}", method="POST"> 
+        {% csrf_token %}
+        <input type="submit" value="DELETE" onclick="return confirm('삭제하시겠어요?')">
+    </form>
+    <form action="{% url 'articles:update' article.pk %}", method="GET">
+        <input type="submit" value="EDIT">
+    </form>
+    <a href="{% url 'articles:index' %}">[BACK]</a>
+{% endblock %}

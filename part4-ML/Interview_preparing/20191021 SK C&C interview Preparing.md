@@ -218,3 +218,8 @@
   - TPR : True Positive Rate : 민감도 : 1인 케이스에 대해 1로 잘 예측한 반응
   - FPR : False Positivie Rate : 1-특이도 : 0인 케이스에 대해 1로 잘못 예측한 반응
   - ROC curve가 위로 볼록할수록 잘못 예측하는 확률이 낮으면서 잘 예측하는 확률은 높은 것이기 때문에 좋은 모델! => 그래서 AUC 구해서 모델의 Metric으로 사용 가능
+- 언제 l1, l2 정규화 각각 사용하는가?
+  - l1-> 변수 각각에 걸리는 가중치 중 일부가 아예 0이 되어버리길 원할 때 (그래서 feature selection으로도 사용됨)
+  - l2-> 변수 각각에 걸리는 가중치 전부가 엇비슷하게 되길 바랄때 (튀는 값이 없도록; shrinkage method)
+  - https://images.app.goo.gl/5pEwP9EhHRcwz73d9
+

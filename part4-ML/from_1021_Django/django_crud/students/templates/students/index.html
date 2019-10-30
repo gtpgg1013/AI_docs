@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center">Students</h1>
+<a href="/students/new/">[NEW]</a>
+<hr>
+{% for student in students%}
+<p>학생 이름 : {{ student.name }}</p>
+<p>학생 이메일 : {{ student.email }}</p>
+<p>학생 생일 : {{ student.birthday }}</p>
+<p>학생 나이 : {{ student.age }}</p>
+<hr>
+{% endfor %}
+
+{% endblock %}

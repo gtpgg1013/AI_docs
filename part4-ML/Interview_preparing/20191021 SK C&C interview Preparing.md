@@ -203,4 +203,18 @@
 ### Kaggle 수업에서 배운 ML 기본개념 정리
 
 - 보팅 / 부스팅 / 스태킹
-- 
+- TP / TN / FP / FN : T / F는 실제로 맞췄느냐, 못맞췄느냐 : P / N 은 예측값이 어떻게 나왔느냐
+- Accuracy : 그냥 정확도 : TP + TN / TP + TN + FP + FN
+- Precision : 모델이 True라고 분류한 것 중 실제 True의 비율 : TP / TP + FP
+- Recall : 실제 True 중 모델이 True라고 예측한 것의 비율 : TP / TP + FN
+- Precision이나 Recall은 모두 실제 True인 정답을 모델이 True라고 예측한 경우에 관심이 있으나, 바라보고자 하는 관점만 다름 => Precision (모델 입장) / Recall (실제 정답(data)입장)
+  - 확실한 날만 맞다고 하면 precision은 올라가겠지만 그게 의미가 있나?
+    - ex: 20일 비옴, 그 중 이틀은 특정한 날 확신. 그 두날만 하면 100% => meaningless
+  - 그래서 Recall도 같이 고려해야 함
+  - Acc가 좋긴 하나, data의 domain이 불균형하면 성능지표로 부적합!
+    - 비 오는거 예측하는데 그 지역이 비가 엄청 안오는 곳이다. 의미가 있는가? => 노의미
+  - **그래서 Precision과 Recall 조화평균 => F1 score**
+- ROC curve
+  - TPR : True Positive Rate : 민감도 : 1인 케이스에 대해 1로 잘 예측한 반응
+  - FPR : False Positivie Rate : 1-특이도 : 0인 케이스에 대해 1로 잘못 예측한 반응
+  - ROC curve가 위로 볼록할수록 잘못 예측하는 확률이 낮으면서 잘 예측하는 확률은 높은 것이기 때문에 좋은 모델! => 그래서 AUC 구해서 모델의 Metric으로 사용 가능

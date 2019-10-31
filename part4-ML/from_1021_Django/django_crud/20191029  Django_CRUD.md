@@ -164,3 +164,46 @@ Rest 중심규칙
 Beautify : VS code extension
 
 깔고 전체 선택 후 f1 Beautify 하면 이쁘게 들여쓰기 함
+
+
+
+# Day 3
+
+faker 패키지를 이용한 재밌는 앱
+
+jobs라는 새로운 앱 만들기 : python manage.py startapp jobs
+
+
+
+### 데이터베이스!
+
+Article과 Comment 두개의 테이블이 있을 때 두 테이블을 어떻게 연결하니?
+
+​	comment table에서 참조할 부모 테이블의 정보를 알기 위해 article의 pk를 fk로 받음
+
+​	Primary key & Foriegn key
+
+​	one to many 관계!
+
+​	article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name="comments")
+
+위와 같이 설정해주면 article 객체를 ORM으로 땡겨왔을 때 그와 연결된 comments를 models.ForeignKey(...) 로 가져올 수 있다
+
+그리고 그 가져온 쿼리 리스트를 for문돌려서 하나씩 꺼내오면 됨!
+
+migration
+
+
+
+python manage.py shell_plus
+
+여기에서 testing 가능
+
+
+
+ORM을 이용한 PK FK 사용법!
+
+
+
+pip freeze > requirements.txt 로 dependency library 저장
+

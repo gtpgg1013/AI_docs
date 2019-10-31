@@ -11,7 +11,9 @@
 </head>
 <body>
     <div class="container">
-        <a href="{% url 'articles:index' %}">[HOME]</a>
+        <a href="{% url 'articles:index' %}">[HOME_Article]</a>
+        <a href="{% url 'students:index' %}">[HOME_Student]</a>
+        <a href="{% url 'jobs:index' %}">[HOME_Job]</a>
         {% block content %}
         {% endblock %}
     </div>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'movies:create' %}" method="POST">
+{% csrf_token %}
+<input type="text" name="title">
+<input type="text" name="title_en">
+<input type="number" name="audience">
+<input type="date" name="open_date">
+<input type="text" name="genre">
+<input type="text" name="watch_grade">
+<input type="number" name="score">
+<input type="text" name="poster_url">
+<textarea name="description" id="" cols="30" rows="10"></textarea>
+<input type="submit" value="submit">
+</form>
+{% endblock %}

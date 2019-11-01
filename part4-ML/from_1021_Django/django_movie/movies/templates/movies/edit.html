@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="{% url 'movies:update' movie.pk %}" method="POST">
+{% csrf_token %}
+<input type="text" name="title" value="{{ movie.title }}"> 
+<input type="text" name="title_en" value="{{ movie.title_en }}">
+<input type="number" name="audience" value="{{ movie.audience }}">
+<input type="date" name="open_date" value="{{ movie.open_date|date:'Y-m-d' }}">
+<input type="text" name="genre" value="{{ movie.genre }}">
+<input type="text" name="watch_grade" value="{{ movie.watch_grade }}">
+<input type="number" name="score" value="{{ movie.score }}">
+<input type="text" name="poster_url" value="{{ movie.poster_url }}">
+<textarea name="description" id="" cols="30" rows="10" >{{ movie.description }}</textarea>
+<input type="submit" value="submit">
+</form>
+{% endblock %}

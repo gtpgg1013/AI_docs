@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ movie.title }}</h2>
+<h3>{{ movie.title_en }}</h3>
+<p>관객 수 : {{ movie.audience }}</p>
+<p>개봉일 : {{ movie.open_date }}</p>
+<p>장르 : {{ movie.genre }}</p>
+<p>시청등급 : {{ movie.watch_grade }}</p>
+<p><a href="{{ movie.poster_url }}">URL</a></p>
+<img src="{{ movie.poster_url }}" alt="이미지" width="350" height="500">
+<p>상세 설명 : {{ movie.description }}</p>
+<hr>
+<a href="{% url 'movies:index' %}">[목록으로]</a>
+<form action="{% url 'movies:edit' movie.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="수정하기">
+</form>
+<form action="{% url 'movies:delete' movie.pk %}" method="POST" onclick="return confirm('정말 삭제하시겠습니까?')">
+    {% csrf_token %}
+    <input type="submit" value="삭제하기">
+</form>
+{% endblock %}

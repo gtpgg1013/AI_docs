@@ -207,3 +207,11 @@ ORM을 이용한 PK FK 사용법!
 
 pip freeze > requirements.txt 로 dependency library 저장
 
+
+
+datetime format을 불러와서 그대로 수정할 때
+
+**input type="date" name="open_date" value="{{ movie.open_date|date:'Y-m-d' }}"**
+
+이런식의 | 기호를 사용하는 포맷지정이 필요하다
+

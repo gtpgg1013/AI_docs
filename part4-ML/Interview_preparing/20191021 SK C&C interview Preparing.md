@@ -1,5 +1,21 @@
 # 20191021 SK C&C interview Preparing
 
+## 기본적 준비할 것
+
+### 1. MNIST Fashion dataset
+
+ResNet
+
+GoogleNet
+
+ResNet-GoogleNet
+
+
+
+### 2. 기존의 틀 깨는 과감한 실행
+
+
+
 ### 스크립트화는 이정도면 OK, 이제 내일 오가면서 어떻게 바로 에센스화 시킬지 고민하자 : 이니시에이팅 문장 골라내기
 
 ### 두 괄 식 !
@@ -94,6 +110,7 @@ PPT
      - 파라미터 수가 엄청 큰데 그에 비해 데이터셋이 따라주지 못하면, 모델은 그 데이터에 과적합될 것!
      - 이걸 해결하기 위해 act func.를 relu로 바꾸고, BN을 도입하고, 파라미터의 초기값 설정 방법을 개선하는 등 했지만 근본적 해결은 안됨
      - Residual Learning! : 깊이에 따른 효과를 얻을 구조!
+       - skip connection!
        - 입력에서 출력으로 바로 elementwise하게 합을 해주는 shortcut 연결을 해주게 됨으로써, 입력의 작은 움직임도 잘 파악해서 학습을 더 잘 되게함
        - 중간의 3x3 conv를 1x1 3x3 1x1로 연산하여 연산량을 줄임
        - 그리고 activation func와 BN의 위치에 따라서 residual block의 성능이 크게 변화하는 것을 알게 되고, 수정하게 됨
@@ -321,14 +338,15 @@ PPT
 
 ### Kaggle 수업에서 배운 ML 기본개념 정리
 
-- 보팅 / 부스팅 / 스태킹
+- 앙상블 : 배깅 / 부스팅 / 스태킹
   - 배깅 : 살짝 다른 버전의 같은 모델들을 평균하는 것!
   - 부스팅 : **이전 모델의 성능을 고려하여 각 모델이 순차적으로 만들어지는 모델의 가중 평균 형식**
   - 스태킹 : 서로 다른 타입의 모델 결합 : 처음에는 base learner로 prediction 구한 다음, 나머지 **meta model**들을 base learner들의 output으로 학습
 - TP / TN / FP / FN : T / F는 실제로 맞췄느냐, 못맞췄느냐 : P / N 은 예측값이 어떻게 나왔느냐
 - Accuracy : 그냥 정확도 : TP + TN / TP + TN + FP + FN
-- Precision : 모델이 True라고 분류한 것 중 실제 True의 비율 : TP / TP + FP
-- Recall : 실제 True 중 모델이 True라고 예측한 것의 비율 : TP / TP + FN
+- 모델링 성과를 평가하는 지표 중 하나.
+- Precision : 모델이 True라고 분류한 것 중 실제 True의 비율 : TP / TP + FP : **내가 예측한 것중 True**
+- Recall : 실제 True 중 모델이 True라고 예측한 것의 비율 : TP / TP + FN : **실제 True 중 맞춘 비율**
 - Precision이나 Recall은 모두 실제 True인 정답을 모델이 True라고 예측한 경우에 관심이 있으나, 바라보고자 하는 관점만 다름 => Precision (모델 입장) / Recall (실제 정답(data)입장)
   - 확실한 날만 맞다고 하면 precision은 올라가겠지만 그게 의미가 있나?
     - ex: 20일 비옴, 그 중 이틀은 특정한 날 확신. 그 두날만 하면 100% => meaningless
@@ -344,7 +362,6 @@ PPT
   - l1-> 변수 각각에 걸리는 가중치 중 일부가 아예 0이 되어버리길 원할 때 (그래서 feature selection으로도 사용됨)
   - l2-> 변수 각각에 걸리는 가중치 전부가 엇비슷하게 되길 바랄때 (튀는 값이 없도록; shrinkage method)
   - https://images.app.goo.gl/5pEwP9EhHRcwz73d9
-
 - Hyperparameter Optimization의 여러 방법
   - For : 학습률 / 미니배치 크기 / L2 정규화 계수 / # of layers / # of conv. filters
   - Manual Search
@@ -642,7 +659,12 @@ bing : 그냥 positive negative
 
 # 인성 면접
 
-### 예상 문제 (압박)
+안녕하세요, 저는 분석하고 공부할때 즐거운 예비 신입사원 강태형입니다. 저는 이자리까지 오기 위해서 다양한 방법으로 제 역량을 향상시켜 왔습니다.
 
+첫번째, 공모전입니다. 빅 콘테스트, 앨리스 데이터 챌린지 등의 공모전에 참가하면서 실전 데이터 분석 역량을 기르고, AI 기술을 적용해보았습니다.
 
+두번째, 프로젝트입니다. 저는 관련 교육과정에서 AI 기술과 프로그래밍 기술을 활용하여 관련 프로젝트들을 수행하였습니다. (PPT / 성경말투 따라잡기)
 
+세번째, 스터디입니다. kaggle, AI 논문 읽기, spark, explainable AI 등 다양한 스터디에 참여하며 제 역량의 범위를 넓혔습니다.
+
+이제, 대한민국 IT를 선도하는 sk cnc에서 일하며 회사에 발전에 기여하고, 저 또한 성장하는 기회를 가지고 싶습니다. 감사합니다.

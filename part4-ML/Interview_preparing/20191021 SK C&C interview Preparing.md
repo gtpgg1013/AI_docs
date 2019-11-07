@@ -6,6 +6,9 @@
 
 ResNet
 
+- skip connection을 이용하여 네트워크가 깊어지면서 생겼던 vanishing / exploding gradient 문제를 해결한 네트워크.
+- 
+
 GoogleNet
 
 ResNet-GoogleNet

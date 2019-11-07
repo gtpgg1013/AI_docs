@@ -2,6 +2,8 @@
 
 가상환경 생성
 
+ pip install -r requirements.txt 
+
 프로젝트 생성 : django-admin startproject crud .
 
 앱 생성 : python manage.py startapp articles
@@ -215,3 +217,56 @@ datetime format을 불러와서 그대로 수정할 때
 
 이런식의 | 기호를 사용하는 포맷지정이 필요하다
 
+
+
+
+
+# Day 4
+
+ipython 으로 embed로 interactive하게 디버깅 가능
+
+request는 그냥 계속 꼭 안넘겨줘도 떤져주잖아~
+
+bootstrap4 : 라이브러리 설치
+
+### Form도 forms.py로 ORM처럼 미리 틀을 만들어서 사용할 수 있다!
+
+Articleform(modelform)
+
+modelform => DB랑 form을 한방에 해주는 객체!
+
+create 수정 : request.resolver_match : 세부 정보
+
+
+
+Comment도 이와 같은 방법으로 추가해주기
+
+=> migration
+
+
+
+Model.objects.get() : 쓰면 존재하지 않을경우 error
+
+Model.objects.filter: 쓰면 없으면 빈 쿼리
+
+
+
+{% for comment in article.comment_set.all %}
+
+comment를 안넘겨주고도 가져올 수 있다!
+
+- 이 comment_set 이란 것은 : foriegn key를 지정해줄 때 알아서 만들어주는 객체! 이걸로 관련된 애들 set가져올 수 있다
+
+{% for comment in comments %}
+
+
+
+데코레이터!
+
+from django.views.decorators.http import require_POST
+
+@require_POST
+
+이놈을 view함수 위에 써주면 그놈은 POST만 받을 수 있음!
+
+만약 이놈을 그냥 GET으로 접근하면 405 Error!

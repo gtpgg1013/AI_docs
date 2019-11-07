@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block body %}
+    {% if request.resolver_match.url_name == 'create' %}
+    <h1>CREATE</h1>
+    {% else %}
+    <h1>UPDATE</h1>
+    {% endif %}
+    <!-- create로 돌아감 -->
+    <form action="{% url 'articles:create' %}" method="POST">
+        {% csrf_token %}
+        {% bootstrap4_form from %}
+        {% buttons submit="Submit" reset="Cancel" %}{% endbuttons %}
+        <!-- {{ form.as_p }} -->
+        <input type="submit" value="submit">
+    </form>
+{% endblock %}

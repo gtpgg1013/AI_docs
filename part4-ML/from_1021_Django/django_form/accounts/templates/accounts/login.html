@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block body %}
+<h1>로그인</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    <!-- 이전엔 미리 만들어진 로그인 폼 객체를 날림! -->
+    {% bootstrap_form form %}
+    {% buttons submit="로그인" reset="Cancel" %}{% endbuttons %}
+</form>
+{% endblock %}

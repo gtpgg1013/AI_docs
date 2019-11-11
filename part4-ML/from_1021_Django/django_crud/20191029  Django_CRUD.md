@@ -270,3 +270,101 @@ from django.views.decorators.http import require_POST
 이놈을 view함수 위에 써주면 그놈은 POST만 받을 수 있음!
 
 만약 이놈을 그냥 GET으로 접근하면 405 Error!
+
+
+
+form을 써서 좋은점 : 모델을 보고 고대로 그 형식 고대로 폼을 만들어줌 => 그리고 그 폼 객체에 정보를 담든 안담든 해서
+
+그놈을 그대로 인자로 template로 넘겨주면 {{ }} 형식으로 그대로 쓸 수 있다
+
+
+
+# 유저 관련기능 : AUTH
+
+유저관련기능 모델폼은 이미 만들어놓음!
+
+로그인 : session create!
+
+로그아웃 : session delete!
+
+
+
+로그인 후 글쓰게 만들고 싶다 => 
+
+from django.contrib.auth.decorators import login_required
+
+@login_required 데코레이터 사용하면 됨!
+
+
+
+로그인 안하고 url로 접근하려 하면
+
+ http://127.0.0.1:8000/accounts/login/?next=/articles/create/ 
+
+요거는 로그인 수행하면 next쿼리의 인자로 이동시켜주겠다는뜻!
+
+
+
+쿠키
+
+세션
+
+
+
+auth_login(request, form.get_user())
+
+form.get_user() 는 user_cache(정제된 데이터)를 return
+
+결과적으로 user의 객체를 가져오게 됨
+
+
+
+나쁘지않은 css  https://materializecss.com/ (부트스트랩처럼 쓰면 됨)
+
+
+
+dir(request.user)
+
+이거 쓰면 request.user의 변수들 알 수 있음 / is_authenticated 등등..
+
+
+
+@login_required
+
+@require_POST
+
+두개를 같이 쓸 수 없음!
+
+왜 같이 못쓰누? 
+
+login_required가 던져주는 redirect가 get방식이어서
+
+@require_POST 데커레이터에 걸려서 405에러(Method error)가 남!
+
+
+
+User : Article의 관계?
+
+1 : N ? / M : N ? 
+
+
+
+article의 model.py에서
+
+user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+를 추가해주면 : user를 foreign key로 가져옴!
+
+근데 밑에를 보면 article = models.ForeignKey(Article, on_delete=models.CASCADE)
+
+로 가져올 수 있으!
+
+결국 models.ForeignKey()의 첫번째 인자로 string, object 두개 다 데려올 수 있으나, 맨 처음 장고가 실행되면 settings에 정의된 installed_APP 순서대로 app을 실행하는데, 거기에서 get_user_model()을 사용하면 로드가 안되서 에러가 남 => settings.AUTH_USER_MODEL 사용!
+
+
+
+article에 user 외래 키로 주고 makemigrations 하자! => 오류메시지나면 1번 선택
+
+그리고 1이라고 쳐주면 지금까지 써있던 글들의 외래 키가 1로 됨(user 1)
+
+migrate gogo

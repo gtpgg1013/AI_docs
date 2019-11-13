@@ -42,6 +42,8 @@ python manage.py createsuperuser
 
 
 
+
+
 GET과 POST
 
 - GET은 데이터를 가져오는 READ
@@ -368,3 +370,185 @@ article에 user 외래 키로 주고 makemigrations 하자! => 오류메시지�
 그리고 1이라고 쳐주면 지금까지 써있던 글들의 외래 키가 1로 됨(user 1)
 
 migrate gogo
+
+
+
+# 놓친 부분
+
+gravatar
+
+card로 내용 부분 대체하기
+
+password hassing
+
+좋아요
+
+M : N
+
+
+
+# M : N
+
+다양한 데이터베이스의 표현을 위해
+
+중개 테이블을 만들어서 표현
+
+어떻게든 관계를 테이블 위에 적어야 하는데 그렇게 안될 때가 있음 : 환자 / 의사 관계!
+
+중개 테이블로 그 관계들을 끌고온다
+
+#### 중개 테이블 있을 시 : Reservation table을 만들었을 경우
+
+doctor1.reservation_set.all()
+
+patients1.reservation_set.all()
+
+#### Django는 manytomany field를 함수로 제공
+
+patient1.doctors.all()
+
+doctor.patient_set.all() # related_name을 ManyToManyField로 바꿔주면 patient_set을 그 이름으로 바꾸기 가능
+
+#### 그냥 데이터를 가져오기만 할 때는 ManyToMany로 가능
+
+#### 만약 추가 데이터가 더 필요하다면 중개 모델이 필요함! (Ex.예약 시간)
+
+
+
+migration 작업 하셈
+
+
+
+sqlite 라는 extension 깔면 sqlite DB를 시각화해서 더 편하게 볼 수 있음!
+
+many to many 는 일단 가상환경만 딱 깔아놓은 상태
+
+
+
+TDD?
+
+test - driven development
+
+pip install django_test_plus
+
+
+
+draw.io => UML
+
+
+
+걍 폰트어섬에서 가져와서 head에다 script 박고 쓰면 됨
+
+=> 이것도 일종의 css library! => class로 가져오면 됨!
+
+
+
+#### User models customizing
+
+AUTH_USER_MODEL = 'accounts.User' 이걸를 써줘야함
+
+유저모델을 먼저 해줘야함!!! => 안그러면 다 날려야함
+
+db 날리고 articles의 migration 다 날려야 함
+
+
+
+migrations folder가 안날라가게 조심하여야 함!
+
+
+
+User를 custom으로 만들었으면 user를 건드는 form도 custom하게 써줘야 함!
+
+
+
+get_user_model : 현재 user의 model!
+
+
+
+custom filter를 만들어서 할 수도 있다! => templatetags! : make_links
+
+## {{ article|hashtag_link|safe }}
+
+이렇게 하면 django가 escaping하는 걸 그냥 막아줌! : a태그가 걸리게 됨
+
+
+
+### pip install django-allauth
+
+다른 provider들의 auth 기능 가져와서 쓰기!
+
+INSTALLED_APPS
+
+AUTHENTICATION_BACKENDS
+
+두개 변수 추가!
+
+
+
+ https://django-allauth.readthedocs.io/en/latest/installation.html 
+
+
+
+project의 url에 추가
+
+  path('accounts/', include('allauth.urls')),
+
+
+
+카카오 auth : 앱 만들고
+
+**설정 - 일반 - 플랫폼 - 플랫폼 추가**
+
+http https : 127 로컬호스트 추가
+
+**설정 -  사용자관리 : on**
+
+프로필 정보 on / 카카오계정 (이메일) on
+
+
+
+### 공식문서
+
+## Kakao
+
+- App registration (get your key here)
+
+  https://developers.kakao.com/apps
+
+- Development callback URL
+
+  http://127.0,0,1:8000/accounts/kakao/login/callback/
+
+
+
+http://127.0,0,1:8000/accounts/kakao/login/callback/
+
+요거를 로그인 redirect uri 에 추가해 줘야 함
+
+글구 login.html로 바꿀거임(종전 auth_form.html로 공유하고 있었음)
+
+
+
+이 밑에처럼 login.html에 추가
+
+<a href="{% provider_login_url 'kakao' %}" class="btn btn-warning">카카오 로그인</a
+
+
+
+어드민가서 소셜 어플리케이션 추가해야 함!
+
+클라이언트 아이디 : REST API
+
+비밀키 : 고급에서 비밀 키 발급
+
+
+
+장고 사이트에 127.0.0.1:8000 도메인명 표시명 추가
+
+
+
+제대로 된 리디렉션 잡아주기!
+
+default => /accounts/profile/ 인데 현재 다르게 쓰고있음! <username> 으로
+
+LOGIN_REDIRECT_URL = 'articles:index'

@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# auth 추가위해 밑에 두개 변수 추가!
 
 INSTALLED_APPS = [
     'accounts',
@@ -40,7 +41,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+
+    # 소셜로그인
+    'django_extensions',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # kakao
+    'allauth.socialaccount.providers.kakao',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,3 +142,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # 로그인 하지 않은 사용자는 
+
+AUTH_USER_MODEL = 'accounts.User' # 원래는 auth.User
+
+SITE_ID = 1
+
+# /accounts/profile/
+LOGIN_REDIRECT_URL = 'articles:index'

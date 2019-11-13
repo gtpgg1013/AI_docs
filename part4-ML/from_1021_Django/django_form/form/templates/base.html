@@ -5,30 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/3844e9d77e.js" crossorigin="anonymous"></script>
     {% block title %}
         <title>django form</title>
     {% endblock %}
     {% bootstrap_css %}
 </head>
 <body>
+    {% include 'articles/_nav.html' %}
     <div class="container">
-    {% if user.is_authenticated %}
-        <h3>Hello, {{ user.username }}
-            <a href="{% url 'articles:index' %}">[HOME]</a>
-            <a href="{% url 'accounts:update' %}">업데이트</a>
-            <a href="{% url 'accounts:logout' %}">로그아웃</a>
-            <a href="{% url 'accounts:change_password' %}">비번변경</a>
-            <form action="{% url 'accounts:delete' %}" method="POST">
-                {% csrf_token %}
-                <input type="submit" value="회원탈퇴" class="btn btn-danger">
-            </form>
-        </h3>
-    {% else %}
-        <h3>
-            <a href="{% url 'accounts:login' %}">로그인</a>
-            <a href="{% url 'accounts:signup' %}">회원가입</a>
-        </h3>
-    {% endif %}
         <hr>
         {% block body %}
         {% endblock %}

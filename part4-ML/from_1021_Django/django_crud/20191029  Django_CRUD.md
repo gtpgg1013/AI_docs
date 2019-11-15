@@ -51,6 +51,16 @@ GET과 POST
 
 
 
+media 추가하는 법 참조 : settings.py / urls.py
+
+사용자로부터 form으로 image를 받을 때!
+
+enctype="multipart/form-data"
+
+image = request.FILES.get("image")
+
+upload_to = 
+
 
 
 # Day 2

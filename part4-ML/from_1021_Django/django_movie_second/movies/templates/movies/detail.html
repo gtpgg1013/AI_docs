@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>DETAIL</h1>
+    <hr>
+    <p>영화 번호 : {{ movie.pk }}</p>
+    <p>영화 제목 : {{ movie.title }}</p>
+    <img src="{{ movie.poster.url }}" width="200" height="300">
+    <p>영화 설명 : {{ movie.description }}</p>
+    <p>평균 평점 : {{ mean_val|floatformat:2 }}</p>
+    <p>글 생성 시각 : {{ movie.created_at|date:"SHORT_DATE_FORMAT" }}</p>
+    <p>글 수정 시각 : {{ movie.updated_at|date:"M, j, Y" }}</p>
+    <p>작성자 : {{ movie.user }}</p>
+    {% if request.user == movie.user %}
+    <form action="{% url 'movies:edit' movie.pk %}">
+        <input type="submit" value="EDIT">
+    </form>
+    <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="DELETE">
+    </form>
+    {% endif %}
+    <hr>
+    {% if user.is_authenticated %}
+        <form action="{% url 'movies:new_rating' movie.pk %}" method="POST">
+            {% csrf_token %}
+            {{ rating_form }}
+            <input type="submit" value="NEW RATING">
+        </form>
+    {% else %}
+        <a href="{% url 'accounts:login' %}">LOGIN FIRST, for RATING</a>
+    {% endif %}
+    <hr>
+    <p>RATING LIST</p>
+    {% for rating in movie.rating_set.all %}
+        <div>
+            <p> 점수 : {{ rating.score }}</p>
+            <p> 한줄평 : {{ rating.content }}</p>
+            <p>등록 시각 : {{ rating.created_at }}</p>
+            {% if user == rating.user %}
+                <form action="{% url 'movies:delete_rating' movie.pk rating.pk %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" value="DELETE">
+                </form>
+            {% endif %}
+        </div>
+    <hr>
+    {% endfor %}
+    <form action="{% url 'movies:index' %}">
+        <input type="submit" value="BACK">
+    </form>
+{% endblock %}

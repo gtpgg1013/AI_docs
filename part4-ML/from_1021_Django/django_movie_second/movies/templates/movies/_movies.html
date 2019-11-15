@@ -1,0 +1,14 @@
+<!-- movies/_movies.html -->
+<div class="card text-center mb-5">
+    <div class="card-header">
+        포스트 작성자 : {{ movie.user }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title"> <a href="{% url 'movies:detail' movie.pk %}">
+            {{ movie.title }}
+        </a></h5>
+        <p>평점 : {{ movie.avg_score|floatformat:2 }}</p>
+        <img src="{{ movie.poster.url }}" alt="poster_img" width="200" height="300">
+        <p class="card-text"></p>
+    </div>
+</div>

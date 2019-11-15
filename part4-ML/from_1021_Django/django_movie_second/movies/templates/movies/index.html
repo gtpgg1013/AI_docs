@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>MOVIES</h1>
+    {% if user.is_authenticated %}
+    <h2><a href="{% url 'movies:new' %}">[NEW]</a></h2>
+    {% else %}
+    <h2><a href="{% url 'accounts:login' %}">[글을 작성하시려면 로그인 해주세요]</a></h2>
+    {% endif %}
+    {% for movie in movies %}
+        {% include 'movies/_movies.html' %}
+        <hr>
+    {% endfor %}
+{% endblock %}

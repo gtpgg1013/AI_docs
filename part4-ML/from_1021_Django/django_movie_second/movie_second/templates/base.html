@@ -1,0 +1,23 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/3844e9d77e.js" crossorigin="anonymous"></script>
+    {% block title %}
+        <title>django form</title>
+    {% endblock %}
+    {% bootstrap_css %}
+</head>
+<body>
+    {% include 'movies/_nav.html' %}
+    <div class="container">
+        <hr>
+        {% block body %}
+        {% endblock %}
+    </div>
+    {% bootstrap_javascript jquery="full" %}
+</body>
+</html>

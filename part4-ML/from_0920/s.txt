@@ -1,0 +1,1 @@
+cuda 설치완료 : !nvidia-smi 확인! : openpose demo 돌려보자
